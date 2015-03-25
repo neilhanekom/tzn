@@ -1,0 +1,105 @@
+
+<div data-ng-controller="AuthenticationController" layout="row" layout-fill>
+	<div layout="column" flex="100">
+				<md-whiteframe class="md-whiteframe-z1 dashboard-card-full " layout="column" layout-margin>	
+				   	<!-- Start wtih Form in here. -->
+				   	<md-content class="md-padding">
+				   		<form name="userForm" data-ng-submit="signup()" flex layout-fill class="std-text">
+				   			<div layout="column" layout-sm="column" layout-fill>
+				   			
+				   			<h2>Sign Up</h2>
+				   			<md-divider></md-divider>
+				   				<div layout="row" layout-sm="column">
+				   					<md-input-container flex>
+					   					<p><b>Title:</b> <span class="radioValue">{{ credentials.title }}</span> </p>
+									    <md-radio-group ng-model="credentials.title" layout="row">
+									      <md-radio-button value="Mr">Mr</md-radio-button>
+									      <md-radio-button value="Mrs"> Mrs </md-radio-button>
+									      <md-radio-button value="Ms">Mrs</md-radio-button>
+									    </md-radio-group>
+					   				</md-input-container>
+					   				<md-input-container flex>
+					   					<p><b>Gender:</b> <span class="radioValue">{{ credentials.gender }}</span> </p>
+									    <md-radio-group ng-model="credentials.gender" layout="row">
+									      <md-radio-button value="Male">Male</md-radio-button>
+									      <md-radio-button value="Female"> Female </md-radio-button>
+									      
+									    </md-radio-group>
+					   				</md-input-container>
+					   				
+				   				</div>
+				   				<div layout="row" layout-sm="column">
+				   					<md-input-container flex>
+					   					<label>Firstname</label>
+					   					<input type="text" required name="name" ng-model="credentials.firstName" placeholder="Firstname">
+					   					<div ng-messages="userForm.name.$error" class="error">
+								          <div ng-message="required">This is required.</div>
+								        </div>
+					   				</md-input-container>
+					   				<md-input-container flex>
+					   					<label>Lastname</label>
+					   					<input type="text" required name="lastname" ng-model="credentials.lastName" placeholder="Surname">
+					   					<div ng-messages="userForm.lastname.$error" class="error">
+								          <div ng-message="required">This is required.</div>
+								        </div>
+					   				</md-input-container>
+					   				
+				   				</div>
+				   				
+				   				<div layout="row" flex layout-sm="column">
+				   					<md-input-container flex>
+					   					<label>Mobile Number</label>
+					   					<input md-maxlength="10" name="mobile" ng-model="credentials.mobileNumber" placeholder="Mobile Number">
+					   					<div ng-messages="userForm.mobile.$error" class="error">
+								          <div ng-message="required">This is required.</div>
+         								<div ng-message="md-maxlength">Mobile has to be 10 characters long.</div>
+								        </div>
+					   				</md-input-container>
+					   				
+					   				<md-input-container flex>
+					   					<label>Email</label>
+					   					<input type="email" required name="email" ng-model="credentials.email" placeholder="Email">
+					   					<div ng-messages="userForm.email.$error" class="error">
+								          <div ng-message="required">This is required.</div>
+         									<div ng-message="email">Make sure entered a correct Email type</div>
+								        </div>
+					   				</md-input-container>
+				   				</div>
+				   				<div layout="row" flex layout-sm="column">
+				   					<md-input-container flex>
+					   					<label>Username</label>
+					   					<input required name="username" ng-model="credentials.username" placeholder="Username">
+					   					<div ng-messages="userForm.username.$error" class="error">
+								          <div ng-message="required">This is required.</div>
+         								  
+								        </div>
+					   				</md-input-container>
+					   				<md-input-container flex>
+					   					<label>Password</label>
+					   					<input type="password" ng-minlength="6" required name="password"  ng-model="credentials.password" placeholder="Password">
+		
+								        <div ng-messages="userForm.password.$error" class="error">
+								          <div ng-message="required">This is required.</div>
+         								  <div ng-message="minlength">Length of Password must be atleast 6 Chars</div>
+								        </div>
+					   				</md-input-container>
+					   				
+				   				</div>
+				   				<div layout="row" flex layout-align="end center">
+					   					<md-button type="submit" class="md-raised md-warn">Register</md-button>
+					   				</div>
+				   			</div>
+				   		</form>
+				   	</md-content>
+				</md-whiteframe>	
+		</div>
+
+</div>		
+		
+	
+	
+
+
+
+
+

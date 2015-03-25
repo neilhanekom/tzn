@@ -1,0 +1,206 @@
+.content {
+	margin-top: 50px;
+}
+.undecorated-link:hover {
+	text-decoration: none;
+}
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+	display: none !important;
+}
+.ng-invalid.ng-dirty{
+	border-color:#FA787E;
+}
+.ng-valid.ng-dirty{
+	border-color:#78FA89;
+}
+
+.header-profile-image {
+	opacity: 0.8;
+	height: 28px;
+	width: 28px;
+	border-radius: 50%;
+	margin-right: 5px;
+}
+
+.open  .header-profile-image,
+a:hover .header-profile-image {
+	opacity: 1;
+}
+
+.user-header-dropdown-toggle {
+	padding-top: 11px !important;
+	padding-bottom: 11px !important;
+}
+
+/*fills*/
+.fill-white {
+	background-color: white;
+}
+
+/*All text styling*/
+.txt-blk {
+	color: black;
+}
+
+.txt-dgrey {
+	color: #616161;
+}
+
+.txt-white {
+	color: white;
+}
+
+.btn-text-std {
+	font-size: 14px;
+}
+
+.txt-inherit {
+	font-size: inherit;
+  	font-weight: normal;
+}
+
+.txt-chip {
+	font: inherit;
+	font-size: 0.9em;
+  	font-weight: normal;
+}
+
+.txt-100 {
+	font-size: 100%;
+
+}
+
+/*blokc/divs/area styling*/
+
+.rect {
+	 width: 100%;
+    height: 0;
+    padding-bottom: 50%;
+}
+
+.ad-image {
+	min-height: 600px;
+
+	background-position: center center;
+  
+  /* Image doesn't repeat */
+  background-repeat: no-repeat;
+  
+  /* Makes the image fixed in the viewport so that it doesn't move when 
+     the content height is greater than the image height */
+  background-attachment: fixed;
+  
+  /* This is what makes the background image rescale based on its container's size */
+  background-size: cover;
+  
+  /* Pick a solid background color that will be displayed while the background image is loading */
+  background-color:#EEEEEE;
+}
+
+.pos-rt {
+	position: absolute;
+	right: 0;
+	top: 0;
+}
+
+/*margins and paddings*/
+.pad-0 {
+	padding: 0;
+}
+
+.pad-r-10 {
+	padding-right: 10px;
+}
+
+.pad-r-20 {
+	padding-right: 20px;
+}
+
+.pad-l-10 {
+	padding-left: 10px;
+}
+
+.pad-l-15 {
+	padding-left: 15px;
+}
+
+
+
+.pad-20 {
+	padding: 20px;
+}
+
+.pad-5 {
+	padding: 10px;
+}
+
+.pad-10 {
+	padding: 10px;
+}
+
+.pad-15 {
+	padding: 15px;
+}
+
+
+
+.pad-10-20 {
+	padding: 10px 20px 10px 20px;
+}
+
+.pad-t-5 {
+	padding-top: 5px;
+}
+
+.mar-t-5 {
+	margin-top: 5px;
+}
+
+.mar-5 {
+	margin: 5px;
+}
+
+.mar-10 {
+	margin: 10px;
+}
+
+.mar-b-20 {
+	margin-bottom: 20px;
+}
+
+.bg-lgrey {
+	background-color: #EEEEEE;
+}
+
+.bg-alpha {
+	background-color: rgba(0, 0, 0, 0.5);
+}
+
+.h-100 {
+	height: 100%;
+}
+
+/*===== Specifics  ===*/
+.sidenav-ul {
+	list-style-type: none;
+	padding: 0;
+}
+
+
+.setting-list {
+	list-style-type: none;
+	padding: 0;
+}
+
+.overlay {
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	min-height: inherit;
+	background-size: 100%;
+	z-index: 1000;
+	overflow: 
+}
+
+

@@ -1,0 +1,443 @@
+<div flex layout="row" layout-fill data-ng-controller="EntriesController" > 
+
+<!-- ================== Confirmation section ================== -->
+<!-- <div layout="row" class="overlay bg-alpha" data-ng-hide="collapseConfirm">
+       <div flex="15"  hide-sm hide-md hide-lg></div>      
+           <div flex layout="column" layout-wrap layout-fill>
+                <h1>Testing</h1>
+           </div>
+       <div flex="15"  hide-sm hide-md hide-lg></div>       
+</div>
+ -->
+
+
+<!-- ============================ end of confirmation =============== -->
+
+
+    <div flex="15" class="bg-lgrey" hide-sm hide-md hide-lg></div>
+       <div flex layout="column" layout-wrap layout-fill>
+                <!-- ===========   Confirm State  ============ -->
+                <md-whiteframe class="md-whiteframe-z1 dashboard-card-full " layout="column" data-ng-hide="collapseConfirm" layout-fill flex> 
+                    <md-content class="md-padding"  layout-fill>
+                        <h2>Confirm Your Entry</h2>
+                        <md-divider></md-divider>
+                        <div layout="column" flex>
+                            <h3>Personal Information</h3>
+                            <span><b>Gender:</b> {{entry.gender}}</span>
+                            <span><b>Firstname:</b> {{entry.firstName}}</span>
+                            <span><b>Lastname:</b> {{entry.lastName}}</span>
+                            <span><b>ID:</b> {{entry.rsaId}}</span>
+                            <span><b>Birthdate:</b> {{entry.birthDate}}</span>
+
+                        </div>
+                        <div layout="column" flex>
+                            <h3>Contact Information</h3>
+                            <span><b>Mobile:</b> {{entry.mobile}}</span>
+                            <span><b>Email:</b> {{entry.email}}</span>
+                        </div>
+                        <div layout="column" flex>
+                            <h3>Emergency Information</h3>
+                            <span><b>Contact Person:</b> {{entry.emergency.person}}</span>
+                            <span><b>Contact Number:</b> {{entry.emergency.number}}</span>
+                            <span><b>Contact Relationship:</b> {{entry.emergency.relationship}}</span>
+                        </div>
+                        <div layout="column" flex>
+                            <h3>Medical Information</h3>
+                            <span><b>Medical Aid Company:</b> {{entry.medical.company}}</span>
+                            <span><b>Medical Aid Number:</b> {{entry.medical.number}}</span>
+                            <span><b>Medical Aid Plan:</b> {{entry.medical.plan}}</span>
+                            <span><b>Medical Aid Main Member:</b> {{entry.medical.main}}</span>
+                            <span><b>Medical Conditions:</b> {{entry.medical.conditions}}</span>
+                            <span><b>Doctor Name:</b> {{entry.medical.doctorName}}</span>
+                            <span><b>Doctor Contact Number:</b> {{entry.medical.doctorNumber}}</span>
+                        </div>
+                        <div layout="column" flex>
+                            <h3>Postal Address</h3>
+                            <span><b>Po Box:</b> {{entry.postal.box}}</span>
+                            <span><b>City/Town:</b> {{entry.postal.box}}</span>
+                            <span><b>Postal Code:</b> {{entry.postal.box}}</span>
+                        </div>
+                        <div layout="column" flex>
+                            <h3>Race Information</h3>
+                            <span><b>Club/Team</b> {{entry.club.name}}</span>
+                            <span><b>Province:</b> {{entry.club.province}}</span>
+                            <span><b>CSA License:</b> {{entry.license.exist}}</span>
+                            <span><b>CSA License No:</b> {{entry.license.number}}</span>
+                            <span><b>Age Category:</b> {{entry.age_cat}}</span>
+                            <span><b>Race Distance:</b> {{entry.race}}</span>
+                        
+                        </div>
+                        <br>
+                        <md-divider></md-divider>
+                        <div layout="column" >
+                            <h2>Total Fee</h2>
+                            <div layout="row">
+                                <div flex-gt-md="10" flex-md="20" flex-sm="40">
+                                     <span>Race Fee: </span>
+                                </div>
+                                <div flex>
+                                    <span>{{'R' + raceFee}}</span> 
+                                </div>
+                               
+                            </div>
+                            <div layout="row">
+                                <div flex-gt-md="10" flex-md="20" flex-sm="40" >
+                                     <span>License Fee: </span>
+                                </div>
+                                <div flex>
+                                    <span>{{'R' + licenseFee}}</span> 
+                                </div>
+                               <md-divider></md-divider>
+                            </div>
+                            <div layout="row">
+                                <div flex-gt-md="10" flex-md="20" flex-sm="40">
+                                     <span><b>Total</b> </span>
+                                </div>
+                                <div flex>
+                                    <span>{{'R' + entry.fee}}</span> 
+                                </div>
+                           <md-divider></md-divider>
+                            </div>
+                            <div layout="column" flex>
+                            <br>
+                            <md-divider></md-divider>
+                            <h3>INDEMNITY and WAIVER:</h3>
+                            <p> I undertake to participate in the above event entirely at my own risk. I agree that I shall have no claim whatsoever against the organisers,officials,marshals,helpers,sponsors,any local authority or any landowner or the employees or servants of any of the above parties for any loss,damage or injury whatsoever which I may suffer as a result of my participation in this event including my arrival thereat and departure there from and any ceremonies or functions thereof. In the event of my signing this form as a guardian of a minor, I hereby consent to such minor being bound by the waiver including to the extent to which he/she is not capeable of waiving his/her rights as stipulated above. The wearing of helmets in compulsary.</p>
+                        
+                        </div>
+                        <br>
+                            
+                        </div>
+                    </md-content>
+                 </md-whiteframe>   
+                <!-- ===========   Confirm State  ============ -->
+
+                <md-whiteframe class="md-whiteframe-z1 dashboard-card-full " layout="column" data-ng-hide="collapseForm"> 
+                    <!-- Start wtih Form in here. -->
+                    <md-content class="md-padding">
+                        <form name="entryForm" data-ng-submit="create()" flex layout-fill class="std-text">
+                            <div layout="column" layout-sm="column" layout-fill>
+                            
+                            <h2>Entry Form</h2>
+                            <md-divider></md-divider>
+                                <div layout="row" layout-sm="column">
+                                    <md-input-container flex>
+                                        <p><b>Title:</b> <span class="radioValue">{{ entry.title }}</span> </p>
+                                        <md-radio-group ng-model="entry.title" layout="row">
+                                          <md-radio-button value="Mr">Mr</md-radio-button>
+                                          <md-radio-button value="Mrs"> Mrs </md-radio-button>
+                                          <md-radio-button value="Ms">Ms</md-radio-button>
+                                        </md-radio-group>
+                                    </md-input-container>
+                                    <md-input-container flex>
+                                        <p><b>Gender:</b> <span class="radioValue">{{ entry.gender }}</span> </p>
+                                        <md-radio-group ng-model="entry.gender" layout="row">
+                                          <md-radio-button value="Male">Male</md-radio-button>
+                                          <md-radio-button value="Female"> Female </md-radio-button>
+                                          
+                                        </md-radio-group>
+                                    </md-input-container>
+                                    
+                                </div>
+                                <div layout="row" layout-sm="column">
+                                     <p><b>Personal:</b></p>
+                                </div>
+                                <div layout="row" layout-sm="column">
+                               
+                                    <md-input-container flex>
+                                        <label>Firstname</label>
+                                        <input type="text" required name="name" ng-model="entry.firstName" placeholder="Firstname">
+                                        <div ng-messages="entryForm.name.$error" class="error">
+                                          <div ng-message="required">This is required.</div>
+                                        </div>
+                                    </md-input-container>
+                                    <md-input-container flex>
+                                        <label>Lastname</label>
+                                        <input type="text" required name="lastname" ng-model="entry.lastName" placeholder="Surname">
+                                        <div ng-messages="entryForm.lastname.$error" class="error">
+                                          <div ng-message="required">This is required.</div>
+                                        </div>
+                                    </md-input-container>
+                                    <md-input-container flex>
+                                        <label>ID/Passport Number</label>
+                                        <input type="text" required name="rsaId" ng-model="entry.rsaId" placeholder="Enter your Password Number">
+                                        <div ng-messages="entryForm.rsaId.$error" class="error">
+                                          <div ng-message="required">This is required.</div>
+                                        </div>
+
+                                    </md-input-container>
+                                    
+                                </div>
+                                
+                                <div layout="row" layout-sm="column">
+                                    <h4>Date of Birth</h4>
+                                </div>
+                                   
+                               
+                                 <div layout="row" layout-sm="column">
+                                    <div flex="30">
+                                        <md-input-container flex>
+                                      <label>Enter you Date of Birth</label>
+                                      <input type="date" ng-model="entry.birthDate">
+                                    </md-input-container>
+                                    </div>
+                                    
+                                </div>
+
+                                <div layout="row" layout-sm="column">
+                                <h4>Contact Information</h4>
+                                </div>
+                                
+                                <div layout="row" flex layout-sm="column">
+                                    <md-input-container flex>
+                                        <label>Mobile Number</label>
+                                        <input  name="mobile" ng-model="entry.mobileNumber" placeholder="Mobile Number">
+                                        <div ng-messages="entryForm.mobile.$error" class="error">
+                                          <div ng-message="required">This is required.</div>
+                                        
+                                        </div>
+                                    </md-input-container>
+                                    
+                                    <md-input-container flex>
+                                        <label>Email</label>
+                                        <input type="email" required name="email" ng-model="entry.email" placeholder="Email">
+                                        <div ng-messages="entryForm.email.$error" class="error">
+                                          <div ng-message="required">This is required.</div>
+                                            <div ng-message="email">Make sure you entered a correct Email type</div>
+                                        </div>
+                                    </md-input-container>
+                                </div>
+                                <div layout="row" flex layout-sm="column">
+                                    <md-input-container flex>
+                                        <label>Emergency Contact Person</label>
+                                        <input type="text" name="emergency_person" ng-model="entry.emergency.person" placeholder="Emegency Person Name">
+                                        <!-- <div ng-messages="entryForm.emergency_person.$error" class="error">
+                                          <div ng-message="required">This is required.</div>
+                                            
+                                        </div> -->
+                                    </md-input-container>
+                                    
+                                    <md-input-container flex>
+                                        <label>Emegency Contact Number</label>
+                                        <input type="text"  name="emergency_contact" ng-model="entry.emergency.contact" placeholder="Emegency Contact Number">
+                                        <!-- <div ng-messages="entryForm.emergency_contact.$error" class="error">
+                                          <div ng-message="required">This is required.</div>
+                                        </div> -->
+                                    </md-input-container>
+                                    <md-input-container flex>
+                                        <label>Emegency Contact relationship</label>
+                                        <input type="text" name="emergency_relationship" ng-model="entry.emergency.relationship" placeholder="Emegency Contact relationship">
+                                        <!-- <div ng-messages="entryForm.emergency_relationship.$error" class="error">
+                                          <div ng-message="required">This is required.</div>
+                                        
+                                        </div> -->
+                                    </md-input-container>
+                                </div>
+                                <div layout="row" layout-sm="column">
+                                <h4>Medical Information</h4>
+                                </div>
+                                
+                                <div layout="row" flex layout-sm="column">
+                                    <md-input-container flex>
+                                        <label>Medical Aid Name</label>
+                                        <input type="text" name="medical_company" ng-model="entry.medical.company" placeholder="Medical Aid Name">
+                                        <div ng-messages="entryForm.medical_company.$error" class="error">
+                                          <div ng-message="required">This is required.</div>
+                                        
+                                        </div>
+                                    </md-input-container>
+                                    <md-input-container flex>
+                                        <label>Medical Aid Number</label>
+                                        <input type="text" name="medical_number" ng-model="entry.medical.number" placeholder="Mobile Aid Number">
+                                        <div ng-messages="entryForm.medical_number.$error" class="error">
+                                          <div ng-message="required">This is required.</div>
+                                        
+                                        </div>
+                                    </md-input-container>
+                                    
+                                    
+                                </div>
+                                <div layout="row" flex layout-sm="column">
+                                    <md-input-container flex>
+                                        <label>Medical Aid Main Member</label>
+                                        <input type="text" name="medical_main" ng-model="entry.medical.main" placeholder="Main Member">
+                                        <!-- <div ng-messages="entryForm.medical_main.$error" class="error">
+                                          <div ng-message="required">This is required.</div>
+                                        
+                                        </div> -->
+                                    </md-input-container>
+                                    <md-input-container flex>
+                                        <label>Medical Aid Plan</label>
+                                        <input type="text" name="medical_plan" ng-model="entry.medical.plan" placeholder="Plan/Product">
+                                        <!-- <div ng-messages="entryForm.medical_number.$error" class="error">
+                                          <div ng-message="required">This is required.</div>
+                                        
+                                        </div> -->
+                                    </md-input-container>
+                                   
+                                    
+                                </div>
+                                
+                                <div layout="row" flex layout-sm="column">
+                                    
+                                    <md-input-container flex>
+                                        <label>Medical Conditions</label>
+                                        <textarea ng-model="entry.medical.conditions" columns="1" md-maxlength="400"></textarea>
+                                      </md-input-container>
+                                    
+                                </div>
+                                <div layout="row" layout-sm="column">
+                                <h4>Doctor Information</h4>
+                                </div>
+                                
+                                <div layout="row" flex layout-sm="column">
+                                    <md-input-container flex>
+                                        <label>Doctor Name</label>
+                                        <input type="text" name="medical_doctorName" ng-model="entry.medical.doctorName" placeholder="Your Doctors Name">
+                                        <!-- <div ng-messages="entryForm.medical_doctorName.$error" class="error">
+                                          <div ng-message="required">This is required.</div>
+                                        
+                                        </div> -->
+                                    </md-input-container>
+                                    <md-input-container flex>
+                                        <label>Doctor Contact Number</label>
+                                        <input type="text" name="medical_doctorNumber" ng-model="entry.medical.doctorNumber" placeholder="Your Doctors Contact Number">
+                                        <!-- <div ng-messages="entryForm.medical_doctorNumber.$error" class="error">
+                                          <div ng-message="required">This is required.</div>
+                                        
+                                        </div> -->
+                                    </md-input-container>
+                                    
+                                    
+                                </div>
+                                <div layout="row" layout-sm="column">
+                                <h4>Postal Address</h4>
+                                </div>
+                                
+                                <div layout="row" flex layout-sm="column">
+                                    <md-input-container flex>
+                                        <label>PO Box</label>
+                                        <input type="text" name="box" ng-model="entry.postal.box" placeholder="PO Box">
+                                        <!-- <div ng-messages="entryForm.medical_company.$error" class="error">
+                                          <div ng-message="required">This is required.</div>
+                                        
+                                        </div> -->
+                                    </md-input-container>
+                                    <md-input-container flex>
+                                        <label>Town/City</label>
+                                        <input type="text" name="postal_town" ng-model="entry.postal.town" placeholder="Town/City">
+                                        <!-- <div ng-messages="entryForm.medical_number.$error" class="error">
+                                          <div ng-message="required">This is required.</div>
+                                        
+                                        </div> -->
+                                    </md-input-container>
+                                    <md-input-container flex>
+                                        <label>Postal Code</label>
+                                        <input type="text" name="postal_code" ng-model="entry.postal.code" placeholder="Postal Code">
+                                        <!-- <div ng-messages="entryForm.medical_number.$error" class="error">
+                                          <div ng-message="required">This is required.</div>
+                                        
+                                        </div> -->
+                                    </md-input-container>
+                                    
+                                </div>
+                                <div layout="row" layout-sm="column">
+                                <h4>Race Information</h4>
+                                </div>
+                                
+                                <div layout="row" flex layout-sm="column">
+                                    <md-input-container flex>
+                                        <label>Cycling Club/Team Name</label>
+                                        <input type="text" name="club" ng-model="entry.club.name" placeholder="Cycling Club/Team Name">
+                                        <div ng-messages="entryForm.club.$error" class="error">
+                                          <div ng-message="required">This is required.</div>
+                                        
+                                        </div>
+                                    </md-input-container>
+                                    <md-input-container flex>
+                                        <label>Province/Region</label>
+                                        <input type="text" name="province" ng-model="entry.club.province" placeholder="Province/Region">
+                                        <div ng-messages="entryForm.province.$error" class="error">
+                                          <div ng-message="required">This is required.</div>
+                                        
+                                        </div>
+                                    </md-input-container>
+                                    
+                                </div>
+                                
+                                <div layout="row" layout-sm="column">
+                                <h4>Race Information</h4>
+                                </div>
+                                
+                                <div layout="row" layout-sm="column">
+                                    <md-input-container flex="25">
+                                        <p><b>Do you have CSA a License:</b> <span class="radioValue">{{ entry.license.exist }}</span> </p>
+                                        <md-radio-group ng-model="entry.license.exist" layout="row">
+                                          <md-radio-button value="yes">Yes</md-radio-button>
+                                          <md-radio-button value="no"> No </md-radio-button>
+                                          
+                                        </md-radio-group>
+                                    </md-input-container flex="75">
+                                    <md-input-container flex>
+                                        <label>CSA Licence Number</label>
+                                        <input type="text" name="csa_number" ng-model="entry.license.number" placeholder="Enter if you have CSA License Number" >
+                                        <!-- <div ng-messages="entryForm.csa_number.$error" class="error">
+                                          <div ng-message="required">This is required.</div>
+                                        
+                                        </div> -->
+                                    </md-input-container>
+                                    
+                                </div>
+
+                                <div layout="row" layout-sm="column">
+                                <h4>Age Category</h4>
+                                </div>
+
+                                <div layout="row" layout-sm="column">
+
+                                    <md-radio-group ng-model="entry.age_cat">
+                                      <md-radio-button value="O/8">  O/8 (Born on 1 Jan 2007 and later)</md-radio-button>
+                                      <md-radio-button value="O/10"> O/10 (Born between 1 Jan 2005 and 31 Dec 2006) </md-radio-button>
+                                      <md-radio-button value="O/12"> O/12 (Born between 1 Jan 2003 and 31 Dec 2004) </md-radio-button>
+                                      <md-radio-button value="O/14"> O/14 (Born between 1 Jan 2001 and 31 Dec 2002) </md-radio-button>
+                                      <md-radio-button value="Sub-Junior"> Sub-Junior (Born between 1 Jan 2001 and 31 Dec 2002) </md-radio-button>
+                                      <md-radio-button value="Junior"> Junior (Born between 1 Jan 2001 and 31 Dec 2002) </md-radio-button>
+                                      <md-radio-button value="Senior"> Senior (Ages 19 to 29 ) </md-radio-button>
+                                      <md-radio-button value="Sub-Veteran"> Sub-Veteran (Ages 30 to 39 ) </md-radio-button>
+                                      <md-radio-button value="Veteran"> Veteran (Ages 40 to 49 ) </md-radio-button>
+                                      <md-radio-button value="Master"> Masters (Ages 50 to 59 ) </md-radio-button>
+                                      <md-radio-button value="Grand-Master"> Grand-Masters (Age 60+) </md-radio-button>
+                                      <md-radio-button value="Tandem"> Tandem </md-radio-button>
+                                    </md-radio-group>
+                                   
+                                </div>
+
+                                <div layout="row" layout-sm="column">
+                                <h4>Race Category</h4>
+                                </div>
+
+                                <div layout="row" layout-sm="column">
+
+                                    <md-radio-group ng-model="entry.race" layout="row">
+                                      <md-radio-button value="15km"> 15km (R80) </md-radio-button>
+                                      <md-radio-button value="40km"> 40km (R150)</md-radio-button>
+                                      <md-radio-button value="70km"> 70km (R200)</md-radio-button>
+                                    </md-radio-group>
+                                   
+                                </div>
+                                <br>
+                                
+                                <div layout="row" flex layout-align="start center">
+                                        <md-button data-ng-click="confirm(); calculateTotal()" class="md-raised md-warn">Register</md-button>
+                                </div>
+                                <div data-ng-show="error" class="text-danger">
+                                    <strong data-ng-bind="error"></strong>
+                                </div>
+                            </div>
+                        </form>
+                    </md-content>
+                </md-whiteframe>    
+        
+       </div>    
+        <div flex="15" class="bg-lgrey" hide-sm hide-md hide-lg></div>
+</div>

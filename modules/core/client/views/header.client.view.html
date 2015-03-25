@@ -1,0 +1,126 @@
+
+    <div data-ng-controller="HeaderController" flex>
+    <md-toolbar layout="row">
+    	<div flex-gt-sm="15" flex-sm="20" layout="row" layout-align="center center">
+        <md-button class="menu" hide-gt-lg ng-click="toggleLeft()" aria-label="Show User List">
+           <ng-md-icon icon="menu" size="30" ng-attr-style="fill: {{fill}}"></ng-md-icon>
+        </md-button>
+        </div>
+        <div flex  layout="column" layout-align="end end" layout-fill hide-sm>
+       
+        <md-tabs class="md-primary" layout="column" layout-align="end end">
+        	<md-tab  data-ng-repeat="item in topbar.items" id="tab1" aria-controls="tab1-content" data-ui-sref="{{item.state}}" >
+	        <span class="txt-dgrey">{{item.title}}</span>
+	      </md-tab>
+	      <md-tab  id="tab1" aria-controls="tab1-content" data-ui-sref="authentication.signup" data-ng-hide="authentication.user">
+	        <span class="txt-dgrey">Signup</span>
+	      </md-tab>
+	      
+	      </md-tabs>
+      </div>
+      <div flex-gt-sm="20" >
+
+      		<div layout="column" class="pos-rt">
+      			<div layout="row"  data-ng-hide="authentication.user" layout-align="end start">
+						<md-button class="btn-text-std " data-ui-sref="authentication.signin" layout="row" layout-align="start start">
+							<div><ng-md-icon icon="input" size="20" ng-attr-style="fill: {{fill}}"></ng-md-icon><br><span class="txt-dgrey">signin</span></div>
+						</md-button>
+					</div>
+					<div layout="row"  data-ng-show="authentication.user" layout-align="end start" >
+						<md-button class="btn-text-std pad-5" layout="row" layout-align="start start" layout-align="center center" data-ng-click="toggleProfile()" aria-label="Toggle the Profile Setting menu">
+							
+							<span class="mar-5" flex><img data-ng-src="{{authentication.user.profileImageURL}}" class="header-profile-image "/> {{authentication.user.displayName}} </span>
+						</md-button>
+					</div>
+					<div class="fill-white" layout="column"  data-ng-show="authentication.user" layout-align="end start" data-ng-hide="collapseProfile">
+						<md-button class="btn-text-std pad-5" layout="row" layout-align="start start" layout-align="center center" layout-fill ng-click=closeProfile(); tabindex="0">
+							<span  flex><ng-md-icon icon="expand_less" size="20" ng-attr-style="fill: {{black}}" ></ng-md-icon></span>
+						</md-button>
+						<md-button class="btn-text-std pad-5" layout="row" layout-align="start start" layout-align="center center" layout-fill data-ui-sref="settings.profile">
+							<span class="txt-dgrey txt-chip">Edit Profile</span>
+						</md-button>
+						<md-button class="btn-text-std pad-5" layout="row" layout-align="start start" layout-align="center center" layout-fill data-ui-sref="settings.picture">
+							<span class="txt-dgrey txt-chip">Change Profile Picture</span>
+						</md-button>
+						<md-button class="btn-text-std pad-5" layout="row" layout-align="start start" layout-align="center center" layout-fill data-ui-sref="settings.password">
+							<span class="txt-dgrey txt-chip">Change Password</span>
+						</md-button>
+						<md-button class="btn-text-std pad-5" layout="row" layout-align="start start" layout-align="center center" layout-fill>
+
+							<span class="txt-dgrey txt-chip"><a href="/api/auth/signout" target="_self">Signout</a></span>
+						</md-button>
+					</div>
+
+      		</div>
+					
+					
+					
+	</div>
+					
+	</div>
+    </md-toolbar>
+
+</div>
+<!-- <div class="container" data-ng-controller="HeaderController">
+	<div class="navbar-header">
+		<button class="navbar-toggle" type="button" data-ng-click="toggleCollapsibleMenu()">
+			<span class="sr-only">Toggle navigation</span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</button>
+		<a data-ui-sref="home" class="navbar-brand">tzaneencycling</a>
+	</div>
+	<nav class="collapse navbar-collapse" collapse="!isCollapsed" role="navigation">
+		<ul class="nav navbar-nav" data-ng-if="menu.shouldRender(authentication.user);">
+			<li data-ng-repeat="item in menu.items | orderBy: 'position'" data-ng-if="item.shouldRender(authentication.user);" ng-switch="item.type" data-ng-class="{active: $state.includes(item.state)}" class="{{item.class}}" dropdown="item.type === 'dropdown'">
+				<a ng-switch-when="dropdown" class="dropdown-toggle">
+					<span data-ng-bind="item.title"></span>
+					<b class="caret"></b>
+				</a>
+				<ul ng-switch-when="dropdown" class="dropdown-menu">
+					<li data-ng-repeat="subitem in item.items | orderBy: 'position'" data-ng-if="subitem.shouldRender(authentication.user);" data-ui-sref-active="active">
+						<a data-ui-sref="{{subitem.state}}" data-ng-bind="subitem.title"></a>
+					</li>
+				</ul>
+				<a ng-switch-default data-ui-sref="{{item.state}}" data-ng-bind="item.title"></a>
+			</li>
+		</ul>
+		<ul class="nav navbar-nav navbar-right" data-ng-hide="authentication.user">
+			<li data-ui-sref-active="active">
+				<a data-ui-sref="authentication.signup" target="_self">Sign Up</a>
+			</li>
+			<li class="divider-vertical"></li>
+			<li data-ui-sref-active="active">
+				<a data-ui-sref="authentication.signin" target="_self">Sign In</a>
+			</li>
+		</ul>
+		<ul class="nav navbar-nav navbar-right" data-ng-show="authentication.user">
+			<li class="dropdown">
+				<a href="#" class="dropdown-toggle user-header-dropdown-toggle" data-toggle="dropdown">
+					<img data-ng-src="{{authentication.user.profileImageURL}}" alt="{{authentication.user.displayName}}" class="header-profile-image"/>
+					<span data-ng-bind="authentication.user.displayName"></span> <b class="caret"></b>
+				</a>
+				<ul class="dropdown-menu">
+					<li data-ui-sref-active="active">
+						<a data-ui-sref="settings.profile">Edit Profile</a>
+					</li>
+					<li data-ui-sref-active="active">
+						<a data-ui-sref="settings.picture">Change Profile Picture</a>
+					</li>
+					<li data-ui-sref-active="active" data-ng-show="authentication.user.provider === 'local'">
+						<a data-ui-sref="settings.password">Change Password</a>
+					</li>
+					<li data-ui-sref-active="active">
+						<a data-ui-sref="settings.accounts">Manage Social Accounts</a>
+					</li>
+					<li class="divider"></li>
+					<li>
+						<a href="/api/auth/signout" target="_self">Signout</a>
+					</li>
+				</ul>
+			</li>
+		</ul>
+	</nav>
+</div>
+ -->

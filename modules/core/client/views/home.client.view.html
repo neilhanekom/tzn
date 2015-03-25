@@ -1,0 +1,91 @@
+<div layout="row" flex layout-wrap data-ng-controller="HomeController" data-ng-init="startArticles()">
+	<div layout="row" flex="100">
+		
+	<div flex layout="row" layout-wrap layout-align="start">
+		<div flex>	
+			<div layout="column" flex data-ng-repeat="ad in curArt" layout-fill class="ad-area">
+		    	<div  class="ad-image" flex layout="column" layout-fill  layout-align="start start" ng-style="{'background-image' : 'url({{ad.background}})'}">
+		    					
+								<div flex class="pad-r-10"  layout="row" layout-align="start start" layout-fill>
+									
+								</div>
+								<div class="bg-alpha" layout="row" layout-fill layout-wrap layout-padding>
+									<div flex-sm="100" flex-gt-sm="50" layout-fill ng-style="{'padding': '20px'}">
+										<h2 class="txt-white">{{ad.heading}}</h2>
+										<span class="txt-white">{{ad.body}} </span>
+										<br>
+										<span class="txt-white"><b>Date: </b> 25 February 2015</span>
+										<br>
+										<span class="txt-white"><b>Venue: </b> Merensky High School, Tzaneen </span>
+										<br>
+										<span class="txt-white"><b>Distances: </b>30/40/75 </span>
+
+									</div>
+									<div class="pad-r-20" flex-sm="100" flex-gt-sm="50"  layout="row" layout-fill  layout-align-sm="start start" layout-align="end center" md-padding>
+									<md-button class="md-warn md-raised md-hue-2">View This Event</md-button>
+									</div>
+								</div>
+
+								
+				</div>
+
+				</div>
+		</div>
+	</div>
+	
+	</div>
+	<div layout="row" flex="100">
+		
+		
+		<div class="bg-lgrey" flex layout="row" layout-wrap layout-align="center start" layout-padding>
+				<h3>The Sponsor Section comes right here</h3>
+		</div>
+		
+		
+		
+	</div>
+
+	<div layout="row" flex="100">
+		<div flex="10" hide-lg hide-sm hide-md></div>
+		<md-content>
+		<div flex layout="row" layout-wrap layout-align="center start" layout-padding>
+				<h1>Welcome to Tzaneen Cycling Club</h1>
+				<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+				Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions.
+				</p>
+		</div>
+		<md-divider></md-divider>
+		</md-content>
+		<div flex="10" hide-lg hide-sm hide-md></div>
+	</div>
+
+	<div layout="row" flex="100">
+		<div flex="10" hide-lg hide-sm hide-md></div>
+		<md-content>
+		<div flex layout="row" layout-wrap layout-align="center start">
+				<h1>Our Sponsors</h1>
+				<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+		</div>
+		
+		</md-content>
+		<div flex="10" hide-lg hide-sm hide-md></div>
+	</div>
+</div>
+
+
+				<!-- <md-whiteframe class="md-whiteframe-z1 dashboard-card-full " layout="column" layout-margin>	
+				<div data-ng-repeat="article in curArt">
+				<h1>{{article.heading}}</h1>
+        		<p>{{article.body}}</p>
+				</div>
+				
+				<md-button class="md-fab"  aria-label="Comment" ng-style="{'background-color':'#9E9E9E'}" ng-click="startArticles()">
+            		<span class="white large-text">Start</span>
+        		</md-button>
+
+        		<md-button class="md-fab"  aria-label="Comment" ng-style="{'background-color':'#9E9E9E'}" ng-click="stop()">
+            		<span class="white large-text">Stop</span>
+        		</md-button>
+
+				</md-whiteframe>
+		</div> -->
