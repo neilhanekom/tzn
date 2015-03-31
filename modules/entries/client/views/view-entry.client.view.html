@@ -5,6 +5,54 @@
 	<div flex="15" class="bg-lgrey" hide-sm hide-md hide-lg></div>
 			
 			  <div flex layout="column" layout-padding >
+                                    <div class="bg-white" layout="row"  data-ng-show="authentication.user && entries[0] "  layout-align="end center">
+                                    <div flex layout="column" layout-align="center end">
+                                        <md-content>
+                                        <md-button data-ui-sref="entries.create" class="md-warn md-raised left" layout="row" layout-align="center center">
+                                                    <ng-md-icon icon="add" size="20" ng-attr-style="fill: {{fill}}"></ng-md-icon><span class="mar-l-5"> Add entrie</span>
+                                        </md-button>
+                                        <md-divider></md-divider>
+                                        </md-content>
+                                    </div>  
+                                    
+                                    </div>
+                                    <div layout="row"  data-ng-hide="entry[0]" layout-align="center center">
+                                        <div flex layout="column" layout-align="center center">
+                                            <h3>Please Provide your Entry ID we have emailed to you to view your Entry</h3>
+                                            
+                                        </div>  
+                                        
+                                    </div>
+
+                                    <div layout="row"  layout-align="center center">
+                                       <md-content class="md-padding">
+                                            <form name="sponsorForm" data-ng-submit="create()" flex layout-fill class="std-text">
+                                                <div layout="column" layout-sm="column" layout-fill>
+                                                
+    
+                                                    
+                                                    <div layout="row" layout-sm="column">
+                                                   
+                                                        <md-input-container flex>
+                                                            <label>Name</label>
+                                                            <input type="text" required name="Name" ng-model="sponsor.name" placeholder="Sponsor Name">
+                                                            <div ng-messages="sponsorForm.Name.$error" class="error">
+                                                              <div ng-message="required">This is required.</div>
+                                                            </div>
+                                                        </md-input-container>
+                                                        
+                                                    </div>
+                                                    
+                                                    
+                                                     
+                                                    <div data-ng-show="error" class="text-danger">
+                                                        <strong data-ng-bind="error"></strong>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </md-content>
+                                        
+                                    </div>
 
 			  						<div layout="row" flex >
                                         
@@ -13,13 +61,13 @@
                                             <h1 data-ng-if="entry.status == 'complete'"><ng-md-icon icon="check_circle" size="30" ng-attr-style="fill: {{success}}"></ng-md-icon>  Your Entry was Paid Up and Cofirmed</h1>
                                         </div>
                             		  <div layout="row" flex layout-align="end center" data-ng-show="authentication.user">
-                                            <md-button class="md-raised md-accent mar-l-5"   href="/#!/entries/{{entry._id}}/edit" >Confirm Entry</md-button>
+                                            <md-button data-ng-show="entry[0]" class="md-raised md-accent mar-l-5"   href="/#!/entries/{{entry._id}}/edit" >Confirm Entry</md-button>
                                             
                                         </div>
                                         
                                     </div>
 			 						
-                                    <div layout="row" flex>
+                                    <div layout="row" flex data-ng-show="entry[0]">
                             
                                         <h2>Status: <span class="txt-normal"> {{entry.status[0]}}</span> 
                                             <ng-md-icon icon="check_circle" data-ng-if="entry.status == 'complete'" size="20" ng-attr-style="fill: {{success}}"></ng-md-icon>
@@ -29,14 +77,14 @@
 
                                     </div>
 
-                                    <div layout="column" flex>
+                                    <div layout="column" flex data-ng-show="entry[0]">
                             
                                         <h3>Event</h3>
                                         <span><b>Event Name:</b> {{event.name}}</span>
                                         <span><b>Event Date:</b> {{event.eventDate | Customdate }}</span>
 
                                     </div>
-                                    <div layout="column" flex>
+                                    <div layout="column" flex data-ng-show="entry[0]">
 
                                         <h3>Personal Information</h3>
                                         <span><b>Gender:</b> {{entry.gender}}</span>
@@ -46,18 +94,18 @@
                                         <span><b>Birthdate:</b> {{entry.birthDate | Customdate }}</span>
 
                                     </div>
-                                    <div layout="column" flex>
+                                    <div layout="column" flex data-ng-show="entry[0]">
                                         <h3>Contact Information</h3>
                                         <span><b>Mobile:</b> {{entry.mobileNumber}}</span>
                                         <span><b>Email:</b> {{entry.email}}</span>
                                     </div>
-                                    <div layout="column" flex>
+                                    <div layout="column" flex data-ng-show="entry[0]">
                                         <h3>Emergency Information</h3>
                                         <span><b>Contact Person:</b> {{entry.emergency.person}}</span>
                                         <span><b>Contact Number:</b> {{entry.emergency.contact}}</span>
                                         <span><b>Contact Relationship:</b> {{entry.emergency.relationship}}</span>
                                     </div>
-                                    <div layout="column" flex>
+                                    <div layout="column" flex data-ng-show="entry[0]">
                                         <h3>Medical Information</h3>
                                         <span><b>Medical Aid Company:</b> {{entry.medical.company}}</span>
                                         <span><b>Medical Aid Number:</b> {{entry.medical.number}}</span>
@@ -67,13 +115,13 @@
                                         <span><b>Doctor Name:</b> {{entry.medical.doctorName}}</span>
                                         <span><b>Doctor Contact Number:</b> {{entry.medical.doctorNumber}}</span>
                                     </div>
-                                    <div layout="column" flex>
+                                    <div layout="column" flex data-ng-show="entry[0]">
                                         <h3>Postal Address</h3>
                                         <span><b>Po Box:</b> {{entry.postal.box}}</span>
                                         <span><b>City/Town:</b> {{entry.postal.town}}</span>
                                         <span><b>Postal Code:</b> {{entry.postal.code}}</span>
                                     </div>
-                                    <div layout="column" flex>
+                                    <div layout="column" flex data-ng-show="entry[0]">
                                         <h3>Race Information</h3>
                                         <span><b>Club/Team</b> {{entry.club.name}}</span>
                                         <span><b>Province:</b> {{entry.club.province}}</span>
@@ -83,7 +131,7 @@
                                         <span><b>Race Distance:</b> {{entry.race}}</span>
                                     
                                     </div>
-                               		<div layout="column" flex>
+                               		<div layout="column" flex data-ng-show="entry[0]">
                                         <h3>Payment Information</h3>
                                         <span><b>Total Fees</b> {{entry.fee}}</span>
                                         

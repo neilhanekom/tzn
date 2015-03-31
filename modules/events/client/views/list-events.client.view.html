@@ -2,7 +2,26 @@
 
     <div flex="15"  hide-sm hide-md hide-lg></div>
        <div flex layout="column" layout-wrap >
-                    <!-- New Row -->
+                    <div class="bg-white" layout="row"  data-ng-show="authentication.user && events[0] "  layout-align="end center">
+                        <div flex layout="column" layout-align="center end">
+                            <md-content>
+                            <md-button data-ui-sref="events.create" class="md-warn md-raised left" layout="row" layout-align="center center">
+                                        <ng-md-icon icon="add" size="20" ng-attr-style="fill: {{fill}}"></ng-md-icon><span class="mar-l-5"> Add event</span>
+                            </md-button>
+                            <md-divider></md-divider>
+                            </md-content>
+                        </div>  
+                        
+                    </div>
+                    <div layout="row" flex data-ng-hide="events[0]" layout-align="center center">
+                        <div flex layout="column" layout-align="center center">
+                            <h2>There are currently no events that you created. Create one first</h2>
+                            <md-button data-ng-show="authentication.user" data-ui-sref="events.create" class="md-warn md-raised left" layout="row" layout-align="center center">
+                                        <ng-md-icon icon="add" size="20" ng-attr-style="fill: {{fill}}"></ng-md-icon><span class="mar-l-5"> Create </span>
+                            </md-button>
+                        </div>  
+                        
+                    </div>
                     
                     <div class="bg-white mar-5" layout="row" flex layout-fill data-ng-repeat="event in events">
                     <md-content flex>
