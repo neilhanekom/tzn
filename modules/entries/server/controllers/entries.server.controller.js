@@ -8,7 +8,7 @@ var _ = require('lodash'),
 	fs = require('fs'),
 	mongoose = require('mongoose'),
 	Entry = mongoose.model('Entry'),
-	sendgrid  = require('sendgrid')(neilhanekom, NH*Cool101),
+	sendgrid  = require('sendgrid')(process.env.SENDGRID_USERNAME, process.env.SENDGRID_PASSWORD),
 	Hogan = require('hogan.js'),
 	errorHandler = require(path.resolve('./modules/core/server/controllers/errors.server.controller'));
 
