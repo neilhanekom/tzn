@@ -15,7 +15,8 @@ var _ = require('lodash'),
  */
 exports.create = function(req, res) {
 	// var article = new Article(req.body);
-	// article.user = req.user;
+	console.log(req.body);
+	consol.log(req.files);
 
 	// article.save(function(err) {
 	// 	if (err) {

@@ -9,9 +9,6 @@ module.exports = function(app) {
 		.get(entries.list)
 		.post(entries.create);
 
-	app.route('/api/entries/compile')
-		.post(entries.compile);	
-
 	app.route('/api/entries/:entryId')
 		.get(entries.read)
 		.put(entries.update)

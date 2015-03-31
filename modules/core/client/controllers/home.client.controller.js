@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('core').controller('HomeController', ['$scope', '$http', 'Authentication', '$interval', '$mdSidenav', 'Advertisements', 'Partners',
-	function($scope,  $http, Authentication, $interval, $mdSidenav, Advertisements, Partners) {
+angular.module('core').controller('HomeController', ['$scope', 'Authentication', '$interval', '$mdSidenav', 'Advertisements', 'Partners',
+	function($scope, Authentication, $interval, $mdSidenav, Advertisements, Partners) {
 		// This provides Authentication context.
 		$scope.authentication = Authentication;
 		$scope.partners = Partners.query();
@@ -10,18 +10,6 @@ angular.module('core').controller('HomeController', ['$scope', '$http', 'Authent
 		console.log($scope.advertisements);
 
 
-		$scope.hoganCompile = function() {
-			var request = { compile: 'true' };
-			$http.post('/api/entries/compile', request).success(function(response) {
-				// If successful we assign the response to the global user model
-				$scope.compile = response;
-
-				// And redirect to the index page
-				
-			}).error(function(response) {
-				$scope.error = response.message;
-			});
-		};
 
 		$scope.signup = function() {
 			$http.post('/api/auth/signup', $scope.credentials).success(function(response) {

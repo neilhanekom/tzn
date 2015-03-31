@@ -13,16 +13,6 @@ var _ = require('lodash'),
 	errorHandler = require(path.resolve('./modules/core/server/controllers/errors.server.controller'));
 
 
-
-exports.compile = function(req, res) {
-	var compile = req.body;
-	if (compile) {
-		var template = fs.readFileSync('./modules/entries/server/templates/email.hjs', 'utf-8' );
-		var compiledTemplate = Hogan.compile(template);  
-		
-	}
-};
-
 /**
  * Create a Entry
  */
@@ -31,7 +21,7 @@ exports.create = function(req, res) {
 
 	var template = fs.readFileSync('./modules/entries/server/templates/email.hjs', 'utf-8' );
 	var compiledTemplate = Hogan.compile(template);  
-	
+	var recip = req.body.email
 
 	if (compiledTemplate ) {
  	entry.save(function(err) {
@@ -42,12 +32,15 @@ exports.create = function(req, res) {
 		} else {
 			res.jsonp(entry);
 			sendgrid.send({
-			  to:       'neilhanekom1@gmail.com',
+			  to:       recip,
 			  from:     'noreply@tzaneencycling.co.za',
 			  subject:  'Your Entry confirmation for the Miami Magoebaskloof Classic',
 			  html:     compiledTemplate.render({
 			  				firstName: entry.firstName,
-			  				lastName: entry.lastName
+			  				lastName: entry.lastName,
+			  				ID: entry.rsaId,
+			  				age_cat: entry.age_cat,
+			  				race: entry.race
 			  			})
 			}, function(err, json) {
 			  if (err) { return console.error(err); }
