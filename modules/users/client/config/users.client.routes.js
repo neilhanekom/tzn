@@ -29,7 +29,7 @@ angular.module('users').config(['$stateProvider',
 			state('authentication', {
 				abstract: true,
 				url: '/authentication',
-				templateUrl: 'modules/users/views/authentication/authentication.client.view.html'
+				template: '<section data-ui-view flex layout="row" layout-wrap></section>'
 			}).
 			state('authentication.signup', {
 				url: '/signup',
@@ -42,7 +42,7 @@ angular.module('users').config(['$stateProvider',
 			state('password', {
 				abstract: true,
 				url: '/password',
-				template: '<ui-view/>'
+				template: '<section data-ui-view flex layout="row" layout-wrap></section>'
 			}).
 			state('password.forgot', {
 				url: '/forgot',
@@ -51,7 +51,7 @@ angular.module('users').config(['$stateProvider',
 			state('password.reset', {
 				abstract: true,
 				url: '/reset',
-				template: '<ui-view/>'
+				template: '<section data-ui-view flex layout="row" layout-wrap></section>'
 			}).
 			state('password.reset.invalid', {
 				url: '/invalid',

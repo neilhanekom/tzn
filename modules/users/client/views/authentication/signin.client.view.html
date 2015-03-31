@@ -1,4 +1,65 @@
-<div data-ng-controller="AuthenticationController">
+<div flex layout="row" layout-fill data-ng-controller="AuthenticationController" > 
+
+
+    <div flex="15"  hide-sm hide-md hide-lg></div>
+       <div flex layout="column" layout-wrap layout-fill>
+               <div layout="row" layout-align="center start">
+               	<div flex-sm="100" flex-md="70" flex-lg="50" flex-gt-lg="30">
+               		
+               		<div layout="column">
+			<h2>Site Login</h2>
+		<md-whiteframe class="md-whiteframe-z1" layout layout-align="center center">
+		    <md-content class="md-padding">
+		    	 <span>Provide Login Credentials</span>
+		    	 <br>
+		    	 <form data-ng-submit="signin()" name="loginForm" class="login-form" flex>
+		    	 	<md-input-container>
+		    	 		<label>Username</label>
+		    	 		<input md-maxlength="30" required name="username" ng-model="credentials.username">
+		    	 		<!-- <div ng-messages="loginForm.username.$error">
+				          <div ng-message="required">This is required.</div>
+				          <div ng-message="md-maxlength">The name has to be less than 30 characters long.</div>
+				        </div> -->
+		    	 	</md-input-container>
+		    	 	<md-input-container>
+		    	 		<label>Password</label>
+		    	 		<input type="password" required name="password"  ng-model="credentials.password">
+		    	 		<!-- <div ng-messages="loginForm.username.$error">
+				          <div ng-message="required">This is required.</div>
+				          <div ng-message="md-maxlength">The name has to be less than 30 characters long.</div>
+				        </div> -->
+		    	 	</md-input-container>
+		    	 	<div layout="row">
+		    	 		<md-button type="submit" class="md-primary md-hue-2 sign-up-button" layout-margin>Sign In</md-button>
+		    	 		<md-button class="md-primary md-hue-3 sign-up-button" layout-margin>
+		    	 			Forgot password
+		    	 		</md-button>
+		    	 		
+		    	 	</div>
+		    	 </form>
+		    </md-content>
+
+		   
+		</md-whiteframe>
+		</div>
+
+
+               	</div>
+               	
+               </div>
+        
+       </div>    
+        <div flex="15"  hide-sm hide-md hide-lg></div>
+</div>
+
+
+
+
+
+
+
+
+<!-- <div data-ng-controller="AuthenticationController">
 	<h3 class="col-md-12 text-center">Or with your account</h3>
 	<div class="col-xs-offset-2 col-xs-8 col-md-offset-5 col-md-2">
 		<form data-ng-submit="signin()" class="signin form-horizontal" autocomplete="off">
@@ -27,4 +88,4 @@
 			</fieldset>
 		</form>
 	</div>
-</div>
+</div> -->
