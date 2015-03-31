@@ -13,7 +13,7 @@
                         </div>  
                         
                     </div>
-                    <div layout="row" flex data-ng-hide="grabbas[0]" layout-align="center center">
+                    <div layout="row" flex data-ng-if="grabbas[0] == undefined" layout-align="center center">
                         <div flex layout="column" layout-align="center center">
                             <h2>There are currently no Promotion that you created. Create one first</h2>
                             <md-button data-ng-show="authentication.user" data-ui-sref="grabbas.create" class="md-warn md-raised left" layout="row" layout-align="center center">
