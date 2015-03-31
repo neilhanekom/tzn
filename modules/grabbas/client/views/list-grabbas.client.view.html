@@ -2,7 +2,7 @@
 
     <div flex="15"  hide-sm hide-md hide-lg></div>
        <div flex layout="row" layout-wrap class="bg-gen">
-                    <div class="bg-white" layout="row" flex="100" data-ng-show="authentication.user && grabbas[0] "  layout-align="end center">
+                    <div class="bg-white" layout="row" flex="100" data-ng-if="authentication.user && grabbas[0] "  layout-align="end center">
                         <div flex layout="column" layout-align="center end">
                             <md-content>
                             <md-button data-ui-sref="grabbas.create" class="md-warn md-raised left" layout="row" layout-align="center center">
