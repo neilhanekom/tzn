@@ -1,8 +1,35 @@
 <div flex layout="row" layout-fill data-ng-controller="EntriesController" data-ng-init="findOne()" >
    
         <div flex="15" class="bg-lgrey" hide-sm hide-md hide-lg></div>
-	       <div flex layout="row" layout-wrap layout-fill>
-	           <div><h1>s</h1>{{entry._id}}</div>
+	       <div flex layout="column" layout-wrap layout-fill>
+	           <md-whiteframe class="md-whiteframe-z1 dashboard-card-full " layout="column" data-ng-hide="collapseForm"> 
+                    
+                    <md-content >
+                        <form name="entryForm" data-ng-submit="update()" flex layout-fill class="std-text">
+                            <div layout="column" layout-sm="column" layout-fill>
+                            
+                            <h2>Confirm Entry</h2>
+                                
+                                <div layout="row" layout-sm="column">
+                               
+                                    <h1>{{entry.status[0]}}</h1>
+                                    
+                                </div>
+                                <div layout="row" layout-sm="column">
+                               		 <md-button type="submit" value="Update" class="md-raised md-accent">Update</md-button>
+                                   	 <!-- <md-button type="submit" class="md-raised md-primary">Register</md-button> -->
+                                    
+                                </div>
+                                
+                                 
+
+                                <div data-ng-show="error" class="text-danger">
+                                    <strong data-ng-bind="error"></strong>
+                                </div>
+                            </div>
+                        </form>
+                    </md-content>
+                </md-whiteframe>    
 	       </div>
         <div flex="15" class="bg-lgrey" hide-sm hide-md hide-lg></div>
     

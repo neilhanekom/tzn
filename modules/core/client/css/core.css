@@ -59,6 +59,10 @@ a:hover .header-profile-image {
   	font-weight: normal;
 }
 
+.txt-normal {
+	font-weight: normal;
+}
+
 .txt-chip {
 	font: inherit;
 	font-size: 0.9em;
@@ -68,6 +72,10 @@ a:hover .header-profile-image {
 .txt-100 {
 	font-size: 100%;
 
+}
+
+.txt-justify {
+	text-align: justify;
 }
 
 /*blokc/divs/area styling*/
@@ -81,20 +89,28 @@ a:hover .header-profile-image {
 .ad-image {
 	min-height: 600px;
 
-	background-position: center center;
+	background-position: center;
   
   /* Image doesn't repeat */
   background-repeat: no-repeat;
   
   /* Makes the image fixed in the viewport so that it doesn't move when 
      the content height is greater than the image height */
-  background-attachment: fixed;
+  background-attachment: local;
   
   /* This is what makes the background image rescale based on its container's size */
   background-size: cover;
   
   /* Pick a solid background color that will be displayed while the background image is loading */
   background-color:#EEEEEE;
+}
+
+/*Images*/
+.img-resp {
+	width: 50%;
+	max-width:100%;
+	max-height:100%;
+	height: auto;
 }
 
 .pos-rt {
@@ -155,9 +171,31 @@ a:hover .header-profile-image {
 .mar-t-5 {
 	margin-top: 5px;
 }
+.mar-t-10 {
+	margin-top: 10px;
+}
+
+.mar-t-20 {
+	margin-top: 20px;
+}
+.mar-b-20 {
+	margin-bottom: 20px;
+}
 
 .mar-5 {
 	margin: 5px;
+}
+
+.mar-l-5 {
+	margin-left: 5px;
+}
+
+.mar-l-20 {
+	margin-left: 20px;
+}
+
+.mar-r-20 {
+	margin-right: 20px;
 }
 
 .mar-10 {
@@ -168,8 +206,31 @@ a:hover .header-profile-image {
 	margin-bottom: 20px;
 }
 
+.mar-b-5 {
+	margin-bottom: 5px;
+}
+
+.mar-t-b-5 {
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+.bg-white {
+	background-color: white;
+}
+
+.bg-img {
+	background-color: #F5F5F5;
+}
+.bg-gen {
+	background-color: #FAFAFA;
+}
 .bg-lgrey {
 	background-color: #EEEEEE;
+}
+
+.bg-dgrey {
+	background-color: #9E9E9E;
 }
 
 .bg-alpha {
@@ -178,6 +239,14 @@ a:hover .header-profile-image {
 
 .h-100 {
 	height: 100%;
+}
+
+.w-100 {
+	width: 100%;
+}
+
+.min-h-350 {
+	min-height: 350px;
 }
 
 /*===== Specifics  ===*/
@@ -203,4 +272,230 @@ a:hover .header-profile-image {
 	overflow: 
 }
 
+.pos-a-t {
+	position: absolute;
+	top: 0;
+	left: 0;
+}
 
+.pos-a-b {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+}
+
+.pos-rel {
+	position: relative;
+	display: inline-block;
+}
+
+.rel-button {
+	position: relative;
+	top: 0;
+	right: 0;
+}
+
+.bottom-sheet {
+	position: absolute;
+	bottom: 0;
+	left:  0;
+}
+
+.block {
+	display: block;
+}
+
+.face {
+  border-radius: 100px;
+  border: 1px solid #ddd;
+  width: 180px;
+  margin: 16px; 
+
+}
+
+.img-sponsor {
+	 width: 180px;
+  	margin: 16px;
+  	background-color: #EEEEEE;
+}
+
+.thumbnail {
+	width: 50px;
+  	margin: 16px;
+  	background-color: #EEEEEE;
+}
+
+.thumb-sponsor {
+	width: 140px;
+  	margin: 16px;
+}
+
+.list-icon {
+	margin-left: 20px;
+	margin-right: 20px;
+}
+
+@media (max-width: 600px) {
+  .thumb-sponsor {
+	width: 70px;
+  	
+}
+
+.sponsor-section {
+	padding: 5px;	
+}
+
+.ad-image {
+	min-height: 400px;
+
+	background-position: center;
+  
+  /* Image doesn't repeat */
+  background-repeat: no-repeat;
+  
+  /* Makes the image fixed in the viewport so that it doesn't move when 
+     the content height is greater than the image height */
+  background-attachment: local;
+  
+  /* This is what makes the background image rescale based on its container's size */
+  background-size: auto 100%;
+  
+  /* Pick a solid background color that will be displayed while the background image is loading */
+  background-color:#EEEEEE;
+}
+
+}
+
+@media (min-width: 600px) and (max-width: 900px) {
+  .thumb-sponsor {
+	width: 100%;
+  	
+}
+
+.sponsor-section {
+	padding: 5px;	
+}
+
+.ad-image {
+	min-height: 500px;
+
+	background-position: center;
+  
+  /* Image doesn't repeat */
+  background-repeat: no-repeat;
+  
+  /* Makes the image fixed in the viewport so that it doesn't move when 
+     the content height is greater than the image height */
+  background-attachment: local;
+  
+  /* This is what makes the background image rescale based on its container's size */
+  background-size: cover;
+  
+  /* Pick a solid background color that will be displayed while the background image is loading */
+  background-color:#EEEEEE;
+}
+
+}
+
+@media (min-width: 900px) and (max-width: 1000px) {
+  .thumb-sponsor {
+	width: 70%;
+  	
+}
+
+.sponsor-section {
+	padding: 5px;	
+}
+
+.ad-image {
+	min-height: 400px;
+
+	background-position: center;
+  
+  /* Image doesn't repeat */
+  background-repeat: no-repeat;
+  
+  /* Makes the image fixed in the viewport so that it doesn't move when 
+     the content height is greater than the image height */
+  background-attachment: local;
+  
+  /* This is what makes the background image rescale based on its container's size */
+  background-size: cover;
+  
+  /* Pick a solid background color that will be displayed while the background image is loading */
+  background-color:#EEEEEE;
+}
+
+}
+
+@media (min-width: 1280px) and (max-width: 3000px) {
+  .thumb-sponsor {
+	width: 70%;
+  	
+}
+
+.sponsor-section {
+	padding: 5px;	
+}
+
+.ad-image {
+	min-height: 600px;
+
+	background-position: center;
+  
+  /* Image doesn't repeat */
+  background-repeat: no-repeat;
+  
+  /* Makes the image fixed in the viewport so that it doesn't move when 
+     the content height is greater than the image height */
+  background-attachment: local;
+  
+  /* This is what makes the background image rescale based on its container's size */
+  background-size: cover;
+  
+  /* Pick a solid background color that will be displayed while the background image is loading */
+  background-color:#EEEEEE;
+}
+
+}
+
+
+/*Tooltips*/
+.tooltipdemoBasicUsage md-toolbar .md-toolbar-tools .md-button, .tooltipdemoBasicUsage md-toolbar .md-toolbar-tools .md-button:hover {
+  box-shadow: none;
+  border: none;
+  transform: none;
+  -webkit-transform: none; }
+.tooltipdemoBasicUsage .left {
+  top: 0px !important;
+  left: 0px !important; }
+.tooltipdemoBasicUsage .right {
+  top: 70px !important;
+  right: 56px !important; }
+
+
+/*select Lists*/
+.selectdemoOptionsWithAsyncSearch p {
+  padding: 0 20px;
+  text-align: center; }
+.selectdemoOptionsWithAsyncSearch p.md-caption {
+  color: #777; }
+.selectdemoOptionsWithAsyncSearch .demo-content {
+  min-height: 348px; }
+
+  .gridListdemoBasicUsage md-grid-list {
+  margin: 8px; }
+.gridListdemoBasicUsage .gray {
+  background: #f5f5f5; }
+.gridListdemoBasicUsage .green {
+  background: #b9f6ca; }
+.gridListdemoBasicUsage .yellow {
+  background: #ffff8d; }
+.gridListdemoBasicUsage .blue {
+  background: #84ffff; }
+.gridListdemoBasicUsage .purple {
+  background: #b388ff; }
+.gridListdemoBasicUsage .red {
+  background: #ff8a80; }
+.gridListdemoBasicUsage md-grid-tile {
+  transition: all 400ms ease-out 50ms; }

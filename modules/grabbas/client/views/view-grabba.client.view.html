@@ -1,0 +1,42 @@
+<div flex layout="row"  data-ng-controller="GrabbasController" data-ng-init="findOne()">
+	<div flex="15" class="bg-lgrey" hide-sm hide-md hide-lg></div>
+	       <div flex layout="column" layout-wrap >
+	       			
+	       			
+	       				<md-content>
+				    <md-card>
+				      <img data-ng-src="{{grabba.imageUrl}}" alt="{{grabba.title}}">
+				      <md-card-content>
+				      	<img data-ng-src="{{shop.imageUrl}}" alt="{{grabba.title}}" data-ng-style="{'height' : '60px'}">
+				        <h2 class="md-title">{{grabba.title}}</h2>
+				        <h3 class="md-subhead">{{grabba.sub}}</h3>
+				        <p>
+				          {{grabba.description}}
+				        </p>
+				        <ul class="setting-list">
+					        	<li><span><b>Price: </b>R{{grabba.price}}</span></li>
+					        	<li><span><b>Date of Promotion: </b>{{grabba.created | Customdate }}</span></li>
+					        	<li><span><b>Promotion End: </b>{{grabba.endDate | Customdate}}</span></li>
+					        </ul>
+					     <ul class="setting-list">
+					     		<li><span><b>Contact Us: </b></span></li>
+					        	<li><span>{{shop.contact.person}}</span></li>
+					        	<li><span>{{shop.contact.number}}</span></li>
+					        	<li><span>{{shop.contact.email}}</span></li>
+					        </ul>   
+					     <ul class="setting-list">
+					     		<li><span><b>Find us at: </b></span></li>
+					        	<li><span>{{shop.address.line1}}</span></li>
+					        	<li><span>{{shop.address.line2}}</span></li>
+					        </ul>   
+					     <md-button data-ng-click="remove();" class="md-warn md-raised md-hue-2" data-ng-show="authentication.user">Delete</md-button>    
+				      </md-card-content>
+				    </md-card>
+				  </md-content>
+	       			
+	                
+				
+	        		
+	       </div>    
+    <div flex="15" class="bg-lgrey" hide-sm hide-md hide-lg></div>
+</div>

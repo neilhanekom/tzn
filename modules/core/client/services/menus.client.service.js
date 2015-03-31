@@ -191,90 +191,95 @@ angular.module('core').service('Menus', [
             class: 'sidenav-icon',
             isPublic: true,
             roles: ['user' , 'admin'],
-            position: 0,
-        });
-
-
-        this.addMenuItem('topbar', {
-            icon: 'ad',
-            title: 'ads',
-            state: 'ads.list',
-            class: 'sidenav-icon',
-            isPublic: false,
-            roles: ['admin'],
             position: 1,
         });
+
 
         this.addMenuItem('topbar', {
             icon: 'local_attraction',
             title: 'Events',
-            state: 'events',
-            class: 'sidenav-icon',
-            isPublic: true,
-            roles: ['user' , 'admin'],
-            position: 1,
-        });
-
-        this.addMenuItem('topbar', {
-            icon: 'directions_bike',
-            title: 'Rides',
-            state: 'rides',
+            state: 'events.list',
             class: 'sidenav-icon',
             isPublic: true,
             roles: ['user' , 'admin'],
             position: 2,
         });
         
-        this.addMenuItem('topbar', {
-            icon: 'local_library',
-            title: 'About',
-            state: 'about',
+        // this.addMenuItem('topbar', {
+        //     icon: 'local_library',
+        //     title: 'Entries',
+        //     state: 'entries.view',
+        //     class: 'sidenav-icon',
+        //     isPublic: true,
+        //     roles: ['user' , 'admin'],
+        //     position: 3,
+        // });
+
+         this.addMenuItem('topbar', {
+            icon: 'phone_in_talk',
+            title: 'News',
+            state: 'articles.list',
             class: 'sidenav-icon',
             isPublic: true,
-            roles: ['user' , 'admin'],
+            // roles: ['user' , 'admin'],
             position: 3,
+        });
+
+         this.addMenuItem('topbar', {
+            icon: 'phone_in_talk',
+            title: 'Partners',
+            state: 'partners.list',
+            class: 'sidenav-icon',
+            isPublic: true,
+            // roles: ['user' , 'admin'],
+            position: 4,
+        });
+
+         this.addMenuItem('topbar', {
+            icon: 'phone_in_talk',
+            title: 'Grabba Cycles',
+            state: 'grabbas.list',
+            class: 'sidenav-icon',
+            isPublic: true,
+            // roles: ['user' , 'admin'],
+            position: 5,
         });
 
         this.addMenuItem('topbar', {
             icon: 'phone_in_talk',
             title: 'Contact',
-            state: 'contact',
+            state: 'contacts.list',
             class: 'sidenav-icon',
             isPublic: true,
-            roles: ['user' , 'admin'],
-            position: 4,
+            // roles: ['user' , 'admin'],
+            position: 6,
         });
 
-        this.addMenuItem('topbar', {
-            icon: 'stars',
-            title: 'Sponsors',
-            state: 'sponsors',
-            class: 'sidenav-icon',
-            isPublic: true,
-            roles: ['user' , 'admin'],
-            position: 5,
-        });
+        
 
         this.addMenuItem('topbar', {
             icon: 'stars',
             title: 'entries',
-            state: 'entries.list',
+            state: 'entries.view',
             class: 'sidenav-icon',
             isPublic: true,
-            roles: ['user' , 'admin'],
-            position: 6,
+            // roles: ['user' , 'admin'],
+            position: 7,
         });
 
+        // ADMIN USERS
+
         // this.addMenuItem('topbar', {
-        //     icon: 'stars',
-        //     title: 'signup',
-        //     state: 'authentication.signup',
+        //     icon: 'home',
+        //     title: 'Dashboard',
+        //     state: 'home',
         //     class: 'sidenav-icon',
-        //     isPublic: true,
+        //     isPublic: false,
         //     roles: ['user' , 'admin'],
-        //     position: 6,
+        //     position: 0,
         // });
 
+        
 
         // ======================================================================== Sidebar-Items ===================================================
 
@@ -300,68 +305,89 @@ angular.module('core').service('Menus', [
         });
 
 
-        //   ===========  Notifications ===========
-
         this.addMenuItem('sidenav', {
             icon: 'local_attraction',
             title: 'Events',
-            state: 'events',
+            state: 'events.list',
             class: 'sidenav-icon',
             isPublic: true,
             roles: ['user' , 'admin'],
             position: 1,
         });
+        
+        // this.addMenuItem('topbar', {
+        //     icon: 'local_library',
+        //     title: 'Entries',
+        //     state: 'entries.view',
+        //     class: 'sidenav-icon',
+        //     isPublic: true,
+        //     roles: ['user' , 'admin'],
+        //     position: 3,
+        // });
 
-        this.addMenuItem('sidenav', {
-            icon: 'directions_bike',
-            title: 'Rides',
-            state: 'rides',
+         this.addMenuItem('sidenav', {
+            icon: 'local_library',
+            title: 'News',
+            state: 'articles.list',
             class: 'sidenav-icon',
             isPublic: true,
             roles: ['user' , 'admin'],
             position: 2,
         });
-        
-        this.addMenuItem('sidenav', {
-            icon: 'local_library',
-            title: 'About',
-            state: 'about',
+
+         this.addMenuItem('sidenav', {
+            icon: 'group',
+            title: 'Partners',
+            state: 'partners.list',
             class: 'sidenav-icon',
             isPublic: true,
             roles: ['user' , 'admin'],
             position: 3,
         });
 
-        this.addMenuItem('sidenav', {
-            icon: 'phone_in_talk',
-            title: 'Contact',
-            state: 'contact',
+         this.addMenuItem('sidenav', {
+            icon: 'directions_bike',
+            title: 'Grabba Cycles',
+            state: 'grabbas.list',
             class: 'sidenav-icon',
             isPublic: true,
             roles: ['user' , 'admin'],
             position: 4,
         });
 
+        
+
+        
+
         this.addMenuItem('sidenav', {
-            icon: 'stars',
-            title: 'Sponsors',
-            state: 'sponsors',
+            icon: 'assignment_turned_in',
+            title: 'entries',
+            state: 'entries.view',
             class: 'sidenav-icon',
             isPublic: true,
             roles: ['user' , 'admin'],
             position: 5,
         });
 
+        this.addMenuItem('sidenav', {
+            icon: 'phone_in_talk',
+            title: 'Contact',
+            state: 'contacts.list',
+            class: 'sidenav-icon',
+            isPublic: true,
+            roles: ['user' , 'admin'],
+            position: 6,
+        });
         
-// this.addMenuItem('sidenav', {
-//             icon: 'stars',
-//             title: 'signup',
-//             state: 'authentication.signup',
-//             class: 'sidenav-icon',
-//             isPublic: true,
-//             roles: ['user' , 'admin'],
-//             position: 6,
-//         });
+        // this.addMenuItem('sidenav', {
+        //     icon: 'view_module',
+        //     title: 'Dashboard',
+        //     state: 'home',
+        //     class: 'sidenav-icon',
+        //     isPublic: false,
+        //     roles: ['user' , 'admin'],
+        //     position: 0,
+        // });
 
         
 

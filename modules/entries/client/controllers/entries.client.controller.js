@@ -1,13 +1,53 @@
 'use strict';
 
 // Entries controller
-angular.module('entries').controller('EntriesController', ['$scope', '$stateParams', '$location', 'Authentication', 'Entries',
-	function($scope, $stateParams, $location, Authentication, Entries ) {
+angular.module('entries').controller('EntriesController', ['$scope', '$stateParams', '$location', '$timeout', 'Authentication', 'Entries', 'Events',
+	function($scope, $stateParams, $location, $timeout, Authentication, Entries, Events ) {
 		$scope.authentication = Authentication;
+
+
+		$scope.success = '#4CAF50';
+		$scope.fail = '#F44336';
+
+		// Icons and Colors
+		$scope.success = '#CDDC39';
+
+		$scope.bank = {
+			accountname: 'Tzaneen Bicycle Club',
+			bank: 'Standard Bank',
+			accountnumber: '330566652',
+			type: 'Cheque/Current',
+			branchname: 'Tzaneen',
+			branchcode: '05-27-49'
+
+		};
+
+		$scope.loadEvents = function() {
+		    // Use timeout to simulate a 650ms request.
+		    $scope.event = [];
+		    return $timeout(function() {
+		      $scope.events = Events.query();
+
+		    }, 650);
+		    
+		  };
+
+
+		$scope.confirmEntry = function() {
+			var len = $scope.entry.status.length;
+			$scope.entry.status.splice(0, len, 'complete');
+		};
+
+		$scope.unconfirmEntry = function() {
+			var len = $scope.entry.status.length;
+			$scope.entry.status.splice(0, len, 'unpaid');
+		};
+
 
 		//Confrim Collapse
 		$scope.collapseConfirm = true;
 		$scope.collapseForm = false;
+		
 
 		$scope.toggleConfirm = function() {
 			$scope.collapseConfirm = !$scope.collapseProfile;
@@ -59,7 +99,9 @@ angular.module('entries').controller('EntriesController', ['$scope', '$statePara
 				club: this.entry.club,
 				license: this.entry.license,
 				age_cat: this.entry.age_cat,
-				race: this.entry.race
+				race: this.entry.race,
+				event: $scope.event._id,
+				fee: $scope.entry.fee
 			});
 
 			// Redirect after save
@@ -111,6 +153,16 @@ angular.module('entries').controller('EntriesController', ['$scope', '$statePara
 				entryId: $stateParams.entryId
 			});
 			console.log($scope.entry);
+			$timeout(function() {
+		      $scope.events = Events.query();
+		      	$scope.event = Events.get({ 
+				eventId: $scope.entry.event
+			});
+		    }, 650);
+			
+			
 		};
+
+		
 	}
 ]);

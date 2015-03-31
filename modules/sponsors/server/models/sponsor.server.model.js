@@ -11,10 +11,10 @@ var mongoose = require('mongoose'),
  */
 var SponsorSchema = new Schema({
 	name: {
-		type: String,
-		default: '',
-		required: 'Please fill Sponsor name',
-		trim: true
+		type: String
+	},
+	imageUrl: {
+		type: String
 	},
 	created: {
 		type: Date,

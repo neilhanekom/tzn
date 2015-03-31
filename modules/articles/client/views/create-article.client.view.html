@@ -1,29 +1,79 @@
-<section data-ng-controller="ArticlesController">
-	<div class="page-header">
-		<h1>New Article</h1>
-	</div>
-	<div class="col-md-12">
-		<form name="articleForm" class="form-horizontal" data-ng-submit="create()" novalidate>
-			<fieldset>
-				<div class="form-group">
-					<label class="control-label" for="title">Title</label>
-					<div class="controls">
-						<input name="title" type="text" data-ng-model="title" id="title" class="form-control" placeholder="Title">
-					</div>
-				</div>
-				<div class="form-group">
-					<label class="control-label" for="content">Content</label>
-					<div class="controls">
-						<textarea name="content" data-ng-model="content" id="content" class="form-control" cols="30" rows="10" placeholder="Content"></textarea>
-					</div>
-				</div>
-				<div class="form-group">
-					<input type="submit" class="btn btn-default">
-				</div>
-				<div data-ng-show="error" class="text-danger">
-					<strong data-ng-bind="error"></strong>
-				</div>
-			</fieldset>
-		</form>
-	</div>
-</section>
+<div flex layout="row" layout-fill data-ng-controller="ArticlesController" > 
+
+
+    <div flex="15" class="bg-lgrey" hide-sm hide-md hide-lg></div>
+       <div flex layout="column" layout-wrap layout-fill>
+                <!-- ===========   Confirm State  ============ -->
+                
+                <!-- ===========   Confirm State  ============ -->
+
+                <md-whiteframe class="md-whiteframe-z1 dashboard-card-full " layout="column" data-ng-hide="collapseForm"> 
+                    <!-- Start wtih Form in here. -->
+                    <md-content class="md-padding">
+                        <form name="articleForm" data-ng-submit="create()" flex layout-fill class="std-text">
+                            <div layout="column" layout-sm="column" layout-fill>
+                            
+                            <h2>Create a New Article</h2>
+                                
+                                <div layout="row" layout-sm="column">
+                               
+                                    <md-input-container flex>
+                                        <label>Title</label>
+                                        <input type="text" required name="title" ng-model="article.title" placeholder="Title">
+                                        <div ng-messages="articleForm.title.$error" class="error">
+                                          <div ng-message="required">This is required.</div>
+                                        </div>
+                                    </md-input-container>
+                                    
+                                </div>
+                                 <div layout="row" layout-sm="column">
+                               
+                                    <md-input-container flex>
+                                        <label>Sub-Heading</label>
+                                        <input type="text"  name="slogan" ng-model="article.sub" placeholder="Sub heading">
+                                        
+                                    </md-input-container>
+                                    
+                                </div>
+                                <div layout="row" flex layout-sm="column">
+                                    
+                                    <md-input-container flex>
+                                        <label>Create Article Body</label>
+                                        <textarea ng-model="article.body" columns="1" md-maxlength="5000"></textarea>
+                                      </md-input-container>
+                                    
+                                </div>                        
+                                 
+                                 <div layout="row" layout-sm="column" layout-margin>
+                                 <img ng-show="picFile[0].dataUrl != null" ng-src="{{picFile[0].dataUrl}}" ng-style="{'max-width' : '100%', 'height' : 'auto'}">
+                                </div>
+                                
+                                <div layout="row" layout-sm="column" layout-margin>
+                                 <input type="file" ng-file-select ng-model="picFile" name="file" accept="image/*" 
+                                       ng-file-change="generateThumb(picFile[0], $files)" required>
+                                </div>
+                                
+                                <div layout="row" layout-sm="column" layout-margin>
+                                    <!-- <div style="width:{{picFile[0].progress}}%" ng-bind="picFile[0].progress + '%'"></div> -->
+                                    <md-progress-linear class="md-warn" md-mode="buffer" value="{{picFile[0].progress}}" md-buffer-value="0">
+                                    </md-progress-linear>
+                                </div>
+                                
+                                <div layout="row" flex layout-align="start center" layout-margin>
+                                        <md-button data-ng-click="uploadPic(picFile)" class="md-raised md-warn">Create new Promotion</md-button>
+                                </div>
+                                <div data-ng-show="error" class="text-danger">
+                                    <strong data-ng-bind="error"></strong>
+                                </div>
+                            </div>
+                        </form>
+                    </md-content>
+                </md-whiteframe>    
+        
+       </div>    
+        <div flex="15" class="bg-lgrey" hide-sm hide-md hide-lg></div>
+</div>
+
+
+
+

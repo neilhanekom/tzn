@@ -5,6 +5,7 @@
  */
 var _ = require('lodash'),
 	defaultAssets = require('./config/assets/default'),
+	productionAssets = require('./config/assets/production'),
 	testAssets = require('./config/assets/test');
 
 module.exports = function (grunt) {
@@ -110,7 +111,7 @@ module.exports = function (grunt) {
 		ngAnnotate: {
 			production: {
 				files: {
-					'public/dist/application.js': defaultAssets.client.js
+					'public/dist/application.js': productionAssets.clientLibJS
 				}
 			}
 		},

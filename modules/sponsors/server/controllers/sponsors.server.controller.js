@@ -4,6 +4,7 @@
  * Module dependencies.
  */
 var _ = require('lodash'),
+	fs = require('fs'),
 	path = require('path'),
 	mongoose = require('mongoose'),
 	Sponsor = mongoose.model('Sponsor'),
@@ -13,18 +14,44 @@ var _ = require('lodash'),
  * Create a Sponsor
  */
 exports.create = function(req, res) {
-	var sponsor = new Sponsor(req.body);
-	sponsor.user = req.user;
+	var user = req.user;
+	var message = null;
 
-	sponsor.save(function(err) {
-		if (err) {
-			return res.status(400).send({
-				message: errorHandler.getErrorMessage(err)
-			});
-		} else {
-			res.jsonp(sponsor);
-		}
-	});
+	
+
+	if (user) {
+		fs.writeFile('./modules/sponsors/client/img/uploads/' + req.files.sponsorForm.name, req.files.sponsorForm.buffer, function (uploadError) {
+			if (uploadError) {
+				return res.status(400).send({
+					message: 'Error occurred while uploading Image for Event'
+				});
+			} else {
+				// var imagePath = 'modules/events/img/uploads/' + req.files.eventsForm.name;
+
+				var sponsor = new Sponsor(req.body);
+				// Adding and Correcting some Stringified Fields
+				sponsor.user = req.user;
+				sponsor.imageUrl = 'modules/sponsors/img/uploads/' + req.files.sponsorForm.name;
+				// event.eventDate = eventDate;
+				
+				sponsor.save(function(err) {
+					if (err) {
+						return res.status(400).send({
+							message: errorHandler.getErrorMessage(err)
+						});
+					} else {
+						res.jsonp(sponsor);
+					}
+				});
+
+				
+			}
+		});
+	} else {
+		res.status(400).send({
+			message: 'User is not signed in'
+		});
+	}
 };
 
 /**

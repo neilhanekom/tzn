@@ -1,0 +1,86 @@
+<div flex layout="row" class="bg-gen"  data-ng-controller="EventsController" data-ng-init="find()"> 
+
+    <div flex="15"  hide-sm hide-md hide-lg></div>
+       <div flex layout="column" layout-wrap >
+                    <!-- New Row -->
+                    
+                    <div class="bg-white mar-5" layout="row" flex layout-fill data-ng-repeat="event in events">
+                    <md-content flex>
+                        <md-card layout-fill>
+                          <img data-ng-src="{{event.imageUrl}}" >
+                          <md-card-content >
+                            <div layout="row" >
+                                        <md-content flex  layout="row">
+                                        <div flex="70">
+                                            <h3 >{{event.name}}</h3>
+                                         </div>
+                                        <div flex="30" layout="row" layout-align="end center" layout-padding >
+                                        <md-button class="md-raised md-warn">Enter!</md-button>
+                                        </div>
+                                
+                                        <md-divider></md-divider>
+                                
+                                        </md-content> 
+                                </div> 
+                            <div layout="row" >
+                            <p>
+                              {{event.description}}
+                            </p>
+                            </div>
+                            <div layout="row">
+                                    <ul class="setting-list">
+                                                <br>
+                                                <li><span><b>Date: </b> {{event.eventDate | Customdate}}</span></li>
+                                                <li><span><b>Venue: </b> {{event.location.venue}}</span></li>
+                                                <li><span><b>Town: </b> {{event.location.town}}</span></li>
+                                                <li><span><b>Province: </b> {{event.location.province}}</span></li>
+                                                <li>
+                                                <div layout="column" flex>
+                                                    <span><b>Races/Times: </b></span>
+
+                                                    <span data-ng-repeat="race in event.races"><ng-md-icon icon="directions_bike" size="14" ng-attr-style="fill: {{fill}}"></ng-md-icon> {{race.distance }} &nbsp<b><ng-md-icon icon="schedule" size="14" ng-attr-style="fill: {{fill}}"></ng-md-icon></b>  {{race.time}}</span>
+                                                </div>
+                                                </li>
+                                    </ul>
+                            </div>
+
+                            <div layout="column"  layout-align="start start" >
+                                    <md-button data-ng-href="/#!/events/{{event._id}}" class="md-accent left" layout="row" layout-align="center center">
+                                        <ng-md-icon icon="local_attraction" size="20" ng-attr-style="fill: {{blue}}"></ng-md-icon><span class="mar-l-5"> View Event</span>
+                                    </md-button>
+                                    
+                            </div>
+                          </md-card-content>
+                        </md-card>
+                       </md-content>
+
+                    </div>
+                 
+                
+                    
+                   
+                </div>    
+        <div flex="15"  hide-sm hide-md hide-lg></div>
+</div>
+
+
+<!-- 
+<section data-ng-controller="EventsController" data-ng-init="find()">
+    <div class="page-header">
+        <h1>Events</h1>
+    </div>
+    <div class="list-group">
+        <a data-ng-repeat="event in events" data-ng-href="/#!/events/{{event._id}}" class="list-group-item">
+			<small class="list-group-item-text">
+				Posted on
+				<span data-ng-bind="event.created | date:'medium'"></span>
+				by
+				<span data-ng-bind="event.user.displayName"></span>
+			</small>
+			<h4 class="list-group-item-heading" data-ng-bind="event.name"></h4>
+        </a>
+    </div>
+    <div class="alert alert-warning text-center" data-ng-hide="!events.$resolved || events.length">
+    	No Events yet, why don't you <a href="/#!/events/create">create one</a>?
+    </div>
+</section> -->

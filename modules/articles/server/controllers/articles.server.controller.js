@@ -4,6 +4,7 @@
  * Module dependencies.
  */
 var _ = require('lodash'),
+	fs = require('fs'),
 	path = require('path'),
 	mongoose = require('mongoose'),
 	Article = mongoose.model('Article'),
@@ -13,18 +14,55 @@ var _ = require('lodash'),
  * Create a article
  */
 exports.create = function(req, res) {
-	var article = new Article(req.body);
-	article.user = req.user;
+	// var article = new Article(req.body);
+	// article.user = req.user;
 
-	article.save(function(err) {
-		if (err) {
-			return res.status(400).send({
-				message: errorHandler.getErrorMessage(err)
-			});
-		} else {
-			res.json(article);
-		}
-	});
+	// article.save(function(err) {
+	// 	if (err) {
+	// 		return res.status(400).send({
+	// 			message: errorHandler.getErrorMessage(err)
+	// 		});
+	// 	} else {
+	// 		res.json(article);
+	// 	}
+	// });
+
+	var user = req.user;
+	var message = null;
+
+	if (user) {
+		fs.writeFile('./modules/articles/client/img/uploads/' + req.files.articleForm.name, req.files.articleForm.buffer, function (uploadError) {
+			if (uploadError) {
+				return res.status(400).send({
+					message: 'Error occurred while uploading Image for Event'
+				});
+			} else {
+				// var imagePath = 'modules/events/img/uploads/' + req.files.eventsForm.name;
+
+				var article = new Article(req.body);
+				// Adding and Correcting some Stringified Fields
+				article.user = req.user;
+				article.imageUrl = 'modules/articles/img/uploads/' + req.files.articleForm.name;
+				// event.eventDate = eventDate;
+				
+				article.save(function(err) {
+					if (err) {
+						return res.status(400).send({
+							message: errorHandler.getErrorMessage(err)
+						});
+					} else {
+						res.jsonp(article);
+					}
+				});
+
+				
+			}
+		});
+	} else {
+		res.status(400).send({
+			message: 'User is not signed in'
+		});
+	}
 };
 
 /**

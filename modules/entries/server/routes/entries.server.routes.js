@@ -6,8 +6,11 @@ module.exports = function(app) {
 
 	// Entries Routes
 	app.route('/api/entries').all()
-		.get(entries.list).all(entriesPolicy.isAllowed)
+		.get(entries.list)
 		.post(entries.create);
+
+	app.route('/api/entries/compile')
+		.post(entries.compile);	
 
 	app.route('/api/entries/:entryId')
 		.get(entries.read)

@@ -8,7 +8,7 @@ angular.module('sponsors').config(['$stateProvider',
 		state('sponsors', {
 			abstract: true,
 			url: '/sponsors',
-			template: '<ui-view/>'
+			template: '<section data-ui-view flex layout="row" layout-wrap></section>'
 		}).
 		state('sponsors.list', {
 			url: '',

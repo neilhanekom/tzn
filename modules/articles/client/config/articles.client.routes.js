@@ -8,7 +8,7 @@ angular.module('articles').config(['$stateProvider',
 		state('articles', {
 			abstract: true,
 			url: '/articles',
-			template: '<ui-view/>'
+			template: '<section data-ui-view flex layout="row" layout-wrap></section>'
 		}).
 		state('articles.list', {
 			url: '',

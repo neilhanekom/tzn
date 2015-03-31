@@ -5,26 +5,58 @@
  */
 var _ = require('lodash'),
 	path = require('path'),
+	fs = require('fs'),
 	mongoose = require('mongoose'),
 	Entry = mongoose.model('Entry'),
+	sendgrid  = require('sendgrid')(process.env.SENDGRID_USERNAME, process.env.SENDGRID_PASSWORD),
+	Hogan = require('hogan.js'),
 	errorHandler = require(path.resolve('./modules/core/server/controllers/errors.server.controller'));
+
+
+
+exports.compile = function(req, res) {
+	var compile = req.body;
+	if (compile) {
+		var template = fs.readFileSync('./modules/entries/server/templates/email.hjs', 'utf-8' );
+		var compiledTemplate = Hogan.compile(template);  
+		
+	}
+};
 
 /**
  * Create a Entry
  */
 exports.create = function(req, res) {
 	var entry = new Entry(req.body);
-	// entry.user = req.user;
 
-	entry.save(function(err) {
+	var template = fs.readFileSync('./modules/entries/server/templates/email.hjs', 'utf-8' );
+	var compiledTemplate = Hogan.compile(template);  
+	
+
+	if (compiledTemplate ) {
+ 	entry.save(function(err) {
 		if (err) {
 			return res.status(400).send({
 				message: errorHandler.getErrorMessage(err)
 			});
 		} else {
 			res.jsonp(entry);
+			sendgrid.send({
+			  to:       'neilhanekom1@gmail.com',
+			  from:     'noreply@tzaneencycling.co.za',
+			  subject:  'Your Entry confirmation for the Miami Magoebaskloof Classic',
+			  html:     compiledTemplate.render({
+			  				firstName: entry.firstName,
+			  				lastName: entry.lastName
+			  			})
+			}, function(err, json) {
+			  if (err) { return console.error(err); }
+			  console.log(json);
+			});
 		}
 	});
+	
+	}
 };
 
 /**

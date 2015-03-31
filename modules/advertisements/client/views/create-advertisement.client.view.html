@@ -1,0 +1,150 @@
+<div flex layout="row" layout-fill data-ng-controller="AdvertisementsController" > 
+
+
+    <div flex="15" class="bg-lgrey" hide-sm hide-md hide-lg></div>
+       <div flex layout="column" layout-wrap layout-fill>
+                <!-- ===========   Confirm State  ============ -->
+                
+                <!-- ===========   Confirm State  ============ -->
+
+                <md-whiteframe class="md-whiteframe-z1 dashboard-card-full " layout="column" data-ng-hide="collapseForm"> 
+                    <!-- Start wtih Form in here. -->
+                    <md-content class="md-padding">
+                        <form name="advertisementForm" data-ng-submit="create()" flex layout-fill class="std-text">
+                            <div layout="column" layout-sm="column" layout-fill>
+                            
+                            <h2>Create a New Ad</h2>
+                                <div layout="row" layout-sm="column">
+                               
+                                    <md-select placeholder="Select Ad Type" ng-model="advertisement.type">
+                                        <md-option value="article">article</md-option>
+                                        <md-option value="event">event</md-option>
+                                        <md-option value="grabba">promotion</md-option>
+                                      </md-select>
+                                    
+                                </div>
+                                <div layout="row" layout-sm="column">
+                               
+                                    <md-input-container flex>
+                                        <label>Title</label>
+                                        <input type="text" name="title" ng-model="advertisement.title" placeholder="Title">
+                                        
+                                    </md-input-container>
+                                    
+                                </div>
+                                <div layout="row" layout-sm="column">
+                               
+                                    <md-input-container flex>
+                                        <label>Description</label>
+                                        <input type="text" name="description" ng-model="advertisement.description" placeholder="Like a short description of what is the ad about">
+                                        
+                                    </md-input-container>
+                                    
+                                </div>
+                                 <div layout-gt-sm="row" layout-sm="column">
+                                    
+                                   <md-list>
+                                      <md-item ng-repeat="spec in specifications">
+                                        <md-item-content >
+                                        <div class="md-tile-left">
+                                          <md-button data-ng-click="removeSpec(spec)" class="md-fab md-mini md-primary" aria-label="remove Specification" layout-margin>
+                                                          <ng-md-icon icon="close" size="25" ng-attr-style="fill: {{fill}}"></ng-md-icon>
+                                                    </md-button>
+                                      </div>
+                                          <div flex class="md-tile-content" layout-fill >
+                                              <div layout="row" flex layout-fill layout-align="start center">
+                                                  <div flex layout="row" layout-align="center center" layout-fill>
+                                                      <h3><b>{{spec.key + ':' + ' '}} </b> </h3>
+                                                      <h3> {{spec.value}}</h3>
+                                                  </div>   
+                                                               
+                                               </div>
+                                           </div>   
+                                        </md-item-content>
+                                      </md-item>
+                                    </md-list>
+                                    
+                                </div>
+                                <div layout="row" layout-sm="column">
+                               
+                                    <md-input-container flex>
+                                        <label>Enter a Specification Description</label>
+                                        <input type="text"  name="key" ng-model="specification.key" placeholder="Specification Description">
+                                        
+                                    </md-input-container>
+                                    <md-input-container flex>
+                                        <label>Enter a Specification Value</label>
+                                        <input type="text"  name="key" ng-model="specification.value" placeholder="Specification Value">
+                                    </md-input-container>
+                                    
+                                </div>
+                                 <div layout="row" layout-sm="column" layout-margin>
+                                     <md-button class="md-warn md-raised md-hue-2" data-ng-click="pushSpec()">Add Specification</md-button>
+                                </div>               
+                                 
+                                <div layout-gt-sm="row" layout-sm="column">
+                                    
+                                   <md-list>
+                                      <md-item ng-repeat="sponsor in selSponsors">
+                                        <md-item-content >
+                                        <div class="md-tile-left">
+                                          <img data-ng-src="{{sponsor.imageUrl}}" class="thumbnail" alt="{{sponsor.name}}">
+                                      </div>
+                                          <div flex class="md-tile-content" layout-fill >
+                                              <div layout="row" flex layout-fill layout-align="start center">
+                                                  <div flex layout="row" layout-align="center center" layout-fill>
+                                                      <h3><b>{{Sponsor.name}} </b> </h3>
+                                                      
+                                                  </div>   
+                                                               
+                                               </div>
+                                           </div>   
+                                        </md-item-content>
+                                      </md-item>
+                                    </md-list>
+                                    
+                                </div> 
+                                <div layout="column" layout-align="center start" style="height: 100px;">
+                                    <md-select ng-model="sponsor" md-on-open="loadSponsors()" style="min-width: 200px;">
+                                      <md-select-label>{{ sponsor ? sponsor.name : 'Select Sponsor' }}</md-select-label>
+                                      <md-option ng-value="sponsor" ng-repeat="sponsor in sponsors" ng-click="addSponsor(sponsor)">
+                                      {{sponsor.name}} 
+                                      </md-option>
+                                    </md-select>
+                                    <p class="md-caption">{{ sponsor ? sponsor.name : 'No Sponsor Selected' }}</p>
+                                  </div>
+                                
+                                
+                                 <div layout="row" layout-sm="column" layout-margin>
+                                 <img ng-show="picFile[0].dataUrl != null" ng-src="{{picFile[0].dataUrl}}" ng-style="{'max-width' : '100%', 'height' : 'auto'}">
+                                </div>
+                                
+                                <div layout="row" layout-sm="column" layout-margin>
+                                 <input type="file" ng-file-select ng-model="picFile" name="file" accept="image/*" 
+                                       ng-file-change="generateThumb(picFile[0], $files)" required>
+                                </div>
+                                
+                                <div layout="row" layout-sm="column" layout-margin>
+                                    <!-- <div style="width:{{picFile[0].progress}}%" ng-bind="picFile[0].progress + '%'"></div> -->
+                                    <md-progress-linear class="md-warn" md-mode="buffer" value="{{picFile[0].progress}}" md-buffer-value="0">
+                                    </md-progress-linear>
+                                </div>
+                                
+                                <div layout="row" flex layout-align="start center" layout-margin>
+                                        <md-button data-ng-click="uploadPic(picFile)" class="md-raised md-warn">Create new Promotion</md-button>
+                                </div>
+                                <div data-ng-show="error" class="text-danger">
+                                    <strong data-ng-bind="error"></strong>
+                                </div>
+                            </div>
+                        </form>
+                    </md-content>
+                </md-whiteframe>    
+        
+       </div>    
+        <div flex="15" class="bg-lgrey" hide-sm hide-md hide-lg></div>
+</div>
+
+
+
+

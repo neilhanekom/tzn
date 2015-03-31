@@ -1,19 +1,108 @@
 <div flex layout="row" layout-fill data-ng-controller="EntriesController" data-ng-init="findOne()">
 
+    
+
 	<div flex="15" class="bg-lgrey" hide-sm hide-md hide-lg></div>
 			
-			    <div flex layout="column" layout-wrap layout-fill>
-			    <md-whiteframe class="md-whiteframe-z1" flex>
-		       <div flex layout="row" layout-fill layout-align="start center">
-			       <md-content layout-fill layout-padding>
-				       	<h1 layout>Entry Information</h1>
-				       	<md-divider ></md-divider>
-			       	</md-content>
-		       </div>  
+			  <div flex layout="column" layout-padding >
 
-		       </md-whiteframe> 
-	      </div>
-			
+			  						<div layout="row" flex >
+                                        
+                                        <div layout="row" flex>
+                                            <h1 data-ng-if="entry.status == 'unpaid'"><ng-md-icon icon="check_circle" size="30" ng-attr-style="fill: {{success}}"></ng-md-icon>  Your Entry is succesfull</h1>
+                                            <h1 data-ng-if="entry.status == 'complete'"><ng-md-icon icon="check_circle" size="30" ng-attr-style="fill: {{success}}"></ng-md-icon>  Your Entry was Paid Up and Cofirmed</h1>
+                                        </div>
+                            		  <div layout="row" flex layout-align="end center" data-ng-show="authentication.user">
+                                            <md-button class="md-raised md-accent mar-l-5"   href="/#!/entries/{{entry._id}}/edit" >Confirm Entry</md-button>
+                                            
+                                        </div>
+                                        
+                                    </div>
+			 						
+                                    <div layout="row" flex>
+                            
+                                        <h2>Status: <span class="txt-normal"> {{entry.status[0]}}</span> 
+                                            <ng-md-icon icon="check_circle" data-ng-if="entry.status == 'complete'" size="20" ng-attr-style="fill: {{success}}"></ng-md-icon>
+                              <ng-md-icon icon="cancel" data-ng-if="entry.status == 'unpaid'" size="20" ng-attr-style="fill: {{fail}}"></ng-md-icon>
+                                        </h2>
+                                        
+
+                                    </div>
+
+                                    <div layout="column" flex>
+                            
+                                        <h3>Event</h3>
+                                        <span><b>Event Name:</b> {{event.name}}</span>
+                                        <span><b>Event Date:</b> {{event.eventDate | Customdate }}</span>
+
+                                    </div>
+                                    <div layout="column" flex>
+
+                                        <h3>Personal Information</h3>
+                                        <span><b>Gender:</b> {{entry.gender}}</span>
+                                        <span><b>Firstname:</b> {{entry.firstName}}</span>
+                                        <span><b>Lastname:</b> {{entry.lastName}}</span>
+                                        <span><b>ID:</b> {{entry.rsaId}}</span>
+                                        <span><b>Birthdate:</b> {{entry.birthDate | Customdate }}</span>
+
+                                    </div>
+                                    <div layout="column" flex>
+                                        <h3>Contact Information</h3>
+                                        <span><b>Mobile:</b> {{entry.mobileNumber}}</span>
+                                        <span><b>Email:</b> {{entry.email}}</span>
+                                    </div>
+                                    <div layout="column" flex>
+                                        <h3>Emergency Information</h3>
+                                        <span><b>Contact Person:</b> {{entry.emergency.person}}</span>
+                                        <span><b>Contact Number:</b> {{entry.emergency.contact}}</span>
+                                        <span><b>Contact Relationship:</b> {{entry.emergency.relationship}}</span>
+                                    </div>
+                                    <div layout="column" flex>
+                                        <h3>Medical Information</h3>
+                                        <span><b>Medical Aid Company:</b> {{entry.medical.company}}</span>
+                                        <span><b>Medical Aid Number:</b> {{entry.medical.number}}</span>
+                                        <span><b>Medical Aid Plan:</b> {{entry.medical.plan}}</span>
+                                        <span><b>Medical Aid Main Member:</b> {{entry.medical.main}}</span>
+                                        <span><b>Medical Conditions:</b> {{entry.medical.conditions}}</span>
+                                        <span><b>Doctor Name:</b> {{entry.medical.doctorName}}</span>
+                                        <span><b>Doctor Contact Number:</b> {{entry.medical.doctorNumber}}</span>
+                                    </div>
+                                    <div layout="column" flex>
+                                        <h3>Postal Address</h3>
+                                        <span><b>Po Box:</b> {{entry.postal.box}}</span>
+                                        <span><b>City/Town:</b> {{entry.postal.town}}</span>
+                                        <span><b>Postal Code:</b> {{entry.postal.code}}</span>
+                                    </div>
+                                    <div layout="column" flex>
+                                        <h3>Race Information</h3>
+                                        <span><b>Club/Team</b> {{entry.club.name}}</span>
+                                        <span><b>Province:</b> {{entry.club.province}}</span>
+                                        <span><b>CSA License:</b> {{entry.license.exist}}</span>
+                                        <span><b>CSA License No:</b> {{entry.license.number}}</span>
+                                        <span><b>Age Category:</b> {{entry.age_cat}}</span>
+                                        <span><b>Race Distance:</b> {{entry.race}}</span>
+                                    
+                                    </div>
+                               		<div layout="column" flex>
+                                        <h3>Payment Information</h3>
+                                        <span><b>Total Fees</b> {{entry.fee}}</span>
+                                        
+                                        <h3>Banking Details</h3>
+                                        <span><b>Account Name: </b> {{bank.accountname}}</span>
+                                        <span><b>Bank: </b> {{bank.bank}}</span>
+                                        <span><b>Account Number: </b> {{bank.accountnumber}}</span>,
+                                      	 <span><b>Account Type: </b> {{bank.type}}</span>,
+                                        <span><b>Branch: </b> {{bank.branchname + '(' + bank.branchcode + ')' }}</span>
+                                        <span><b>Reference: </b> Name & Surname</span>
+                                    
+                                    </div>
+                                <br>
+                                <md-divider></md-divider>
+                                
+                                    
+                   </div>
+
+                   </div>
 	       
         <div flex="15" class="bg-lgrey" hide-sm hide-md hide-lg></div>
 </div>

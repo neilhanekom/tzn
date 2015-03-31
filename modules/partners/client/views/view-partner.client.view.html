@@ -1,0 +1,39 @@
+
+
+<div flex layout="row"  data-ng-controller="PartnersController" data-ng-init="findOne()">
+	<div flex="15" class="bg-lgrey" hide-sm hide-md hide-lg></div>
+	       <div flex layout="column" layout-wrap layout-fill>
+	                
+				    <md-content flex>
+				    <md-card>
+				      <img data-ng-src="{{partner.imageUrl}}" alt="{{partner.name}}">
+
+				      <md-card-content>
+				        <h2 class="md-title">{{partner.name}}</h2>
+				        <h3 class="md-subhead">{{partner.slogan}}</h3>
+				        <p>
+				          {{partner.description}}
+				        </p>
+				        <ul class="setting-list">
+					        	<li><span><b>Address</b></span></li>
+					        	<li><span>{{partner.address.line1}}</span></li>
+					        	<li><span>{{partner.address.line2}}</span></li>
+					        	<li><span>{{partner.address.town}}</span></li>
+					        	<li><span>{{partner.address.city}}</span></li>
+					        	<li><span>{{partner.address.code}}</span></li>
+					        	
+					        </ul>
+					    <ul class="setting-list">
+					    		<li><span><b>Contact US</b></span></li>
+					        	<li data-ng-repeat="contact in partner.contacts" layout="row" layout-align="start center"><span><b>{{contact.name}}</b> &nbsp {{contact.number}} &nbsp {{contact.email}}</span></li>
+					        	
+					     </ul> 
+					     <md-button data-ng-click="remove();" class="md-warn md-raised md-hue-2" data-ng-show="authentication.user">Delete</md-button>  
+				      </md-card-content>
+				    </md-card>
+				  </md-content>
+				
+	        		
+	       </div>    
+    <div flex="15" class="bg-lgrey" hide-sm hide-md hide-lg></div>
+</div>

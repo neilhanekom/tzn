@@ -1,0 +1,53 @@
+<div flex layout="row"  data-ng-controller="ContactsController" data-ng-init="findOne()">
+	<div flex="15" class="bg-lgrey" hide-sm hide-md hide-lg></div>
+	       <div flex layout="column" layout-wrap layout-fill>
+	                <md-content flex>
+					    <md-card>
+					      <img src="{{contact.imageUrl}}" class="face">
+					      <md-card-content>
+					        <h2>{{contact.name}}</h2>
+					        <md-divider></md-divider>
+					        <br>
+					        <p>
+					          {{contact.description}}
+					        </p>
+					        <ul class="setting-list">
+                                <li layout="row" layout-align="start center"><h3><b>Contact</b></h3></li>
+                                <br>
+                                <li layout="row" layout-align="start center"><span><ng-md-icon icon="stay_current_portrait" size="16" ng-attr-style="fill: {{fill}}"></ng-md-icon> &nbsp {{ contact.mobileNumber}}</span></li>
+                                <li><span><ng-md-icon icon="phone" size="16" ng-attr-style="fill: {{fill}}"></ng-md-icon> &nbsp {{ contact.telephone}}</span></li>
+                                <li><span><ng-md-icon icon="email" size="16" ng-attr-style="fill: {{fill}}"></ng-md-icon> &nbsp {{ contact.email}}</span></li>
+                        
+                            </ul>
+					        <md-button data-ui-sref="entries.create" class="md-accent md-raised md-hue-2" data-ng-hide="authentication.user">view contact</md-button>
+					        <md-button data-ng-click="remove();" class="md-warn md-raised md-hue-2" data-ng-show="authentication.user">Delete</md-button>
+					      </md-card-content>
+					    </md-card>
+				    </md-content>
+	        		
+	       </div>    
+    <div flex="15" class="bg-lgrey" hide-sm hide-md hide-lg></div>
+</div>
+
+
+<!-- <section data-ng-controller="ContactsController" data-ng-init="findOne()">
+	<div class="page-header">
+		<h1 data-ng-bind="contact.name"></h1>
+	</div>
+	<div class="pull-right" data-ng-show="authentication.user._id == contact.user._id">
+		<a class="btn btn-primary" href="/#!/contacts/{{contact._id}}/edit">
+			<i class="glyphicon glyphicon-edit"></i>
+		</a>
+		<a class="btn btn-primary" data-ng-click="remove();">
+			<i class="glyphicon glyphicon-trash"></i>
+		</a>
+	</div>
+	<small>
+		<em class="text-muted">
+			Posted on
+			<span data-ng-bind="contact.created | date:'mediumDate'"></span>
+			by
+			<span data-ng-bind="contact.user.displayName"></span>
+		</em>
+	</small>
+</section> -->

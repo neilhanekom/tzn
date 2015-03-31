@@ -1,34 +1,37 @@
- <div data-ng-controller="HeaderController" flex>
-    <md-toolbar layout="row" data-ng-controller="HomeController as ul">
-        <md-button class="menu" hide-gt-sm ng-click="ul.toggleList()" aria-label="Show User List">
-           <ng-md-icon icon="menu" size="30" ng-attr-style="fill: {{fill}}"></ng-md-icon>
-        </md-button>
-        <h1> Starter App</h1>
-    </md-toolbar>
-</div>
-
-
-<!-- 
     <div data-ng-controller="HeaderController" flex>
     <md-toolbar layout="row">
-    	<div flex-gt-sm="15" flex-sm="20" layout="row" layout-align="center center">
-        <md-button class="menu" hide-gt-lg ng-click="toggleLeft()" aria-label="Show User List">
+    	<div flex-gt-md="10" flex-gt-lg="20" flex-sm="10" flex-md="10" layout="row" layout-align="center center">
+    	<div flex hide-gt-lg layout="row" layout-align="start center">
+    		<md-button class="menu" hide-gt-lg ng-click="toggleLeft()" aria-label="Show User List">
            <ng-md-icon icon="menu" size="30" ng-attr-style="fill: {{fill}}"></ng-md-icon>
+
         </md-button>
+    	</div>
+    	<div flex hide-sm hide-md layout="row" layout-align="start center">
+    		<img data-ng-src="modules/core/img/brand/tzn-black.png" data-ng-style="{'height' : '40px'}">
+    		<span hide-lg><h1 class="md-toolbar-tools txt-blk">Tzaneen Cycling</h1></span>
+
+ 
+    	</div>
+        
         </div>
-        <div flex  layout="column" layout-align="end end" layout-fill hide-sm>
+        <div flex-gt-lg="20" layout="row" layout-align="start center" hide-gt-md>
+    		<img data-ng-src="modules/core/img/brand/tzn-black.png" data-ng-style="{'height' : '40px'}">
+    		<span><h1 class="md-toolbar-tools txt-blk">Tzaneen Cycling</h1></span>
+    	</div>
+        <div flex  layout="row" layout-align="end end" layout-fill hide-sm hide-md>
        
         <md-tabs class="md-primary" layout="column" layout-align="end end">
-        	<md-tab  data-ng-repeat="item in topbar.items" id="tab1" aria-controls="tab1-content" data-ui-sref="{{item.state}}" >
+        	<md-tab  data-ng-repeat="item in topbar.items | orderBy: 'position'" data-ng-if="item.shouldRender(authentication.user);"   id="tab1" aria-controls="tab1-content" data-ui-sref="{{item.state}}" >
 	        <span class="txt-dgrey">{{item.title}}</span>
 	      </md-tab>
-	      <md-tab  id="tab1" aria-controls="tab1-content" data-ui-sref="authentication.signup" data-ng-hide="authentication.user">
+	      <!-- <md-tab  id="tab1" aria-controls="tab1-content" data-ui-sref="authentication.signup" data-ng-hide="authentication.user">
 	        <span class="txt-dgrey">Signup</span>
-	      </md-tab>
+	      </md-tab> -->
 	      
 	      </md-tabs>
       </div>
-      <div flex-gt-sm="20" >
+      <div flex-gt-sm="20" flex-gt-lg="10">
 
       		<div layout="column" class="pos-rt">
       			<div layout="row"  data-ng-hide="authentication.user" layout-align="end start">
@@ -39,7 +42,8 @@
 					<div layout="row"  data-ng-show="authentication.user" layout-align="end start" >
 						<md-button class="btn-text-std pad-5" layout="row" layout-align="start start" layout-align="center center" data-ng-click="toggleProfile()" aria-label="Toggle the Profile Setting menu">
 							
-							<span class="mar-5" flex><img data-ng-src="{{authentication.user.profileImageURL}}" class="header-profile-image "/> {{authentication.user.displayName}} </span>
+							<span class="mar-5" flex hide-sm><img data-ng-src="{{authentication.user.profileImageURL}}" class="header-profile-image "/> {{authentication.user.displayName}} </span>
+							<span class="mar-5" flex hide-gt-sm><img data-ng-src="{{authentication.user.profileImageURL}}" class="header-profile-image "/></span>
 						</md-button>
 					</div>
 					<div class="fill-white" layout="column"  data-ng-show="authentication.user" layout-align="end start" data-ng-hide="collapseProfile">
@@ -71,4 +75,3 @@
     </md-toolbar>
 
 </div>
- -->

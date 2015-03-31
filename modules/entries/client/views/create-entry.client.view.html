@@ -1,125 +1,40 @@
 <div flex layout="row" layout-fill data-ng-controller="EntriesController" > 
 
-<!-- ================== Confirmation section ================== -->
-<!-- <div layout="row" class="overlay bg-alpha" data-ng-hide="collapseConfirm">
-       <div flex="15"  hide-sm hide-md hide-lg></div>      
-           <div flex layout="column" layout-wrap layout-fill>
-                <h1>Testing</h1>
-           </div>
-       <div flex="15"  hide-sm hide-md hide-lg></div>       
-</div>
- -->
-
-
-<!-- ============================ end of confirmation =============== -->
-
 
     <div flex="15" class="bg-lgrey" hide-sm hide-md hide-lg></div>
-       <div flex layout="column" layout-wrap layout-fill>
-                <!-- ===========   Confirm State  ============ -->
-                <md-whiteframe class="md-whiteframe-z1 dashboard-card-full " layout="column" data-ng-hide="collapseConfirm" layout-fill flex> 
-                    <md-content class="md-padding"  layout-fill>
-                        <h2>Confirm Your Entry</h2>
-                        <md-divider></md-divider>
-                        <div layout="column" flex>
-                            <h3>Personal Information</h3>
-                            <span><b>Gender:</b> {{entry.gender}}</span>
-                            <span><b>Firstname:</b> {{entry.firstName}}</span>
-                            <span><b>Lastname:</b> {{entry.lastName}}</span>
-                            <span><b>ID:</b> {{entry.rsaId}}</span>
-                            <span><b>Birthdate:</b> {{entry.birthDate}}</span>
 
-                        </div>
-                        <div layout="column" flex>
-                            <h3>Contact Information</h3>
-                            <span><b>Mobile:</b> {{entry.mobile}}</span>
-                            <span><b>Email:</b> {{entry.email}}</span>
-                        </div>
-                        <div layout="column" flex>
-                            <h3>Emergency Information</h3>
-                            <span><b>Contact Person:</b> {{entry.emergency.person}}</span>
-                            <span><b>Contact Number:</b> {{entry.emergency.number}}</span>
-                            <span><b>Contact Relationship:</b> {{entry.emergency.relationship}}</span>
-                        </div>
-                        <div layout="column" flex>
-                            <h3>Medical Information</h3>
-                            <span><b>Medical Aid Company:</b> {{entry.medical.company}}</span>
-                            <span><b>Medical Aid Number:</b> {{entry.medical.number}}</span>
-                            <span><b>Medical Aid Plan:</b> {{entry.medical.plan}}</span>
-                            <span><b>Medical Aid Main Member:</b> {{entry.medical.main}}</span>
-                            <span><b>Medical Conditions:</b> {{entry.medical.conditions}}</span>
-                            <span><b>Doctor Name:</b> {{entry.medical.doctorName}}</span>
-                            <span><b>Doctor Contact Number:</b> {{entry.medical.doctorNumber}}</span>
-                        </div>
-                        <div layout="column" flex>
-                            <h3>Postal Address</h3>
-                            <span><b>Po Box:</b> {{entry.postal.box}}</span>
-                            <span><b>City/Town:</b> {{entry.postal.box}}</span>
-                            <span><b>Postal Code:</b> {{entry.postal.box}}</span>
-                        </div>
-                        <div layout="column" flex>
-                            <h3>Race Information</h3>
-                            <span><b>Club/Team</b> {{entry.club.name}}</span>
-                            <span><b>Province:</b> {{entry.club.province}}</span>
-                            <span><b>CSA License:</b> {{entry.license.exist}}</span>
-                            <span><b>CSA License No:</b> {{entry.license.number}}</span>
-                            <span><b>Age Category:</b> {{entry.age_cat}}</span>
-                            <span><b>Race Distance:</b> {{entry.race}}</span>
-                        
-                        </div>
-                        <br>
-                        <md-divider></md-divider>
-                        <div layout="column" >
-                            <h2>Total Fee</h2>
-                            <div layout="row">
-                                <div flex-gt-md="10" flex-md="20" flex-sm="40">
-                                     <span>Race Fee: </span>
-                                </div>
-                                <div flex>
-                                    <span>{{'R' + raceFee}}</span> 
-                                </div>
-                               
-                            </div>
-                            <div layout="row">
-                                <div flex-gt-md="10" flex-md="20" flex-sm="40" >
-                                     <span>License Fee: </span>
-                                </div>
-                                <div flex>
-                                    <span>{{'R' + licenseFee}}</span> 
-                                </div>
-                               <md-divider></md-divider>
-                            </div>
-                            <div layout="row">
-                                <div flex-gt-md="10" flex-md="20" flex-sm="40">
-                                     <span><b>Total</b> </span>
-                                </div>
-                                <div flex>
-                                    <span>{{'R' + entry.fee}}</span> 
-                                </div>
-                           <md-divider></md-divider>
-                            </div>
-                            <div layout="column" flex>
-                            <br>
-                            <md-divider></md-divider>
-                            <h3>INDEMNITY and WAIVER:</h3>
-                            <p> I undertake to participate in the above event entirely at my own risk. I agree that I shall have no claim whatsoever against the organisers,officials,marshals,helpers,sponsors,any local authority or any landowner or the employees or servants of any of the above parties for any loss,damage or injury whatsoever which I may suffer as a result of my participation in this event including my arrival thereat and departure there from and any ceremonies or functions thereof. In the event of my signing this form as a guardian of a minor, I hereby consent to such minor being bound by the waiver including to the extent to which he/she is not capeable of waiving his/her rights as stipulated above. The wearing of helmets in compulsary.</p>
-                        
-                        </div>
-                        <br>
-                            
-                        </div>
-                    </md-content>
-                 </md-whiteframe>   
-                <!-- ===========   Confirm State  ============ -->
 
-                <md-whiteframe class="md-whiteframe-z1 dashboard-card-full " layout="column" data-ng-hide="collapseForm"> 
+
+
+
+
+                <!-- ===========   Confirm State  ============ -->
+                <div layout="column" flex layout-fill>
+
+                
+
+                <md-whiteframe class="md-whiteframe-z1 dashboard-card-full " layout="column" > 
                     <!-- Start wtih Form in here. -->
+
                     <md-content class="md-padding">
                         <form name="entryForm" data-ng-submit="create()" flex layout-fill class="std-text">
+
                             <div layout="column" layout-sm="column" layout-fill>
                             
                             <h2>Entry Form</h2>
                             <md-divider></md-divider>
+                                 <div layout="column" layout-fill data-ng-hide="collapseForm">
+                                <div layout="row" layout-sm="column">
+                                    <h4>Select Event</h4>
+                                </div>
+                                <div layout="column" layout-align="center start" style="height: 100px;">
+                                    <md-select ng-model="event" md-on-open="loadEvents()" style="min-width: 200px;">
+                                      <md-select-label>{{ event ? event.name : 'Select Event' }}</md-select-label>
+                                      <md-option ng-value="event" ng-repeat="event in events"><span><ng-md-icon icon="directions_bike" size="14" ng-attr-style="fill: {{fill}}"></ng-md-icon> </span>{{event.name + ' '}} &nbsp<span><ng-md-icon icon="today" size="14" ng-attr-style="fill: {{fill}}"></ng-md-icon> </span>{{eventDate | Customdate }}</md-option>
+                                    </md-select>
+                                    <p class="md-caption">{{ event ? event.name : 'No Event Selected' }}</p>
+                                  </div>
+
                                 <div layout="row" layout-sm="column">
                                     <md-input-container flex>
                                         <p><b>Title:</b> <span class="radioValue">{{ entry.title }}</span> </p>
@@ -426,18 +341,125 @@
                                    
                                 </div>
                                 <br>
+                                </div>
+                                <div flex layout="column" data-ng-hide="collapseConfirm">
+                                    <div layout="column" flex>
+                            
+                                        <h3>Event</h3>
+                                        <span><b>Event Name:</b> {{event.name}}</span>
+                                        <span><b>Event Date:</b> {{event.eventDate}}</span>
+
+                                    </div>
+                                    <div layout="column" flex>
+
+                                        <h3>Personal Information</h3>
+                                        <span><b>Gender:</b> {{entry.gender}}</span>
+                                        <span><b>Firstname:</b> {{entry.firstName}}</span>
+                                        <span><b>Lastname:</b> {{entry.lastName}}</span>
+                                        <span><b>ID:</b> {{entry.rsaId}}</span>
+                                        <span><b>Birthdate:</b> {{entry.birthDate}}</span>
+
+                                    </div>
+                                    <div layout="column" flex>
+                                        <h3>Contact Information</h3>
+                                        <span><b>Mobile:</b> {{entry.mobileNumber}}</span>
+                                        <span><b>Email:</b> {{entry.email}}</span>
+                                    </div>
+                                    <div layout="column" flex>
+                                        <h3>Emergency Information</h3>
+                                        <span><b>Contact Person:</b> {{entry.emergency.person}}</span>
+                                        <span><b>Contact Number:</b> {{entry.emergency.contact}}</span>
+                                        <span><b>Contact Relationship:</b> {{entry.emergency.relationship}}</span>
+                                    </div>
+                                    <div layout="column" flex>
+                                        <h3>Medical Information</h3>
+                                        <span><b>Medical Aid Company:</b> {{entry.medical.company}}</span>
+                                        <span><b>Medical Aid Number:</b> {{entry.medical.number}}</span>
+                                        <span><b>Medical Aid Plan:</b> {{entry.medical.plan}}</span>
+                                        <span><b>Medical Aid Main Member:</b> {{entry.medical.main}}</span>
+                                        <span><b>Medical Conditions:</b> {{entry.medical.conditions}}</span>
+                                        <span><b>Doctor Name:</b> {{entry.medical.doctorName}}</span>
+                                        <span><b>Doctor Contact Number:</b> {{entry.medical.doctorNumber}}</span>
+                                    </div>
+                                    <div layout="column" flex>
+                                        <h3>Postal Address</h3>
+                                        <span><b>Po Box:</b> {{entry.postal.box}}</span>
+                                        <span><b>City/Town:</b> {{entry.postal.town}}</span>
+                                        <span><b>Postal Code:</b> {{entry.postal.code}}</span>
+                                    </div>
+                                    <div layout="column" flex>
+                                        <h3>Race Information</h3>
+                                        <span><b>Club/Team</b> {{entry.club.name}}</span>
+                                        <span><b>Province:</b> {{entry.club.province}}</span>
+                                        <span><b>CSA License:</b> {{entry.license.exist}}</span>
+                                        <span><b>CSA License No:</b> {{entry.license.number}}</span>
+                                        <span><b>Age Category:</b> {{entry.age_cat}}</span>
+                                        <span><b>Race Distance:</b> {{entry.race}}</span>
+                                    
+                                    </div>
+                               
+                                <br>
+                                <md-divider></md-divider>
                                 
-                                <div layout="row" flex layout-align="start center">
-                                        <md-button data-ng-click="confirm(); calculateTotal()" class="md-raised md-warn">Register</md-button>
+                                    <h2>Total Fee</h2>
+                                    <div layout="row">
+                                        <div flex-gt-md="10" flex-md="20" flex-sm="40">
+                                             <span>Race Fee: </span>
+                                        </div>
+                                        <div flex>
+                                            <span>{{'R' + raceFee}}</span> 
+                                        </div>
+                                       
+                                    </div>
+                                    <div layout="row" >
+                                        <div flex-gt-md="10" flex-md="20" flex-sm="40" >
+                                             <span>License Fee: </span>
+                                        </div>
+                                        <div flex>
+                                            <span>{{'R' + licenseFee}}</span> 
+                                        </div>
+                                       <md-divider></md-divider>
+                                    </div>
+                                    <div layout="row">
+                                        <div flex-gt-md="10" flex-md="20" flex-sm="40">
+                                             <span><b>Total</b> </span>
+                                        </div>
+                                        <div flex>
+                                            <span>{{'R' + entry.fee}}</span> 
+                                        </div>
+                                        <md-divider></md-divider>
+                                    </div>
+                                    <div layout="column" flex>
+                                        <br>
+                                        <md-divider></md-divider>
+                                        <h3>INDEMNITY & WAIVER:</h3>
+                                        <p> I undertake to participate in the above event entirely at my own risk. I agree that I shall have no claim whatsoever against the organisers,officials,marshals,helpers,sponsors,any local authority or any landowner or the employees or servants of any of the above parties for any loss,damage or injury whatsoever which I may suffer as a result of my participation in this event including my arrival thereat and departure there from and any ceremonies or functions thereof. In the event of my signing this form as a guardian of a minor, I hereby consent to such minor being bound by the waiver including to the extent to which he/she is not capeable of waiving his/her rights as stipulated above. The wearing of helmets in compulsary.</p>
+                                  </div>     
                                 </div>
-                                <div data-ng-show="error" class="text-danger">
-                                    <strong data-ng-bind="error"></strong>
-                                </div>
+                       
+                        <div layout="row" data-ng-hide="collapseConfirm">
+                                   <md-button type="submit" class="md-raised md-primary">Register</md-button>
+                         </div>       
+                        <div data-ng-show="error" class="text-danger">
+                            <strong data-ng-bind="error"></strong>
+                        </div>
+                                
                             </div>
                         </form>
+
+                        <div layout="row" flex layout-align="start center" data-ng-hide="collapseForm">
+                                <md-button data-ng-click="confirm(); calculateTotal()" class="md-raised md-warn">Proceed</md-button>
+                        </div>
+                        
+                        
+
+
                     </md-content>
                 </md-whiteframe>    
-        
-       </div>    
+                </div>
+         
         <div flex="15" class="bg-lgrey" hide-sm hide-md hide-lg></div>
 </div>
+
+
+ 

@@ -1,0 +1,184 @@
+<div flex layout="row" layout-fill data-ng-controller="PartnersController" > 
+
+
+    <div flex="15" class="bg-lgrey" hide-sm hide-md hide-lg></div>
+       <div flex layout="column" layout-wrap layout-fill>
+                <!-- ===========   Confirm State  ============ -->
+                
+                <!-- ===========   Confirm State  ============ -->
+
+                <md-whiteframe class="md-whiteframe-z1 dashboard-card-full " layout="column" data-ng-hide="collapseForm"> 
+                    <!-- Start wtih Form in here. -->
+                    <md-content class="md-padding">
+                        <form name="partnerForm" data-ng-submit="create()" flex layout-fill class="std-text">
+                            <div layout="column" layout-sm="column" layout-fill>
+                            
+                            <h2>Create a New Partner</h2>
+                                
+                                <div layout="row" layout-sm="column">
+                               
+                                    <md-input-container flex>
+                                        <label>Name</label>
+                                        <input type="text" required name="name" ng-model="partner.name" placeholder="Partner Name">
+                                        <div ng-messages="partnerForm.name.$error" class="error">
+                                          <div ng-message="required">This is required.</div>
+                                        </div>
+                                    </md-input-container>
+                                    
+                                </div>
+                                 <div layout="row" layout-sm="column">
+                               
+                                    <md-input-container flex>
+                                        <label>Partner Slogan</label>
+                                        <input type="text"  name="slogan" ng-model="partner.slogan" placeholder="Partner Slogan">
+                                        
+                                    </md-input-container>
+                                    
+                                </div>
+                                <div layout="row" flex layout-sm="column">
+                                    
+                                    <md-input-container flex>
+                                        <label>Provide a full Partner Description</label>
+                                        <textarea ng-model="partner.description" columns="1" md-maxlength="1500"></textarea>
+                                      </md-input-container>
+                                    
+                                </div>                        
+                                 
+                                <div layout="row" layout-sm="column">
+                               
+                                    <md-input-container flex>
+                                        <label>Address Line 1</label>
+                                        <input type="text" name="line1" ng-model="partner.address.line1" placeholder="Complex/Unit details">
+                                        
+                                    </md-input-container>
+                                    <md-input-container flex>
+                                        <label>Address Line 2</label>
+                                        <input type="text" name="line" ng-model="partner.address.line2" placeholder="Street/No/Area Details">
+                                        
+                                    </md-input-container>
+                                     <md-input-container flex>
+                                        <label>Town</label>
+                                        <input type="text" name="town" ng-model="partner.address.town" placeholder="Town/Area">
+                                        <!-- <div ng-messages="partnerForm.city.$error" class="error">
+                                          <div ng-message="required">This is required.</div>
+                                        </div> -->
+                                    </md-input-container>
+            
+                                    
+                                </div> 
+                                <div layout="row" layout-sm="column">
+                               
+                                    <md-input-container flex>
+                                        <label>City</label>
+                                        <input type="text" name="city" ng-model="partner.address.city" placeholder="City/Town">
+                                        
+                                    </md-input-container>
+                                    <md-input-container flex>
+                                        <label>Province</label>
+                                        <input type="text" name="province" ng-model="partner.address.province" placeholder="Province">
+                                        
+                                    </md-input-container>
+                                    <md-input-container flex>
+                                        <label>Code</label>
+                                        <input type="text" name="code" ng-model="partner.address.code" placeholder="Code">
+                                        
+                                    </md-input-container>
+                                    
+                                </div> 
+
+                                <div layout="row" layout-sm="column">
+                                <h4>Enter Contacts for Partner</h4>
+                                </div>
+                                <md-button class="mar-10 md-hue-2" layout="row" flex-sm="" data-ng-repeat="contact in contacts" >
+                                    <div flex layout="row" layout-align="start center">
+                                        <span>{{contact.name}}</span>
+                                    </div>
+                                    <div flex layout="row" layout-align="start center">
+                                        <span>{{contact.number}}</span>
+                                    </div>
+                                     <div flex layout="row" layout-align="start center">
+                                        <span>{{contact.email}}</span>
+                                    </div>
+                                    <div flex ng-click="removeContact(contact)" layout="row" layout-align="end center">
+                                        <ng-md-icon icon="close" size="30" ng-attr-style="fill: {{black}}"></ng-md-icon>
+                                    </div>
+                                </md-button>
+                                </div>
+
+                                <div layout="row" layout-sm="column">
+                                    
+                                    <md-input-container flex>
+                                        <label>Contact Name</label>
+                                        <input type="text"  name="distance" ng-model="contact.name"  placeholder="Contact Name">
+                                        
+                                    </md-input-container>
+                                    <md-input-container flex>
+                                        <label>Contact Number</label>
+                                        <input type="text"  name="racestart" ng-model="contact.number" placeholder="Contact Number">
+                                    </md-input-container>
+                                    <md-input-container flex>
+                                        <label>Contact Email</label>
+                                        <input type="text"  name="racestart" ng-model="contact.email" placeholder="Contact Email">
+                                    </md-input-container>
+                                    
+                                    
+                                </div> 
+                                <!-- repeat races -->
+                                <div layout="column" layout-sm="column">
+                                 
+
+                                <div layout="row" layout-sm="column" layout-margin>
+                                 <md-button class="md-warn md-raised md-hue-2" data-ng-click="pushContact()">Add Contact</md-button>
+                                </div>
+
+                                 <div layout="row" layout-sm="column" layout-margin>
+                                 <img ng-show="picFile[0].dataUrl != null" ng-src="{{picFile[0].dataUrl}}" ng-style="{'max-width' : '100%', 'height' : 'auto'}">
+                                </div>
+                                
+                                <div layout="row" layout-sm="column" layout-margin>
+                                 <input type="file" ng-file-select ng-model="picFile" name="file" accept="image/*" 
+                                       ng-file-change="generateThumb(picFile[0], $files)" required>
+                                </div>
+                                
+                                <div layout="row" layout-sm="column" layout-margin>
+                                    <!-- <div style="width:{{picFile[0].progress}}%" ng-bind="picFile[0].progress + '%'"></div> -->
+                                    <md-progress-linear class="md-warn" md-mode="buffer" value="{{picFile[0].progress}}" md-buffer-value="0">
+                                    </md-progress-linear>
+                                </div>
+                                
+                                <div layout="row" flex layout-align="start center" layout-margin>
+                                        <md-button data-ng-click="uploadPic(picFile)" class="md-raised md-warn">Create new Race</md-button>
+                                </div>
+                                <div data-ng-show="error" class="text-danger">
+                                    <strong data-ng-bind="error"></strong>
+                                </div>
+                            </div>
+                        </form>
+                    </md-content>
+                </md-whiteframe>    
+        
+       </div>    
+        <div flex="15" class="bg-lgrey" hide-sm hide-md hide-lg></div>
+</div>
+
+
+
+
+<!-- <form name="myForm">
+                    <fieldset><legend>Upload on form submit</legend>
+                        Username: <input type="text" name="userName" ng-model="username" size="39" required>
+                                    <i ng-show="myForm.userName.$error.required">*required</i><br>
+                        Profile Picture: <input type="file" ng-file-select ng-model="picFile" name="file" accept="image/*" 
+                                       ng-file-change="generateThumb(picFile[0], $files)" required>
+                                    <i ng-show="myForm.file.$error.required">*required</i>
+                        <br/>
+                        
+                        <button ng-disabled="!myForm.$valid" ng-click="uploadPic(picFile)">Submit</button>
+                        <img ng-show="picFile[0].dataUrl != null" ng-src="{{picFile[0].dataUrl}}" class="thumb">
+                        <span class="progress" ng-show="picFile[0].progress >= 0">                      
+                            <div style="width:{{picFile[0].progress}}%" ng-bind="picFile[0].progress + '%'"></div>
+                        </span> 
+                        <span ng-show="picFile[0].result">Upload Successful</span>
+                    </fieldset>
+                    <br/>
+                </form> -->

@@ -8,7 +8,7 @@ angular.module('rides').config(['$stateProvider',
 		state('rides', {
 			abstract: true,
 			url: '/rides',
-			template: '<ui-view/>'
+			template: '<section data-ui-view flex layout="row" layout-wrap></section>'
 		}).
 		state('rides.list', {
 			url: '',

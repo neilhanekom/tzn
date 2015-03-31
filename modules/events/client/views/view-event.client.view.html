@@ -1,0 +1,52 @@
+<div flex layout="row"  data-ng-controller="EventsController" data-ng-init="findOne()">
+	<div flex="15" class="bg-lgrey" hide-sm hide-md hide-lg></div>
+	       <div flex layout="column" layout-wrap layout-fill>
+	                <md-content flex>
+					    <md-card>
+					      <img src="{{event.imageUrl}}">
+					      <md-card-content>
+					        <h2>{{event.name}}</h2>
+					        <md-divider></md-divider>
+					        <br>
+					        <p>
+					          {{event.description}}
+					        </p>
+					        <ul class="setting-list">
+					        	<li><span><b>Date: </b>{{event.eventDate}}</span></li>
+					        	<li><span><b>Venue: </b>{{event.location.venue}}</span></li>
+					        	<li><span><b>Town: </b>{{event.location.town}}</span></li>
+					        	<li><span><b>Province: </b>{{event.location.province}}</span></li>
+					        	<li><span><b>Races: </b><span data-ng-repeat="dist in event.races">{{dist.distance + '/'}}</span></span></li>
+					        </ul>
+					        <md-button data-ui-sref="entries.create" class="md-accent md-raised md-hue-2" data-ng-hide="authentication.user">Enter This Race</md-button>
+					        <md-button data-ng-click="remove();" class="md-warn md-raised md-hue-2" data-ng-show="authentication.user">Delete</md-button>
+					      </md-card-content>
+					    </md-card>
+				    </md-content>
+	        		
+	       </div>    
+    <div flex="15" class="bg-lgrey" hide-sm hide-md hide-lg></div>
+</div>
+
+
+	<!-- <div class="page-header">
+		<h1 data-ng-bind="event.name"></h1>
+	</div>
+	<div class="pull-right" data-ng-show="authentication.user._id == event.user._id">
+		<a class="btn btn-primary" href="/#!/events/{{event._id}}/edit">
+			<i class="glyphicon glyphicon-edit"></i>
+		</a>
+		<a class="btn btn-primary" data-ng-click="remove();">
+			<i class="glyphicon glyphicon-trash"></i>
+		</a>
+	</div>
+	<small>
+		<em class="text-muted">
+			Posted on
+			<span data-ng-bind="event.created | date:'mediumDate'"></span>
+			by
+			<span data-ng-bind="event.user.displayName"></span>
+		</em>
+	</small> -->
+
+

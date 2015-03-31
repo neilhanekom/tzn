@@ -1,23 +1,139 @@
-<section data-ng-controller="EntriesController" data-ng-init="findOne()">
-    <div class="page-header">
-        <h1>Edit Entry</h1>
-    </div>
-    <div class="col-md-12">
-        <form class="form-horizontal" data-ng-submit="update()" novalidate>
-            <fieldset>
-                <div class="form-group">
-                    <label class="control-label" for="name">Name</label>
-                    <div class="controls">
-                        <input type="text" data-ng-model="entry.name" id="name" class="form-control" placeholder="Name" required>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <input type="submit" value="Update" class="btn btn-default">
-                </div>
-				<div data-ng-show="error" class="text-danger">
-					<strong data-ng-bind="error"></strong>
-				</div>
-            </fieldset>
-        </form>
-    </div>
-</section>
+<div flex layout="row" layout-fill data-ng-controller="EntriesController" data-ng-init="findOne()" >
+   
+        <div flex="15" class="bg-lgrey" hide-sm hide-md hide-lg></div>
+           <div  layout="column" layout-wrap layout-fill>
+               <div layout="row"  layout-padding>
+                         <h2>Confirm Entry</h2>
+                    
+                </div>   
+                <div layout="row"  layout-padding>
+                        <md-content layout-fill >
+                <md-list>
+                  <md-item >
+                    <md-item-content>
+                      <div class="md-tile-left">
+                         <!-- <md-button class="list-icon md-fab md-mini" ng-disabled="true" class="md-primary"><p>#</p></md-button> -->
+                      </div>
+                      <div class="md-tile-content" layout-fill layout="row">
+                      <div layout="row" layout-sm="column" flex>
+                          <div flex layout="row" layout-align="start center">
+                              <h3><b>Name</b></h3>
+                          </div>
+                          <div flex layout="row" layout-align="start center" hide-md hide-sm>
+                              <h3><b>Entry Date</b></h3>
+                          </div>
+                        <div flex layout="row" layout-align="start center">
+                              <h3><b>Gender</b></h3>
+                          </div>
+                         <div flex layout="row" layout-align="start center">
+                              <h3><b>Race</b></h3>
+                          </div>
+                          <div flex layout="row" layout-align="start center">
+                              <h3><b>Status</b></h3>
+                          </div>
+                           <div flex layout="row" layout-align="start center">
+                              <h3><b>Category</b></h3>
+                          </div>
+                          <div flex layout="row" layout-align="end center">
+                                <!-- <md-button class="" aria-label="View Entry">
+                                  <ng-md-icon icon="more_vert" size="20" ng-attr-style="fill: {{fill}}"></ng-md-icon>
+                                </md-button> -->
+                              
+                          </div>
+                      </div>
+                      
+                      <br>
+                        
+                      </div>
+                       
+                    </md-item-content>
+                    <md-divider></md-divider>
+                  </md-item>
+                  <md-item >
+                    <md-item-content>
+                      <div class="md-tile-left">
+                        <!--  <md-button class="list-icon md-fab md-mini" ng-disabled="true" class="md-primary"><p>#</p></md-button> -->
+                      </div>
+                      <div class="md-tile-content" layout-fill layout="row">
+                      <div layout="row" layout-sm="column" flex>
+                          <div flex layout="row" layout-align="start center">
+                              <h3>{{entry.firstName + ' ' + entry.lastName}}</h3>
+                          </div>
+                          <div flex layout="row" layout-align="start center" hide-md hide-sm>
+                              <h3>{{entry.created | Customdate }}</h3>
+                          </div>
+                        <div flex layout="row" layout-align="start center">
+                              <h3>{{entry.gender}}</h3>
+                          </div>
+                         <div flex layout="row" layout-align="start center">
+                              <h3>{{entry.race}}</h3>
+                          </div>
+                          <div flex layout="row" layout-align="start center">
+                              
+                              <ng-md-icon icon="check_circle" data-ng-if="entry.status == 'complete'" size="20" ng-attr-style="fill: {{success}}"></ng-md-icon>
+                              <ng-md-icon icon="cancel" data-ng-if="entry.status == 'unpaid'" size="20" ng-attr-style="fill: {{fail}}"></ng-md-icon>
+                          </div>
+                           <div flex layout="row" layout-align="start center">
+                              <h3>{{entry.age_cat}}</h3>
+                          </div>
+                          <div flex layout="row" layout-align="end center">
+                                <!-- <md-button class="" aria-label="View Entry">
+                                  <ng-md-icon icon="more_vert" size="20" ng-attr-style="fill: {{fill}}"></ng-md-icon>
+                                </md-button> -->
+                              
+                          </div>
+                      </div>
+                      
+                      <br>
+                        
+                      </div>
+                       
+                    </md-item-content>
+                    <md-divider></md-divider>
+                  </md-item>
+
+                </md-list>
+              </md-content>
+                    
+                </div>   
+               <div layout="row" flex layout-padding>
+                        <form name="entryForm" data-ng-submit="update()" flex layout-fill class="std-text">
+                            <div layout="column" layout-sm="column" layout-fill>
+                            <md-content>
+                           
+                                
+                                <div layout="row" layout-sm="column">
+                               
+                                    <h3>{{entry.status[0]}}</h3>
+
+                                    
+                                </div>
+                                <div layout="row" layout-sm="column">
+                                    <md-select placeholder="Select to Confirm or Unconfirm this Entry" ng-model="someVal">
+                                        <md-option value="confirm" data-ng-click="confirmEntry()">Confirm</md-option>
+                                        <md-option value="unpaid" data-ng-click="unconfirmEntry()">Unconfirm</md-option>
+                                      </md-select>
+                                      <br>
+                                </div>
+                                <div layout="row" layout-sm="column" class="mar-t-20">
+                                    <br>
+                                     <md-button type="submit" value="Update" class="md-raised md-accent">Update</md-button>
+                                     <!-- <md-button type="submit" class="md-raised md-primary">Register</md-button> -->
+                                    
+                                </div>
+                                
+                                 
+
+                                <div data-ng-show="error" class="text-danger">
+                                    <strong data-ng-bind="error"></strong>
+                                </div>
+                            </div>
+                        </form>
+                    
+                </div>    
+           </div>
+        <div flex="15" class="bg-lgrey" hide-sm hide-md hide-lg></div>
+    
+      
+
+</div>

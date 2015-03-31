@@ -1,167 +1,108 @@
 'use strict';
- 
-angular.module('core').controller('HomeController', ['$scope', 'Authentication', '$mdSidenav', '$mdBottomSheet', '$log',
-    function($scope, Authentication, $mdSidenav, $mdBottomSheet, $log) {
-        // This provides Authentication context.
-        $scope.authentication = Authentication;
- 
- 
-        /**
-         * Main Controller for the Angular Material Starter App
-         * @param $scope
-         * @param $mdSidenav
-         * @param avatarsService
-         * @constructor
-         */
- 
- 
-        // Load all registered users
- 
-        // usersService
-        //     .loadAll()
-        //     .then( function( users ) {
-        //         self.users    = [].concat(users);
-        //         self.selected = users[0];
-        //     });
- 
-        // *********************************
-        // Internal methods
-        // *********************************
- 
-        /**
-         * Hide or Show the 'left' sideNav area
-         */
-        function toggleUsersList() {
+
+angular.module('core').controller('HomeController', ['$scope', '$http', 'Authentication', '$interval', '$mdSidenav', 'Advertisements', 'Partners',
+	function($scope,  $http, Authentication, $interval, $mdSidenav, Advertisements, Partners) {
+		// This provides Authentication context.
+		$scope.authentication = Authentication;
+		$scope.partners = Partners.query();
+		console.log($scope.partners);
+		$scope.advertisements = Advertisements.query();
+		console.log($scope.advertisements);
+
+
+		$scope.hoganCompile = function() {
+			var request = { compile: 'true' };
+			$http.post('/api/entries/compile', request).success(function(response) {
+				// If successful we assign the response to the global user model
+				$scope.compile = response;
+
+				// And redirect to the index page
+				
+			}).error(function(response) {
+				$scope.error = response.message;
+			});
+		};
+
+		$scope.signup = function() {
+			$http.post('/api/auth/signup', $scope.credentials).success(function(response) {
+				// If successful we assign the response to the global user model
+				$scope.authentication.user = response;
+
+				// And redirect to the index page
+				$location.path('/');
+			}).error(function(response) {
+				$scope.error = response.message;
+			});
+		};
+
+		$scope.toggleLeft = function() {
             $mdSidenav('left').toggle();
-        }
- 
-        /**
-         * Select the current avatars
-         * @param menuId
-         */
-        function selectUser ( user ) {
-            self.selected = angular.isNumber(user) ? $scope.users[user] : user;
-            self.toggleList();
-        }
- 
-        /**
-         * Show the bottom sheet
-         */
-        function share($event) {
-            var user = self.selected;
- 
-            /**
-             * Bottom Sheet controller for the Avatar Actions
-             */
-            function UserSheetController( $mdBottomSheet ) {
-                this.user = user;
-                this.items = [
-                    { name: 'Phone'       , icon: 'phone'       },
-                    { name: 'Twitter'     , icon: 'twitter'     },
-                    { name: 'Google+'     , icon: 'google_plus' },
-                    { name: 'Hangout'     , icon: 'hangouts'    }
-                ];
-                this.performAction = function(action) {
-                    $mdBottomSheet.hide(action);
-                };
-            }
- 
-            $mdBottomSheet.show({
-                parent: angular.element(document.getElementById('content')),
-                templateUrl: 'modules/core/views/contactSheet.html',
-                controller: [ '$mdBottomSheet', UserSheetController],
-                controllerAs: 'vm',
-                bindToController : true,
-                targetEvent: $event
-            }).then(function(clickedItem) {
-                $log.debug( clickedItem.name + ' clicked!');
-            });
- 
- 
-        }
- 
-        var self = this;
- 
-        self.selected     = null;
-        self.users        = [ ];
-        self.selectUser   = selectUser;
-        self.toggleList   = toggleUsersList;
-        self.share        = share;
- 
-    }
-]);
+        };
 
 
+        $scope.collapseProfile = true;
+		$scope.toggleProfile = function() {
+			$scope.collapseProfile = !$scope.collapseProfile;
 
-// 'use strict';
+		};
 
-// angular.module('core').controller('HomeController', ['$scope', 'Authentication', '$interval', '$mdSidenav',
-// 	function($scope, Authentication, $interval, $mdSidenav) {
-// 		// This provides Authentication context.
-// 		$scope.authentication = Authentication;
+		
+		$scope.curAd = [
+			{ title: '', description: '', imageUrl: 'modules/core/img/brand/cover.png'}
+		];
+		$scope.curArt = [];
 
-// 		$scope.toggleLeft = function() {
-//             $mdSidenav('left').toggle();
-//         };
+		$scope.advertisements = Advertisements.query();
+		$scope.articles = [
+			// {'heading' : 'Magoebaskloof Classic', 'body' : 'Tzaneen Cycling presents the Magoebaskloof Classic Race', 'background' : 'modules/core/img/bg/cycle1.jpg'},
+			// {'heading' : 'This is the 2nd Heading', 'body' : 'This is the second body', 'background' : 'modules/core/img/bg/cycle2.jpg'},
+			// {'heading' : 'This is the 3rd Heading', 'body' : 'This is the third body', 'background' : 'modules/core/img/bg/cycle3.jpg'}
+		];
 
-
-//         $scope.collapseProfile = true;
-// 		$scope.toggleProfile = function() {
-// 			$scope.collapseProfile = !$scope.collapseProfile;
-
-// 		};
-
-// 		$scope.curArt = [];
-
-// 		$scope.articles = [
-// 			{'heading' : 'Magoebaskloof Classic', 'body' : 'Tzaneen Cycling presents the Magoebaskloof Classic Race', 'background' : 'modules/core/img/bg/cycle1.jpg'},
-// 			{'heading' : 'This is the 2nd Heading', 'body' : 'This is the second body', 'background' : 'modules/core/img/bg/cycle2.jpg'},
-// 			{'heading' : 'This is the 3rd Heading', 'body' : 'This is the third body', 'background' : 'modules/core/img/bg/cycle3.jpg'}
-// 		];
-
-// 		$scope.startArticles = function() {
-// 			var total = $scope.curArt.length;
-// 			var index = 0;
-// 			if (total === 0) {
-// 				$scope.curArt.splice(0, total, $scope.articles[index]);
-// 			} 
+		$scope.startArticles = function() {
+			var total = $scope.curAd.length;
+			var index = 0;
+			if (total === 0) {
+				$scope.curAd.splice(0, total, $scope.advertisements[index]);
+				
+			} 
 			
-// 		var start = $interval(function() {
-// 				//binne in die interval moet ons n check of ons nog onder die totaal is en as ons is gaan voort as ons nie is nie reset die index na 0
-// 				var newArt = $scope.articles[index];
-// 				var totalArts = $scope.articles.length;
-// 				if (newArt === undefined) {
-// 					index = 0;
-// 	            	$scope.curArt.splice(0, totalArts, $scope.articles[index]);
-// 	            	index++;
-// 				} else {
-// 	            	$scope.curArt.splice(0, totalArts, $scope.articles[index]);
-// 	            	index++;
-// 				}	
-//        		}, 5000);
+		var start = $interval(function() {
+				//binne in die interval moet ons n check of ons nog onder die totaal is en as ons is gaan voort as ons nie is nie reset die index na 0
+				var newAd = $scope.advertisements[index];
+				var totalAds = $scope.advertisements.length;
+				if (newAd === undefined) {
+					index = 0;
+	            	$scope.curAd.splice(0, totalAds, $scope.advertisements[index]);
+	            	index++;
+				} else {
+	            	$scope.curAd.splice(0, totalAds, $scope.advertisements[index]);
+	            	index++;
+				}	
+       		}, 5000);
 
-// 		$scope.stop = function() {
-// 				$interval.cancel(start);
-// 		};
+		$scope.stop = function() {
+				$interval.cancel(start);
+		};
 
-// 		$scope.$on('$destroy', function() {
-// 				$scope.stop();
-// 		});
+		$scope.$on('$destroy', function() {
+				$scope.stop();
+		});
        			
-// 		};
+		};
 
 		
 
 		
 
-// 		 // stop = $interval(function($scope) {
+		 // stop = $interval(function($scope) {
             
-//    //        }, 100);
+   //        }, 100);
 
-// 		 // $scope.$on('$destroy', function() {
-//    //        // Make sure that the interval is destroyed too
-//    //        $scope.stopFight();
-//    //      });
+		 // $scope.$on('$destroy', function() {
+   //        // Make sure that the interval is destroyed too
+   //        $scope.stopFight();
+   //      });
 
-// 	}
-// ]);
+	}
+]);

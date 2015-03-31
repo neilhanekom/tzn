@@ -15,6 +15,10 @@ var validateLocalStrategyProperty = function(property) {
  * Entry Schema
  */
 var EntrySchema = new Schema({
+	event: {
+		type: Schema.ObjectId,
+		ref: 'Event'
+	},
 	title: {
 		type: String,
 		trim: true
@@ -59,7 +63,7 @@ var EntrySchema = new Schema({
 			trim: true
 		},
 		code: {
-			type: Number
+			type: String
 		}
 	},
 	emergency: {

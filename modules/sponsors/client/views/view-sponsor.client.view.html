@@ -1,4 +1,26 @@
-<section data-ng-controller="SponsorsController" data-ng-init="findOne()">
+<div flex layout="row"  data-ng-controller="SponsorsController" data-ng-init="findOne()">
+	<div flex="15" class="bg-lgrey" hide-sm hide-md hide-lg></div>
+	       <div flex layout="column" layout-wrap layout-fill>
+	                
+				    <md-content flex>
+				    <md-card>
+				      <img data-ng-src="{{sponsor.imageUrl}}" alt="{{partner.name}}" class="bg-lgrey">
+
+				      <md-card-content>
+				        <h2 class="md-title">{{sponsor.name}}</h2>
+				        
+				        
+					     <md-button data-ng-click="remove();" class="md-warn md-raised md-hue-2" data-ng-show="authentication.user">Delete</md-button>  
+				      </md-card-content>
+				    </md-card>
+				  </md-content>
+				
+	        		
+	       </div>    
+    <div flex="15" class="bg-lgrey" hide-sm hide-md hide-lg></div>
+</div>
+
+<!-- <section data-ng-controller="SponsorsController" data-ng-init="findOne()">
 	<div class="page-header">
 		<h1 data-ng-bind="sponsor.name"></h1>
 	</div>
@@ -18,4 +40,4 @@
 			<span data-ng-bind="sponsor.user.displayName"></span>
 		</em>
 	</small>
-</section>
+</section> -->

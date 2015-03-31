@@ -1,64 +1,38 @@
-<div flex layout="row" data-ng-controller="HomeController as ul">
- 
-    <!-- Container #3 Left -->
-    <md-sidenav md-is-locked-open="$mdMedia('gt-sm')" md-component-id="left" class="md-whiteframe-z2">
-        <md-list>
-            <md-item ng-repeat="it in ul.users">
-                <md-button ng-click="ul.selectUser(it)" ng-class="{'selected' : it === ul.selected }">
-                    <md-icon md-svg-icon="{{it.avatar}}" class="avatar"></md-icon>
-                    {{it.name}}
-                </md-button>
-            </md-item>
-        </md-list>
-    </md-sidenav>
- 
-    <!-- Container #4 Right -->
-    <md-content flex id="content">
-        <!-- User details sample -->
-        <md-icon md-svg-icon="{{ul.selected.avatar}}" class="avatar"></md-icon>
-        <h2>{{ul.selected.name}}</h2>
-        <p>{{ul.selected.content}}</p>
- 
-        <md-button class="share" md-no-ink ng-click="ul.share($event)" aria-label="Share">
-            <md-icon md-svg-icon="share" ></md-icon>
-        </md-button>
-    </md-content>
-</div>
 
+<div layout="row" flex layout-wrap >
 
-<!-- 
-<div layout="row" flex layout-wrap data-ng-controller="HomeController" data-ng-init="startArticles()">
-
-<md-sidenav md-is-locked-open="$mdMedia('gt-sm')" md-component-id="left" class="md-whiteframe-z2">
-        <h1>Neil</h1>
-</md-sidenav>
-
-
-
-	<div layout="row" flex="100">
+	<div layout="row" flex="100" data-ng-controller="HomeController" data-ng-init="startArticles(); hoganCompile()">
 		
 	<div flex layout="row" layout-wrap layout-align="start">
 		<div flex>	
-			<div layout="column" flex data-ng-repeat="ad in curArt" layout-fill class="ad-area">
-		    	<div  class="ad-image" flex layout="column" layout-fill  layout-align="start start" ng-style="{'background-image' : 'url({{ad.background}})'}">
+			<div layout="column" flex data-ng-repeat="ad in curAd" layout-fill class="ad-area">
+		    	<div  class="ad-image" flex layout="column" layout-fill  layout-align="start start" ng-style="{'background-image' : 'url({{ad.imageUrl}})'}">
 		    					
-								<div flex class="pad-r-10"  layout="row" layout-align="start start" layout-fill>
+								<div flex  class="pad-r-10"  layout="column" layout-align="start start" >
 									
 								</div>
-								<div class="bg-alpha" layout="row" layout-fill layout-wrap layout-padding>
-									<div flex-sm="100" flex-gt-sm="50" layout-fill ng-style="{'padding': '20px'}">
-										<h2 class="txt-white">{{ad.heading}}</h2>
-										<span class="txt-white">{{ad.body}} </span>
-										<br>
-										<span class="txt-white"><b>Date: </b> 25 February 2015</span>
-										<br>
-										<span class="txt-white"><b>Venue: </b> Merensky High School, Tzaneen </span>
-										<br>
-										<span class="txt-white"><b>Distances: </b>30/40/75 </span>
-
+								<div class="bg-alpha" layout="row" layout-fill flex="20">
+									<div flex flex-md="65" layout="column"  ng-style="{'padding-left': '20px'}">
+										<ul class="setting-list">
+	                                        <li><h1 class="txt-white">{{ad.title}}</h1></li>
+	                                        <li class="mar-b-5"><span class="txt-white">{{ad.description}} </span></li>
+	                                        <li data-ng-repeat="spec in ad.specifications"><span class="txt-white" ><b>{{spec.key + ':' + ' '}}</b> {{spec.value}}</span></li>
+	                                        <li>
+	                                        	<div layout="row" class="mar-t-5" ng-show="ad.type">
+		                                    		<md-button class="md-warn md-raised"> View </md-button>
+		                                    	</div>
+	                                        </li>  
+                                    	</ul>
 									</div>
-									<div class="pad-r-20" flex-sm="100" flex-gt-sm="50"  layout="row" layout-fill  layout-align-sm="start start" layout-align="end center" md-padding>
-									<md-button class="md-warn md-raised md-hue-2">View This Event</md-button>
+									<div  flex-md="35"  layout="column"  layout-align="end end"  layout-padding>
+										
+                                    	<div layout="row" layout-sm="column" layout-align="center end" class="sponsor-section">
+                                    		<div data-ng-repeat="sponsor in ad.sponsors" layout-margin>
+                                    			<img data-ng-src="{{sponsor.imageUrl}}" class="thumb-sponsor" alt="{{sponsor.name}}">
+                                    		</div>
+                                    		
+                                    	</div>
+                                    	
 									</div>
 								</div>
 
@@ -73,8 +47,11 @@
 	<div layout="row" flex="100">
 		
 		
-		<div class="bg-lgrey" flex layout="row" layout-wrap layout-align="center start" layout-padding>
-				<h3>The Sponsor Section comes right here</h3>
+		<div class="bg-lgrey" flex layout="column" layout-wrap layout-align="center center" layout-padding>
+				<div flex layout="row">
+					<h3>Site Partner Logo comes here</h3>
+				</div>
+				
 		</div>
 		
 		
@@ -83,45 +60,52 @@
 
 	<div layout="row" flex="100">
 		<div flex="10" hide-lg hide-sm hide-md></div>
-		<md-content>
+		
 		<div flex layout="row" layout-wrap layout-align="center start" layout-padding>
+		<md-content layout-padding>
 				<h1>Welcome to Tzaneen Cycling Club</h1>
 				<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
 				Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions.
 				</p>
+		</md-content>		
 		</div>
+		<br>
 		<md-divider></md-divider>
-		</md-content>
+		
 		<div flex="10" hide-lg hide-sm hide-md></div>
 	</div>
 
 	<div layout="row" flex="100">
 		<div flex="10" hide-lg hide-sm hide-md></div>
-		<md-content>
-		<div flex layout="row" layout-wrap layout-align="center start">
-				<h1>Our Sponsors</h1>
-				<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-		</div>
 		
-		</md-content>
+		<div flex layout="row" layout-wrap layout-align="center start" layout-padding>
+		<md-content layout-padding>
+				<h1>More about what we do</h1>
+				<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+				Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions.
+				</p>
+		</md-content>		
+		</div>
+		<br>
+		<md-divider></md-divider>
+		
 		<div flex="10" hide-lg hide-sm hide-md></div>
 	</div>
-</div>
+	<div layout="row" flex="100">
+		<div flex="10" hide-lg hide-sm hide-md></div>
+		
+		<div flex layout="row" layout-wrap layout-align="center start" layout-padding>
+		<md-content layout-padding>
+				<h1>Anything else we would like to mention</h1>
+				<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+				Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions.
+				</p>
+		</md-content>		
+		</div>
+		<br>
+		<md-divider></md-divider>
+		
+		<div flex="10" hide-lg hide-sm hide-md></div>
+	</div>
 
-
-				<!-- <md-whiteframe class="md-whiteframe-z1 dashboard-card-full " layout="column" layout-margin>	
-				<div data-ng-repeat="article in curArt">
-				<h1>{{article.heading}}</h1>
-        		<p>{{article.body}}</p>
-				</div>
-				
-				<md-button class="md-fab"  aria-label="Comment" ng-style="{'background-color':'#9E9E9E'}" ng-click="startArticles()">
-            		<span class="white large-text">Start</span>
-        		</md-button>
-
-        		<md-button class="md-fab"  aria-label="Comment" ng-style="{'background-color':'#9E9E9E'}" ng-click="stop()">
-            		<span class="white large-text">Stop</span>
-        		</md-button>
-
-				</md-whiteframe>
-		</div> --> 
+	

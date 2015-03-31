@@ -1,0 +1,176 @@
+<div flex layout="row" layout-fill data-ng-controller="EventsController" > 
+
+<!-- ================== Confirmation section ================== -->
+<!-- <div layout="row" class="overlay bg-alpha" data-ng-hide="collapseConfirm">
+       <div flex="15"  hide-sm hide-md hide-lg></div>      
+           <div flex layout="column" layout-wrap layout-fill>
+                <h1>Testing</h1>
+           </div>
+       <div flex="15"  hide-sm hide-md hide-lg></div>       
+</div>
+ -->
+
+
+<!-- ============================ end of confirmation =============== -->
+
+
+    <div flex="15" class="bg-lgrey" hide-sm hide-md hide-lg></div>
+       <div flex layout="column" layout-wrap layout-fill>
+                <!-- ===========   Confirm State  ============ -->
+                
+                <!-- ===========   Confirm State  ============ -->
+
+                <md-whiteframe class="md-whiteframe-z1 dashboard-card-full " layout="column" data-ng-hide="collapseForm"> 
+                    <!-- Start wtih Form in here. -->
+                    <md-content class="md-padding">
+                        <form name="eventsForm" data-ng-submit="create()" flex layout-fill class="std-text">
+                            <div layout="column" layout-sm="column" layout-fill>
+                            
+                            <h2>Create a New Event</h2>
+                                
+                                <div layout="row" layout-sm="column">
+                               
+                                    <md-input-container flex>
+                                        <label>Name</label>
+                                        <input type="text" required name="name" ng-model="event.name" placeholder="Event Name">
+                                        <div ng-messages="eventsForm.name.$error" class="error">
+                                          <div ng-message="required">This is required.</div>
+                                        </div>
+                                    </md-input-container>
+                                    
+                                </div>
+                                <!-- <div layout="row" layout-sm="column">
+                                <h4>Provide Event Information</h4>
+                                </div> -->
+                                <div layout="row" flex layout-sm="column">
+                                    
+                                    <md-input-container flex>
+                                        <label>Provie a full Event Description</label>
+                                        <textarea ng-model="event.description" columns="1" md-maxlength="1500"></textarea>
+                                      </md-input-container>
+                                    
+                                </div>                        
+                                 <div layout="row" layout-sm="column">
+                                    <div flex="30">
+                                        <md-input-container flex>
+                                      <label>Enter Event Date</label>
+                                      <input type="date" ng-model="event.eventDate">
+                                    </md-input-container>
+                                    </div>
+                                    
+                                </div>
+                                <div layout="row" layout-sm="column">
+                               
+                                    <md-input-container flex>
+                                        <label>Venue</label>
+                                        <input type="text" required name="venue" ng-model="event.location.venue" placeholder="Venue">
+                                        <div ng-messages="eventsForm.venue.$error" class="error">
+                                          <div ng-message="required">This is required.</div>
+                                        </div>
+                                    </md-input-container>
+                                    <md-input-container flex>
+                                        <label>City</label>
+                                        <input type="text" required name="city" ng-model="event.location.town" placeholder="City/Town">
+                                        <!-- <div ng-messages="eventsForm.city.$error" class="error">
+                                          <div ng-message="required">This is required.</div>
+                                        </div> -->
+                                    </md-input-container>
+                                    <md-input-container flex>
+                                        <label>Province</label>
+                                        <input type="text" required name="province" ng-model="event.location.province" placeholder="Province">
+                                        <!-- <div ng-messages="eventsForm.city.$error" class="error">
+                                          <div ng-message="required">This is required.</div>
+                                        </div> -->
+                                    </md-input-container>
+                                    
+                                </div> 
+
+                                <div layout="row" layout-sm="column">
+                                <h4>Enter Races for event</h4>
+                                </div>
+                                <md-button class="md-accent md-raised mar-10 md-hue-2" layout="row" flex-sm="" data-ng-repeat="race in races" >
+                                    <div flex layout="row" layout-align="start center">
+                                        <span>{{race.distance}}</span>
+                                    </div>
+                                    <div flex layout="row" layout-align="start center">
+                                        <span>{{race.time}}</span>
+                                    </div>
+                                    <div flex ng-click="removeRace(race)" layout="row" layout-align="end center">
+                                        <ng-md-icon icon="close" size="30" ng-attr-style="fill: {{white}}"></ng-md-icon>
+                                    </div>
+                                </md-button>
+                                </div>
+
+                                <div layout="row" layout-sm="column">
+                                    
+                                    <md-input-container flex>
+                                        <label>Race Distance</label>
+                                        <input type="text"  name="distance" ng-model="distance"  placeholder="Enter a races Distance">
+                                        
+                                    </md-input-container>
+                                    <md-input-container flex>
+                                        <label>Start Time</label>
+                                        <input type="text"  name="racestart" ng-model="time" placeholder="Enter a Race start time">
+                                    </md-input-container>
+                                    
+                                    
+                                </div> 
+                                <!-- repeat races -->
+                                <div layout="column" layout-sm="column">
+                                 
+
+                                <div layout="row" layout-sm="column" layout-margin>
+                                 <md-button class="md-warn md-raised md-hue-2" data-ng-click="pushRace()">Add Race</md-button>
+                                </div>
+
+                                 <div layout="row" layout-sm="column" layout-margin>
+                                 <img ng-show="picFile[0].dataUrl != null" ng-src="{{picFile[0].dataUrl}}" ng-style="{'max-width' : '100%', 'height' : 'auto'}">
+                                </div>
+                                
+                                <div layout="row" layout-sm="column" layout-margin>
+                                 <input type="file" ng-file-select ng-model="picFile" name="file" accept="image/*" 
+                                       ng-file-change="generateThumb(picFile[0], $files)" required>
+                                </div>
+                                
+                                <div layout="row" layout-sm="column" layout-margin>
+                                    <!-- <div style="width:{{picFile[0].progress}}%" ng-bind="picFile[0].progress + '%'"></div> -->
+                                    <md-progress-linear class="md-warn" md-mode="buffer" value="{{picFile[0].progress}}" md-buffer-value="0">
+                                    </md-progress-linear>
+                                </div>
+                                
+                                <div layout="row" flex layout-align="start center" layout-margin>
+                                        <md-button data-ng-click="uploadPic(picFile)" class="md-raised md-warn">Create new Race</md-button>
+                                </div>
+                                <div data-ng-show="error" class="text-danger">
+                                    <strong data-ng-bind="error"></strong>
+                                </div>
+                            </div>
+                        </form>
+                    </md-content>
+                </md-whiteframe>    
+        
+       </div>    
+        <div flex="15" class="bg-lgrey" hide-sm hide-md hide-lg></div>
+</div>
+
+
+
+
+<!-- <form name="myForm">
+                    <fieldset><legend>Upload on form submit</legend>
+                        Username: <input type="text" name="userName" ng-model="username" size="39" required>
+                                    <i ng-show="myForm.userName.$error.required">*required</i><br>
+                        Profile Picture: <input type="file" ng-file-select ng-model="picFile" name="file" accept="image/*" 
+                                       ng-file-change="generateThumb(picFile[0], $files)" required>
+                                    <i ng-show="myForm.file.$error.required">*required</i>
+                        <br/>
+                        
+                        <button ng-disabled="!myForm.$valid" ng-click="uploadPic(picFile)">Submit</button>
+                        <img ng-show="picFile[0].dataUrl != null" ng-src="{{picFile[0].dataUrl}}" class="thumb">
+                        <span class="progress" ng-show="picFile[0].progress >= 0">                      
+                            <div style="width:{{picFile[0].progress}}%" ng-bind="picFile[0].progress + '%'"></div>
+                        </span> 
+                        <span ng-show="picFile[0].result">Upload Successful</span>
+                    </fieldset>
+                    <br/>
+                </form> -->

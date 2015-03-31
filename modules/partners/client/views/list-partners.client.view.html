@@ -1,0 +1,88 @@
+<div flex layout="row" class="bg-gen"  data-ng-controller="PartnersController" data-ng-init="find()"> 
+
+    <div flex="15"  hide-sm hide-md hide-lg></div>
+       <div flex layout="row" layout-wrap class="bg-gen">
+                    <!-- New Row -->
+                   <!--  <md-whiteframe class="bg-white mar-t-b-5 md-whiteframe-z1" layout="row" flex data-ng-repeat="partner in partners"> -->
+                   <div class="min-h-350" layout="row" flex-gt-md="30" flex-md="50" flex-sm="100" data-ng-repeat="partner in partners">
+
+
+                       
+                            <md-content flex>
+                                <md-card >
+                                    <img data-ng-src="{{partner.imageUrl}}" alt="{{partner.name}}" >
+                                <md-card-content >
+                                    <h2 class="md-title">{{partner.name}}</h2>
+                                    <p class="md-body-1">{{partner.slogan}}</p>
+
+                                    <div layout="column"  layout-align="start start" >
+                                    <md-button data-ng-href="/#!/partners/{{partner._id}}" class="md-accent left" layout="row" layout-align="center center">
+                                        <ng-md-icon icon="local_library" size="20" ng-attr-style="fill: {{blue}}"></ng-md-icon><span class="mar-l-5"> View {{partner.name}}</span>
+                                    </md-button>
+                                    
+                                </div>
+                                </md-card-content>
+                                </md-card>
+                            </md-content>
+                       
+                       
+
+                   </div>
+
+                    
+                  <!--   <div flex-gt-md="25" hide-sm hide-md hide-lg  layout="column"  layout-align="start start">
+                        
+                            
+                                <div layout="row" >
+                                        <md-content   layout="row">
+                                        <div flex="70">
+                                            <h3 class="txt-normal">{{event.name}}</h3>
+                                         </div>
+                                        <div flex="30" layout="row" layout-align="center center" layout-padding>
+                                        <md-button class="md-raised md-warn">Enter!</md-button>
+                                        </div>
+                                
+                                        <md-divider></md-divider>
+                                
+                                        </md-content> 
+                                </div> 
+                                
+                                <div class="pad-r-10" layout="row"  >
+                                    <md-content flex >
+                                    <br>
+                                    <span class="txt-inherit">{{event.description}}</span>
+                                    <br>
+                                    </md-content>
+                                </div> 
+                                <div layout="row" flex >
+                                   <ul class="setting-list">
+                                        <br>
+                                        <li><span><b>Date: </b> {{event.eventDate}}</span></li>
+                                        <li><span><b>Location: </b> <span>{{event.location.venue + ' ' + event.location.town + ' ' + event.location.province}}</span></span></li>
+                                        <li>
+                                        <div layout="column" flex>
+                                            <span><b>Races/Times: </b></span>
+
+                                            <span data-ng-repeat="race in event.races"><ng-md-icon icon="directions_bike" size="14" ng-attr-style="fill: {{fill}}"></ng-md-icon> {{race.distance }} &nbsp<b><ng-md-icon icon="schedule" size="14" ng-attr-style="fill: {{fill}}"></ng-md-icon></b>  {{race.time}}</span>
+                                        </div>
+                                         
+                                        </li>
+                                       
+                                    </ul>
+                                </div>
+                                
+                                <div layout="column"  layout-align="start start" layout-padding>
+                                    <md-button data-ng-href="/#!/events/{{event._id}}" class="md-accent left" layout="row" layout-align="center center">
+                                        <ng-md-icon icon="local_library" size="20" ng-attr-style="fill: {{blue}}"></ng-md-icon><span class="mar-l-5"> Read More!</span>
+                                    </md-button>
+                                    
+                                </div>
+                    </div> -->
+                    
+                        
+                    
+                    
+                   
+                </div>    
+        <div flex="15"  hide-sm hide-md hide-lg></div>
+</div>

@@ -17,13 +17,20 @@ var ArticleSchema = new Schema({
 	title: {
 		type: String,
 		default: '',
-		trim: true,
-		required: 'Title cannot be blank'
+		trim: true
 	},
-	content: {
+	sub: {
+		type: String,
+		
+	},
+	body: {
 		type: String,
 		default: '',
 		trim: true
+	},
+	imageUrl: {
+		type: String,
+		default: 'modules/articles/img/uploads/default.jpg'
 	},
 	user: {
 		type: Schema.ObjectId,

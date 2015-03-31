@@ -1,0 +1,19 @@
+'use strict';
+
+module.exports = function(app) {
+	var advertisements = require('../controllers/advertisements.server.controller');
+	var advertisementsPolicy = require('../policies/advertisements.server.policy');
+
+	// Advertisements Routes
+	app.route('/api/advertisements').all()
+		.get(advertisements.list).all(advertisementsPolicy.isAllowed)
+		.post(advertisements.create);
+
+	app.route('/api/advertisements/:advertisementId').all(advertisementsPolicy.isAllowed)
+		.get(advertisements.read)
+		.put(advertisements.update)
+		.delete(advertisements.delete);
+
+	// Finish by binding the Advertisement middleware
+	app.param('advertisementId', advertisements.advertisementByID);
+};

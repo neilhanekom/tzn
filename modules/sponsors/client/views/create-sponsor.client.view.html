@@ -1,23 +1,61 @@
-<section data-ng-controller="SponsorsController">
-    <div class="page-header">
-        <h1>New Sponsor</h1>
-    </div>
-    <div class="col-md-12">
-        <form class="form-horizontal" data-ng-submit="create()" novalidate>
-            <fieldset>
-                <div class="form-group">
-                    <label class="control-label" for="name">Name</label>
-                    <div class="controls">
-                        <input type="text" data-ng-model="name" id="name" class="form-control" placeholder="Name" required>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <input type="submit" class="btn btn-default">
-                </div>
-				<div data-ng-show="error" class="text-danger">
-					<strong data-ng-bind="error"></strong>
-				</div>
-            </fieldset>
-        </form>
-    </div>
-</section>
+<div flex layout="row" layout-fill data-ng-controller="SponsorsController" > 
+    <div flex="15" class="bg-lgrey" hide-sm hide-md hide-lg></div>
+       <div flex layout="column" layout-wrap layout-fill>
+                <!-- ===========   Confirm State  ============ -->
+                
+                <!-- ===========   Confirm State  ============ -->
+
+                <md-whiteframe class="md-whiteframe-z1 dashboard-card-full " layout="column" data-ng-hide="collapseForm"> 
+                    <!-- Start wtih Form in here. -->
+                    <md-content class="md-padding">
+                        <form name="sponsorForm" data-ng-submit="create()" flex layout-fill class="std-text">
+                            <div layout="column" layout-sm="column" layout-fill>
+                            
+                            <h2>Create a New Sponsor</h2>
+                                
+                                <div layout="row" layout-sm="column">
+                               
+                                    <md-input-container flex>
+                                        <label>Name</label>
+                                        <input type="text" required name="Name" ng-model="sponsor.name" placeholder="Sponsor Name">
+                                        <div ng-messages="sponsorForm.Name.$error" class="error">
+                                          <div ng-message="required">This is required.</div>
+                                        </div>
+                                    </md-input-container>
+                                    
+                                </div>
+                                
+                                
+                                 <div layout="row" layout-sm="column" layout-margin>
+                                 <img ng-show="picFile[0].dataUrl != null" ng-src="{{picFile[0].dataUrl}}" ng-style="{'max-width' : '100%', 'height' : 'auto'}">
+                                </div>
+                                
+                                <div layout="row" layout-sm="column" layout-margin>
+                                 <input type="file" ng-file-select ng-model="picFile" name="file" accept="image/*" 
+                                       ng-file-change="generateThumb(picFile[0], $files)" required>
+                                </div>
+                                
+                                <div layout="row" layout-sm="column" layout-margin>
+                                    <!-- <div style="width:{{picFile[0].progress}}%" ng-bind="picFile[0].progress + '%'"></div> -->
+                                    <md-progress-linear class="md-warn" md-mode="buffer" value="{{picFile[0].progress}}" md-buffer-value="0">
+                                    </md-progress-linear>
+                                </div>
+                                
+                                <div layout="row" flex layout-align="start center" layout-margin>
+                                        <md-button data-ng-click="uploadPic(picFile)" class="md-raised md-warn">Create Sponsor</md-button>
+                                </div>
+                                <div data-ng-show="error" class="text-danger">
+                                    <strong data-ng-bind="error"></strong>
+                                </div>
+                            </div>
+                        </form>
+                    </md-content>
+                </md-whiteframe>    
+        
+       </div>    
+        <div flex="15" class="bg-lgrey" hide-sm hide-md hide-lg></div>
+</div>
+
+
+
+

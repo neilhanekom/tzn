@@ -6,7 +6,7 @@ module.exports = {
 			css: [
 				'public/lib/bootstrap/dist/css/bootstrap.css',
 				'public/lib/bootstrap/dist/css/bootstrap-theme.css',
-				'public/lib/angular-material/angular-material.css',
+				'public/lib/angular-material/angular-material.css'
 				
 			],
 			js: [
@@ -19,9 +19,13 @@ module.exports = {
 				'public/lib/angular-ui-utils/ui-utils.js',
 				'public/lib/angular-bootstrap/ui-bootstrap-tpls.js',
 				'public/lib/angular-file-upload/angular-file-upload.js',
+				'public/lib/ng-file-upload/angular-file-upload.min.js',
+				// 'public/lib/ng-file-upload-shim/angular-file-upload-shim.min.js',
 				'public/lib/angular-material-icons/angular-material-icons.js',
 				'public/lib/angular-touch/angular-touch.js',
-				'public/lib/angular-messages/angular-messages.min.js'
+				'public/lib/angular-messages/angular-messages.min.js',
+				'public/lib/angular-moment/angular-moment.min.js',
+				'public/lib/moment/moment.js'
 				
 				
 			],

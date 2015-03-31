@@ -50,7 +50,8 @@
 <body class="ng-cloak">
 	<div flex layout-fill layout="column">
     <!-- Container #1 Top -->
-    <header data-ng-include="'/modules/core/views/header.client.view.html'"></header>
+    <header data-ng-include="'/modules/core/views/header.client.view.html'" ></header>
+    <div data-ng-include="'/modules/core/views/left.client.view.html'"></div>
     <!-- Container #2 Bottom -->
     {% block content %}{% endblock %}
 </div>
