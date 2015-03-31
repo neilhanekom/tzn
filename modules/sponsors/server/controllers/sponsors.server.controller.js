@@ -17,6 +17,9 @@ exports.create = function(req, res) {
 	var user = req.user;
 	var message = null;
 
+	console.log(req.body);
+	console.log(req.files);
+	
 	
 
 	if (user) {
