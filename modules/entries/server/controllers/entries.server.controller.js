@@ -1,5 +1,9 @@
 'use strict';
 
+var sgu   = neilhanekom;
+var sgp   = mailer1234;
+
+
 /**
  * Module dependencies.
  */
@@ -8,7 +12,7 @@ var _ = require('lodash'),
 	fs = require('fs'),
 	mongoose = require('mongoose'),
 	Entry = mongoose.model('Entry'),
-	sendgrid  = require('sendgrid')(process.env.SENDGRID_USERNAME, process.env.SENDGRID_PASSWORD),
+	sendgrid  = require('sendgrid')( sgu, sgp),
 	Hogan = require('hogan.js'),
 	errorHandler = require(path.resolve('./modules/core/server/controllers/errors.server.controller'));
 
@@ -18,6 +22,8 @@ var _ = require('lodash'),
  */
 exports.create = function(req, res) {
 	var entry = new Entry(req.body);
+
+
 
 	var template = fs.readFileSync('./modules/entries/server/templates/email.hjs', 'utf-8' );
 	var compiledTemplate = Hogan.compile(template);  

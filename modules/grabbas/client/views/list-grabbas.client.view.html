@@ -14,7 +14,7 @@
                         
                     </div>
                     <div layout="row" flex  layout-align="center center">
-                        <div flex layout="column" layout-align="center center" data-ng-if="grabbas[0] == undefined">
+                        <div flex layout="column" layout-align="center center" data-ng-if="grabbas[0] == undefined && authentication.user">
                             <h2>There are currently no Promotion that you created. Create one first</h2>
                             <md-button data-ng-show="authentication.user" data-ui-sref="grabbas.create" class="md-warn md-raised left" layout="row" layout-align="center center">
                                         <ng-md-icon icon="add" size="20" ng-attr-style="fill: {{fill}}"></ng-md-icon><span class="mar-l-5"> Create </span>
