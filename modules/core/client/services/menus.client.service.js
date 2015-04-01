@@ -191,7 +191,7 @@ angular.module('core').service('Menus', [
             class: 'sidenav-icon',
             isPublic: true,
             roles: ['user' , 'admin'],
-            position: 1,
+            position: 0,
         });
 
 
@@ -202,7 +202,7 @@ angular.module('core').service('Menus', [
             class: 'sidenav-icon',
             isPublic: true,
             roles: ['user' , 'admin'],
-            position: 2,
+            position: 1,
         });
         
         // this.addMenuItem('topbar', {
@@ -222,7 +222,7 @@ angular.module('core').service('Menus', [
             class: 'sidenav-icon',
             isPublic: true,
             // roles: ['user' , 'admin'],
-            position: 3,
+            position: 2,
         });
 
          this.addMenuItem('topbar', {
@@ -232,7 +232,7 @@ angular.module('core').service('Menus', [
             class: 'sidenav-icon',
             isPublic: true,
             // roles: ['user' , 'admin'],
-            position: 4,
+            position: 3,
         });
 
          this.addMenuItem('topbar', {
@@ -242,7 +242,7 @@ angular.module('core').service('Menus', [
             class: 'sidenav-icon',
             isPublic: true,
             // roles: ['user' , 'admin'],
-            position: 5,
+            position: 4,
         });
 
         this.addMenuItem('topbar', {
@@ -252,7 +252,7 @@ angular.module('core').service('Menus', [
             class: 'sidenav-icon',
             isPublic: true,
             // roles: ['user' , 'admin'],
-            position: 6,
+            position: 5,
         });
 
         
@@ -264,6 +264,16 @@ angular.module('core').service('Menus', [
             class: 'sidenav-icon',
             isPublic: true,
             // roles: ['user' , 'admin'],
+            position: 6,
+        });
+
+        this.addMenuItem('topbar', {
+            icon: 'thumb_up',
+            title: 'sponsors',
+            state: 'sponsors.list',
+            class: 'sidenav-icon',
+            isPublic: false,
+            roles: ['user' , 'admin'],
             position: 7,
         });
 
@@ -377,6 +387,16 @@ angular.module('core').service('Menus', [
             isPublic: true,
             roles: ['user' , 'admin'],
             position: 6,
+        });
+
+        this.addMenuItem('sidenav', {
+            icon: 'thumb_up',
+            title: 'sponsors',
+            state: 'sponsors.list',
+            class: 'sidenav-icon',
+            isPublic: false,
+            roles: ['user' , 'admin'],
+            position: 7,
         });
         
         // this.addMenuItem('sidenav', {
