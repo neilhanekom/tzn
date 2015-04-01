@@ -277,6 +277,16 @@ angular.module('core').service('Menus', [
             position: 7,
         });
 
+        this.addMenuItem('topbar', {
+            icon: 'loyalty',
+            title: 'adverts',
+            state: 'advertisements.list',
+            class: 'sidenav-icon',
+            isPublic: false,
+            roles: ['user' , 'admin'],
+            position: 8,
+        });
+
         // ADMIN USERS
 
         // this.addMenuItem('topbar', {
@@ -397,6 +407,16 @@ angular.module('core').service('Menus', [
             isPublic: false,
             roles: ['user' , 'admin'],
             position: 7,
+        });
+
+        this.addMenuItem('sidenav', {
+            icon: 'loyalty',
+            title: 'adverts',
+            state: 'advertisements.list',
+            class: 'sidenav-icon',
+            isPublic: false,
+            roles: ['user' , 'admin'],
+            position: 8,
         });
         
         // this.addMenuItem('sidenav', {
