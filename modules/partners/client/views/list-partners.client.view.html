@@ -48,12 +48,12 @@
                                 
                          </ul> 
 
-                                    <!-- <div layout="column"  layout-align="start start" >
-                                    <md-button data-ng-href="/#!/partners/{{partner._id}}" class="md-accent left" layout="row" layout-align="center center">
-                                        <ng-md-icon icon="local_library" size="20" ng-attr-style="fill: {{blue}}"></ng-md-icon><span class="mar-l-5"> View {{partner.name}}</span>
+                                    <div layout="column"  layout-align="start start" >
+                                    <md-button data-ng-href="/#!/partners/{{partner._id}}" class="md-accent left" layout="row" layout-align="center center" data-ng-show="authentication.user">
+                                        <ng-md-icon icon="local_library" size="20" ng-attr-style="fill: {{blue}}"></ng-md-icon><span class="mar-l-5"> View Partner</span>
                                     </md-button>
                                     
-                                </div> -->
+                                </div>
                                 </md-card-content>
                                 </md-card>
                             </md-content>
