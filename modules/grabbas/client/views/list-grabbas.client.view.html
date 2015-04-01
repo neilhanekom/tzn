@@ -1,8 +1,9 @@
 <div flex layout="row" class="bg-gen"  data-ng-controller="GrabbasController" data-ng-init="find()"> 
 
     <div flex="15"  hide-sm hide-md hide-lg></div>
-       <div flex layout="row" layout-wrap class="bg-gen">
-                    <div class="bg-white" layout="row" flex="100" data-ng-if="authentication.user && grabbas[0] "  layout-align="end center">
+       <div flex layout="column"  class="bg-gen">
+
+                    <div class="bg-white" layout="row" data-ng-if="authentication.user && grabbas[0] "  layout-align="end center">
                         <div flex layout="column" layout-align="center end">
                             <md-content>
                             <md-button data-ui-sref="grabbas.create" class="md-warn md-raised left" layout="row" layout-align="center center">
@@ -13,17 +14,18 @@
                         </div>  
                         
                     </div>
-                    <div layout="row" flex  layout-align="center center">
+                    <div layout="row"   layout-align="center center" layout-padding>
                         <div flex layout="column" layout-align="center center" data-ng-if="grabbas[0] == undefined && authentication.user">
                             <h2>There are currently no Promotion that you created. Create one first</h2>
-                            <md-button data-ng-show="authentication.user" data-ui-sref="grabbas.create" class="md-warn md-raised left" layout="row" layout-align="center center">
+                            <md-button data-ng-show="authentication.user" data-ui-sref="grabbas.create" class="md-warn md-raised left" layout="row" layout-align="center center" layout-margin>
                                         <ng-md-icon icon="add" size="20" ng-attr-style="fill: {{fill}}"></ng-md-icon><span class="mar-l-5"> Create </span>
                             </md-button>
                         </div>  
                         
                     </div>
                     <div layout="row" flex="100" >
-                        <md-content flex>
+                        <div layout="column">
+                             <md-content flex>
                                 <md-card >
                                     <img data-ng-src="{{shop.imageUrl}}" alt="{{shop.name}}" class="mar-t-20 mar-b-20">
                                     <md-divider></md-divider>
@@ -48,12 +50,15 @@
                                 </md-card-content>
                                 </md-card>
                             </md-content>
+
+                        </div>
+                       
                     </div>
 
 
-                   <div class="min-h-350" layout="row" flex-gt-md="30" flex-md="50" flex-sm="100" data-ng-repeat="grabba in grabbas">
-
-                            <md-content flex>
+                   <div  layout="row"  layout-wrap  >
+                            <div layout="column" flex-gt-md="30" flex-md="50" flex-sm="100" data-ng-repeat="grabba in grabbas">
+                                <md-content flex>
                                 <md-card >
                                     <img data-ng-src="{{grabba.imageUrl}}" alt="{{grabba.title}}" >
                                 <md-card-content >
@@ -69,6 +74,9 @@
                                 </md-card-content>
                                 </md-card>
                             </md-content>
+
+                            </div>
+                            
                    </div>
                    
                 </div>    

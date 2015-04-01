@@ -362,7 +362,7 @@ angular.module('core').service('Menus', [
         this.addMenuItem('sidenav', {
             icon: 'assignment_turned_in',
             title: 'entries',
-            state: 'entries.view',
+            state: 'entries.list',
             class: 'sidenav-icon',
             isPublic: true,
             roles: ['user' , 'admin'],

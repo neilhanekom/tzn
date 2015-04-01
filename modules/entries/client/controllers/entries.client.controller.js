@@ -15,7 +15,7 @@ angular.module('entries').controller('EntriesController', ['$scope', '$statePara
 		$scope.bank = {
 			accountname: 'Tzaneen Bicycle Club',
 			bank: 'Standard Bank',
-			accountnumber: '330566652',
+			accountnumber: 330566652,
 			type: 'Cheque/Current',
 			branchname: 'Tzaneen',
 			branchcode: '05-27-49'
@@ -32,6 +32,20 @@ angular.module('entries').controller('EntriesController', ['$scope', '$statePara
 		    
 		  };
 
+		$scope.findEvent = function() {
+         $timeout(function() {
+              var events =  $scope.events;
+              var reqEvent = $scope.entry.event;
+              
+              angular.forEach(events, function(evt){
+              	
+                 if (evt._id === reqEvent) {
+                     $scope.fevent = evt;
+                 }
+              });
+            }, 1000);
+		
+        };  
 
 		$scope.confirmEntry = function() {
 			var len = $scope.entry.status.length;
@@ -152,16 +166,34 @@ angular.module('entries').controller('EntriesController', ['$scope', '$statePara
 			$scope.entry = Entries.get({ 
 				entryId: $stateParams.entryId
 			});
-			console.log($scope.entry);
-			$timeout(function() {
-		      $scope.events = Events.query();
-		      	$scope.event = Events.get({ 
-				eventId: $scope.entry.event
-			});
-		    }, 650);
-			
 			
 		};
+
+		// $scope.findEvnt = function() {
+		// 	$timeout(function() {
+		//       	var evnt = $scope.entry.event;
+		//       	$scope.evnt = Events.get({
+		//       		eventId: evnt
+		//       	});
+		//       	}
+		      	
+		//     }, 650);
+		// };
+
+		$scope.foundEntry = [];
+
+		$scope.findEntry = function(id) {
+
+			return $timeout(function() {
+			     $scope.Entry = Entries.get({ 
+					entryId: id
+				});
+			    $scope.foundEntry.push($scope.Entry);
+			    console.log($scope.foundEntry);
+		    }, 650);	
+		};
+
+		
 
 		
 	}

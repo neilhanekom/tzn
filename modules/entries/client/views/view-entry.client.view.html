@@ -1,4 +1,4 @@
-<div flex layout="row" layout-fill data-ng-controller="EntriesController" data-ng-init="findOne()">
+<div flex layout="row" layout-fill data-ng-controller="EntriesController" data-ng-init="findOne(); loadEvents(); findEvent();">
 
     
 
@@ -56,9 +56,10 @@
 
 			  						<div layout="row" flex >
                                         
-                                        <div layout="row" flex>
-                                            <h1 data-ng-if="entry.status == 'unpaid'"><ng-md-icon icon="check_circle" size="30" ng-attr-style="fill: {{success}}"></ng-md-icon>  Your Entry is succesfull</h1>
-                                            <h1 data-ng-if="entry.status == 'complete'"><ng-md-icon icon="check_circle" size="30" ng-attr-style="fill: {{success}}"></ng-md-icon>  Your Entry was Paid Up and Cofirmed</h1>
+                                        <div layout="column" flex>
+                                            <h1 ></ng-md-icon>Entry Details</h1>
+                                            <h1>{{entry.firstName + ' ' + entry.lastName}}</h1>
+
                                         </div>
                             		  <div layout="row" flex layout-align="end center" data-ng-show="authentication.user">
                                             <md-button  class="md-raised md-accent mar-l-5"   href="/#!/entries/{{entry._id}}/edit" >Confirm Entry</md-button>
@@ -71,7 +72,7 @@
                             
                                         <h2>Status: <span class="txt-normal"> {{entry.status[0]}}</span> 
                                             <ng-md-icon icon="check_circle" data-ng-if="entry.status == 'complete'" size="20" ng-attr-style="fill: {{success}}"></ng-md-icon>
-                              <ng-md-icon icon="cancel" data-ng-if="entry.status == 'unpaid'" size="20" ng-attr-style="fill: {{fail}}"></ng-md-icon>
+                                            <ng-md-icon icon="cancel" data-ng-if="entry.status == 'unpaid'" size="20" ng-attr-style="fill: {{fail}}"></ng-md-icon>
                                         </h2>
                                         
 
@@ -80,7 +81,7 @@
                                     <div layout="column" flex >
                             
                                         <h3>Event</h3>
-                                        <span><b>Event Name:</b> {{event.name}}</span>
+                                        <span><b>Event Name:</b> {{fevent.name}}</span>
                                         <span><b>Event Date:</b> {{event.eventDate | Customdate }}</span>
 
                                     </div>
@@ -138,8 +139,8 @@
                                         <h3>Banking Details</h3>
                                         <span><b>Account Name: </b> {{bank.accountname}}</span>
                                         <span><b>Bank: </b> {{bank.bank}}</span>
-                                        <span><b>Account Number: </b> {{bank.accountnumber}}</span>,
-                                      	 <span><b>Account Type: </b> {{bank.type}}</span>,
+                                        <span><b>Account Number: </b> {{bank.accountnumber}}</span>
+                                      	 <span><b>Account Type: </b> {{bank.type}}</span>
                                         <span><b>Branch: </b> {{bank.branchname + '(' + bank.branchcode + ')' }}</span>
                                         <span><b>Reference: </b> Name & Surname</span>
                                     

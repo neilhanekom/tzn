@@ -25,7 +25,7 @@ exports.create = function(req, res) {
 
 
 
-	var template = fs.readFileSync('./modules/entries/server/templates/email.hjs', 'utf-8' );
+	var template = fs.readFileSync('./modules/entries/server/templates/entry.hjs', 'utf-8' );
 	var compiledTemplate = Hogan.compile(template);  
 	var recip = req.body.email
 
@@ -37,6 +37,7 @@ exports.create = function(req, res) {
 			});
 		} else {
 			res.jsonp(entry);
+			console.log(entry);
 			sendgrid.send({
 			  to:       recip,
 			  from:     'noreply@tzaneencycling.co.za',
@@ -44,9 +45,8 @@ exports.create = function(req, res) {
 			  html:     compiledTemplate.render({
 			  				firstName: entry.firstName,
 			  				lastName: entry.lastName,
-			  				ID: entry.rsaId,
-			  				age_cat: entry.age_cat,
-			  				race: entry.race
+			  				entry_id: entry._id,
+			  				fee: entry.fee
 			  			})
 			}, function(err, json) {
 			  if (err) { return console.error(err); }
@@ -72,6 +72,12 @@ exports.update = function(req, res) {
 	var entry = req.entry ;
 
 	entry = _.extend(entry , req.body);
+	console.log(entry);
+	var template = fs.readFileSync('./modules/entries/server/templates/confirmation.hjs', 'utf-8' );
+	var compiledTemplate = Hogan.compile(template);  
+	var recip = entry.email;
+
+	console.log(recip);
 
 	entry.save(function(err) {
 		if (err) {
@@ -80,6 +86,21 @@ exports.update = function(req, res) {
 			});
 		} else {
 			res.jsonp(entry);
+			sendgrid.send({
+			  to:       recip,
+			  from:     'noreply@tzaneencycling.co.za',
+			  subject:  'Entry Payment confirmed for the Miami Magoebaskloof Classic',
+			  html:     compiledTemplate.render({
+			  				firstName: entry.firstName,
+			  				lastName: entry.lastName,
+			  				ID: entry.rsaId,
+			  				age_cat: entry.age_cat,
+			  				race: entry.race
+			  			})
+			}, function(err, json) {
+			  if (err) { return console.error(err); }
+			  console.log(json);
+			});
 		}
 	});
 };
