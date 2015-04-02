@@ -32,6 +32,24 @@ a:hover .header-profile-image {
 	padding-bottom: 11px !important;
 }
 
+/*Hover Classes*/
+
+
+.item {
+	font-size: 16px;
+}
+.item:hover {
+	background-color: #EEEEEE;
+	color: white;
+
+}
+
+.item:hover p {
+	
+	color: #616161;
+
+}
+
 /*fills*/
 .fill-white {
 	background-color: white;
@@ -343,6 +361,12 @@ a:hover .header-profile-image {
 
 .card-height = {
 	height: 400px;
+}
+
+
+.account-select {
+	font-weight: normal;
+	font-size: 16px;
 }
 
 @media (max-width: 600px) {

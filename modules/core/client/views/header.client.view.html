@@ -45,8 +45,56 @@
 							<span class="mar-5" flex hide-sm><img data-ng-src="{{authentication.user.profileImageURL}}" class="header-profile-image "/> {{authentication.user.displayName}} </span>
 							<span class="mar-5" flex hide-gt-sm><img data-ng-src="{{authentication.user.profileImageURL}}" class="header-profile-image "/></span>
 						</md-button>
+						
+						
 					</div>
-					<div class="fill-white" layout="column"  data-ng-show="authentication.user" layout-align="end start" data-ng-hide="collapseProfile">
+					<div data-ng-hide="collapseProfile">
+					<md-content>
+					    <md-list >
+					    	<md-item >
+					        <md-item-content data-ng-click=closeProfile();>
+					          <div class="md-tile-content item">
+					           <ng-md-icon icon="cancel" size="30" ng-attr-style="fill: {{fill}}"></ng-md-icon>
+					          </div>
+					        </md-item-content>
+					      </md-item>
+					      <md-item >
+					        <md-item-content >
+					          <div class="md-tile-content item">
+					           <span class="txt-dgrey txt-inherit">Edit Profile</span>
+					          </div>
+					        </md-item-content>
+					      </md-item>
+					      <md-item data-ui-sref="events.list">
+					        <md-item-content>
+					          
+					          <div class="md-tile-content item">
+					           <p class="txt-dgrey txt-inherit">Change Profile Picture</p>
+					          </div>
+					        </md-item-content>
+					      </md-item>
+					      <md-item >
+					      <md-item data-ui-sref="events.list">
+					        <md-item-content>
+					          
+					          <div class="md-tile-content item">
+					           <p class="txt-dgrey txt-inherit">Change Password</p>
+					          </div>
+					        </md-item-content>
+					      </md-item>
+					      <md-item >
+					        <md-item-content>
+					          
+					          <div class="md-tile-content item">
+					           <p class="txt-inherit"><a href="/api/auth/signout" target="_self" >Signout</a></p>
+					          </div>
+					        </md-item-content>
+					      </md-item>
+					    </md-list>
+					  </md-content>
+					 </div> 
+
+					<!-- <div class="fill-white" layout="column"  layout-align="end start" data-ng-hide="collapseProfile">
 						<md-button class="btn-text-std pad-5" layout="row" layout-align="start start" layout-align="center center" layout-fill ng-click=closeProfile(); tabindex="0">
 							<span  flex><ng-md-icon icon="expand_less" size="20" ng-attr-style="fill: {{black}}" ></ng-md-icon></span>
 						</md-button>
@@ -63,7 +111,7 @@
 
 							<span class="txt-dgrey txt-chip"><a href="/api/auth/signout" target="_self">Signout</a></span>
 						</md-button>
-					</div>
+					</div> -->
 
       		</div>
 					

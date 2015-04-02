@@ -16,25 +16,31 @@
 		    	 	<md-input-container>
 		    	 		<label>Username</label>
 		    	 		<input md-maxlength="30" required name="username" ng-model="credentials.username">
-		    	 		<!-- <div ng-messages="loginForm.username.$error">
+		    	 		<div ng-messages="loginForm.username.$error">
 				          <div ng-message="required">This is required.</div>
 				          <div ng-message="md-maxlength">The name has to be less than 30 characters long.</div>
-				        </div> -->
+				        </div>
 		    	 	</md-input-container>
 		    	 	<md-input-container>
 		    	 		<label>Password</label>
-		    	 		<input type="password" required name="password"  ng-model="credentials.password">
-		    	 		<!-- <div ng-messages="loginForm.username.$error">
-				          <div ng-message="required">This is required.</div>
-				          <div ng-message="md-maxlength">The name has to be less than 30 characters long.</div>
-				        </div> -->
+		    	 		<input type="password" minlength="6" required name="password"  ng-model="credentials.password">
+		    	 		<div ng-messages="loginForm.username.$error">
+				          
+				          <div ng-message="minlength">Your Pass must be at least 6 Characters Long</div>
+				        </div>
 		    	 	</md-input-container>
 		    	 	<div layout="row">
 		    	 		<md-button type="submit" class="md-primary md-hue-2 sign-up-button" layout-margin>Sign In</md-button>
-		    	 		<md-button class="md-primary md-hue-3 sign-up-button" layout-margin>
+		    	 		<md-button class="md-warn md-hue-3 sign-up-button" layout-margin>
 		    	 			Forgot password
 		    	 		</md-button>
 		    	 		
+		    	 	</div>
+		    	 	
+		    	 	<div layout="row" layout-padding>
+		    	 		<div data-ng-show="error" class="text-center text-danger">
+							<strong data-ng-bind="error"></strong>
+						</div>
 		    	 	</div>
 		    	 </form>
 		    </md-content>
