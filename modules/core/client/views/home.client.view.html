@@ -10,23 +10,24 @@
 			<div layout="column" flex data-ng-repeat="ad in curAd" layout-fill class="ad-area" >
 		    	<div  class="ad-image" flex layout="column" layout-fill  layout-align="start start" ng-style="{'background-image' : 'url({{ad.imageUrl}})'}">
 		    					
-								<div flex  class="pad-r-10"  layout="column" layout-align="start start" >
+								<div flex  class="pad-r-10 "  layout-fill layout="column" layout-align="start start" >
 									
 								</div>
-								<div class="bg-alpha" layout="row" layout-fill flex data-ng-if="ad">
-									<div flex flex-md="65" layout="column"  ng-style="{'padding-left': '20px'}">
+								
+								<div class="bg-alpha" layout="row" layout-fill flex-sm="80" flex-md="45" flex-lg="50" data-ng-if="ad">
+									<div flex flex-md="65" flex-lg="" layout="column"  ng-style="{'padding-left': '20px'}">
 										<ul class="setting-list">
 	                                        <li><h1 class="txt-white">{{ad.title}}</h1></li>
 	                                        <li class="mar-b-5"><span class="txt-white">{{ad.description}} </span></li>
 	                                        <li data-ng-repeat="spec in ad.specifications"><span class="txt-white" ><b>{{spec.key + ':' + ' '}}</b> {{spec.value}}</span></li>
 	                                        <li>
 	                                        	<div layout="row" class="mar-t-5" ng-show="ad.type">
-		                                    		<md-button class="md-warn md-raised"> View </md-button>
+		                                    		<md-button class="md-warn md-raised" data-ui-sref="events.list"> View </md-button>
 		                                    	</div>
 	                                        </li>  
                                     	</ul>
 									</div>
-									<div  flex-md="35"  layout="column"  layout-align="end end"  layout-padding>
+									<div  flex-md="35"  flex layout="column"  layout-align="end end"  layout-padding>
 										
                                     	<div layout="row" layout-sm="column" layout-align="center end" class="sponsor-section">
                                     		<div data-ng-repeat="sponsor in ad.sponsors" layout-margin>
