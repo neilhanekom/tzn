@@ -93,9 +93,9 @@ exports.update = function(req, res) {
 			  html:     compiledTemplate.render({
 			  				firstName: entry.firstName,
 			  				lastName: entry.lastName,
-			  				ID: entry.rsaId,
-			  				age_cat: entry.age_cat,
-			  				race: entry.race
+			  				entry_id: entry._id,
+			  				fee: entry.fee
+			  				
 			  			})
 			}, function(err, json) {
 			  if (err) { return console.error(err); }
