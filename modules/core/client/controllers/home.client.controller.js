@@ -36,7 +36,7 @@ angular.module('core').controller('HomeController', ['$scope', 'Authentication',
 
 		
 		$scope.curAd = [
-			{ title: '', description: '', imageUrl: 'modules/core/img/brand/cover.png'}
+			
 		];
 		$scope.curArt = [];
 

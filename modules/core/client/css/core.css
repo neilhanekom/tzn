@@ -218,6 +218,9 @@ a:hover .header-profile-image {
 	margin-bottom: 5px;
 }
 
+.red {
+	color: red;
+}
 .bg-white {
 	background-color: white;
 }
@@ -446,7 +449,7 @@ a:hover .header-profile-image {
 }
 
 .ad-image {
-	min-height: 600px;
+	min-height: 750px;
 
 	background-position: center;
   

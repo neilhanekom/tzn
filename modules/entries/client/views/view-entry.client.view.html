@@ -53,7 +53,7 @@
                                         </md-content>
                                         
                                     </div> -->
-
+                                    <!-- ======================================================= -->
 			  						<div layout="row" flex >
                                         
                                         <div layout="column" flex>
@@ -78,73 +78,215 @@
 
                                     </div>
 
-                                    <div layout="column" flex >
-                            
-                                        <h3>Event</h3>
-                                        <span><b>Event Name:</b> {{fevent.name}}</span>
-                                        <span><b>Event Date:</b> {{event.eventDate | Customdate }}</span>
-
+                                     <div layout="row" flex>
+                                        <div layout="row" flex-sm="50" flex-gt-sm="35"  >
+                                           <span><b>Gender:</b></span>
+                                        </div>
+                                        <div layout="row" flex>
+                                            <span class="txt-inherit">{{entry.gender}}</span>
+                                        </div>
                                     </div>
-                                    <div layout="column" flex >
-
-                                        <h3>Personal Information</h3>
-                                        <span><b>Gender:</b> {{entry.gender}}</span>
-                                        <span><b>Firstname:</b> {{entry.firstName}}</span>
-                                        <span><b>Lastname:</b> {{entry.lastName}}</span>
-                                        <span><b>ID:</b> {{entry.rsaId}}</span>
-                                        <span><b>Birthdate:</b> {{entry.birthDate | Customdate }}</span>
-
+                                    <div layout="row" flex>
+                                        <div layout="row" flex-sm="50" flex-gt-sm="35"  >
+                                          <span><b>Firstname:</b> </span>
+                                        </div>
+                                        <div layout="row" flex>
+                                           <span class="txt-inherit">{{entry.firstName}}</span>
+                                        </div>
                                     </div>
-                                    <div layout="column" flex >
-                                        <h3>Contact Information</h3>
-                                        <span><b>Mobile:</b> {{entry.mobileNumber}}</span>
-                                        <span><b>Email:</b> {{entry.email}}</span>
+                                    <div layout="row" flex>
+                                        <div layout="row" flex-sm="50" flex-gt-sm="35"  >
+                                           <span><b>Lastname:</b></span>
+                                        </div>
+                                        <div layout="row" flex>
+                                            <span class="txt-inherit">{{entry.lastName}}</span>
+                                        </div>
                                     </div>
-                                    <div layout="column" flex >
-                                        <h3>Emergency Information</h3>
-                                        <span><b>Contact Person:</b> {{entry.emergency.person}}</span>
-                                        <span><b>Contact Number:</b> {{entry.emergency.contact}}</span>
-                                        <span><b>Contact Relationship:</b> {{entry.emergency.relationship}}</span>
+                                   <div layout="row" flex>
+                                        <div layout="row" flex-sm="50" flex-gt-sm="35"  >
+                                           <span><b>ID:</b> </span>
+                                        </div>
+                                        <div layout="row" flex>
+                                            <span class="txt-inherit">{{entry.rsaId}}</span>
+                                        </div>
                                     </div>
-                                    <div layout="column" flex >
-                                        <h3>Medical Information</h3>
-                                        <span><b>Medical Aid Company:</b> {{entry.medical.company}}</span>
-                                        <span><b>Medical Aid Number:</b> {{entry.medical.number}}</span>
-                                        <span><b>Medical Aid Plan:</b> {{entry.medical.plan}}</span>
-                                        <span><b>Medical Aid Main Member:</b> {{entry.medical.main}}</span>
-                                        <span><b>Medical Conditions:</b> {{entry.medical.conditions}}</span>
-                                        <span><b>Doctor Name:</b> {{entry.medical.doctorName}}</span>
-                                        <span><b>Doctor Contact Number:</b> {{entry.medical.doctorNumber}}</span>
+                                    <div layout="row" flex>
+                                        <div layout="row" flex-sm="50" flex-gt-sm="35"  >
+                                           <span><b>Birthdate:</b> </span>
+                                        </div>
+                                        <div layout="row" flex>
+                                            <span class="txt-inherit">{{entry.birthDate | Customdate }}</span>
+                                        </div>
                                     </div>
-                                    <div layout="column" flex>
-                                        <h3>Postal Address</h3>
-                                        <span><b>Po Box:</b> {{entry.postal.box}}</span>
-                                        <span><b>City/Town:</b> {{entry.postal.town}}</span>
-                                        <span><b>Postal Code:</b> {{entry.postal.code}}</span>
+                                    <div layout="row" flex>
+                                        <div layout="row" flex-sm="50" flex-gt-sm="35"  >
+                                           <span><b>Mobile:</b> </span>
+                                        </div>
+                                        <div layout="row" flex>
+                                            <span class="txt-inherit">{{entry.mobileNumber}}</span>
+                                        </div>
                                     </div>
-                                    <div layout="column" flex>
-                                        <h3>Race Information</h3>
-                                        <span><b>Club/Team</b> {{entry.club.name}}</span>
-                                        <span><b>Province:</b> {{entry.club.province}}</span>
-                                        <span><b>CSA License:</b> {{entry.license.exist}}</span>
-                                        <span><b>CSA License No:</b> {{entry.license.number}}</span>
-                                        <span><b>Age Category:</b> {{entry.age_cat}}</span>
-                                        <span><b>Race Distance:</b> {{entry.race}}</span>
-                                    
+                                    <div layout="row" flex>
+                                        <div layout="row" flex-sm="50" flex-gt-sm="35"  >
+                                            <span><b>Email:</b> </span>
+                                        </div>
+                                        <div layout="row" flex>
+                                             <span class="txt-inherit">{{entry.email}}</span>
+                                        </div>
                                     </div>
-                               		<div layout="column" flex >
-                                        <h3>Payment Information</h3>
-                                        <span><b>Total Fees</b> {{entry.fee}}</span>
-                                        
-                                        <h3>Banking Details</h3>
-                                        <span><b>Account Name: </b> {{bank.accountname}}</span>
-                                        <span><b>Bank: </b> {{bank.bank}}</span>
-                                        <span><b>Account Number: </b> {{bank.accountnumber}}</span>
-                                      	 <span><b>Account Type: </b> {{bank.type}}</span>
-                                        <span><b>Branch: </b> {{bank.branchname + '(' + bank.branchcode + ')' }}</span>
-                                        <span><b>Reference: </b> Name & Surname</span>
-                                    
+                                    <div layout="row" flex>
+                                        <div layout="row" flex-sm="50" flex-gt-sm="35"  >
+                                           <span><b>Contact Person:</b></span>
+                                        </div>
+                                        <div layout="row" flex>
+                                            <span class="txt-inherit">{{entry.emergency.person}}</span>
+                                        </div>
                                     </div>
+                                    <div layout="row" flex>
+                                        <div layout="row" flex-sm="50" flex-gt-sm="35"  >
+                                           <span><b>Contact Number:</b></span>
+                                        </div>
+                                        <div layout="row" flex>
+                                            <span class="txt-inherit">{{entry.emergency.contact}}</span>
+                                        </div>
+                                    </div>
+                                    <div layout="row" flex>
+                                        <div layout="row" flex-sm="50" flex-gt-sm="35"  >
+                                           <span><b>Contact Relationship:</b></span>
+                                        </div>
+                                        <div layout="row" flex>
+                                            <span class="txt-inherit">{{entry.emergency.relationship}}</span>
+                                        </div>
+                                    </div>
+                                    <div layout="row" flex>
+                                        <div layout="row" flex-sm="50" flex-gt-sm="35"  >
+                                          <span><b>Medical Aid Company:</b></span>
+                                        </div>
+                                        <div layout="row" flex>
+                                            <span class="txt-inherit">{{entry.medical.company}}</span>
+                                        </div>
+                                    </div>
+                                    <div layout="row" flex>
+                                        <div layout="row" flex-sm="50" flex-gt-sm="35"  >
+                                          <span><b>Medical Aid Number:</b></span>
+                                        </div>
+                                        <div layout="row" flex>
+                                            <span class="txt-inherit">{{entry.medical.number}}</span>
+                                        </div>
+                                    </div>
+                                    <div layout="row" flex>
+                                        <div layout="row" flex-sm="50" flex-gt-sm="35"  >
+                                          <span><b>Medical Aid Plan:</b></span>
+                                        </div>
+                                        <div layout="row" flex>
+                                            <span class="txt-inherit">{{entry.medical.plan}}</span>
+                                        </div>
+                                    </div>
+                                    <div layout="row" flex>
+                                        <div layout="row" flex-sm="50" flex-gt-sm="35"  >
+                                          <span><b>Medical Aid Main/M:</b> </span>
+                                        </div>
+                                        <div layout="row" flex>
+                                            <span class="txt-inherit">{{entry.medical.main}}</span>
+                                        </div>
+                                    </div>
+                                   <div layout="row" flex>
+                                        <div layout="row" flex-sm="50" flex-gt-sm="35"  >
+                                          <span><b>Medical Conditions:</b> </span>
+                                        </div>
+                                        <div layout="row" flex>
+                                            <span class="txt-inherit">{{entry.medical.conditions}}</span>
+                                        </div>
+                                    </div>
+                                    <div layout="row" flex>
+                                        <div layout="row" flex-sm="50" flex-gt-sm="35"  >
+                                          <span><b>Doctor Name:</b> </span>
+                                        </div>
+                                        <div layout="row" flex>
+                                            <span class="txt-inherit">{{entry.medical.doctorName}}</span>
+                                        </div>
+                                    </div>
+                                    <div layout="row" flex>
+                                        <div layout="row" flex-sm="50" flex-gt-sm="35"  >
+                                          <span><b>Doctor Contact Number:</b> </span>
+                                        </div>
+                                        <div layout="row" flex>
+                                            <span class="txt-inherit">{{entry.medical.doctorNumber}}</span>
+                                        </div>
+                                    </div>
+                                    <div layout="row" flex>
+                                        <div layout="row" flex-sm="50" flex-gt-sm="35"  >
+                                          <span><b>Po Box:</b> </span>
+                                        </div>
+                                        <div layout="row" flex>
+                                            <span class="txt-inherit">{{entry.postal.box}}</span>
+                                        </div>
+                                    </div>
+                                    <div layout="row" flex>
+                                        <div layout="row" flex-sm="50" flex-gt-sm="35"  >
+                                          <span><b>City/Town:</b> </span>
+                                        </div>
+                                        <div layout="row" flex>
+                                            <span class="txt-inherit">{{entry.postal.town}}</span>
+                                        </div>
+                                    </div>
+                                    <div layout="row" flex>
+                                        <div layout="row" flex-sm="50" flex-gt-sm="35"  >
+                                          <span><b>Postal Code:</b> </span>
+                                        </div>
+                                        <div layout="row" flex>
+                                            <span class="txt-inherit"> {{entry.postal.code}}</span>
+                                        </div>
+                                    </div>
+                                    <div layout="row" flex>
+                                        <div layout="row" flex-sm="50" flex-gt-sm="35"  >
+                                          <span><b>Province:</b></span>
+                                        </div>
+                                        <div layout="row" flex>
+                                            <span class="txt-inherit"> {{entry.club.province}}</span>
+                                        </div>
+                                    </div>
+                                    <div layout="row" flex>
+                                        <div layout="row" flex-sm="50" flex-gt-sm="35"  >
+                                          <span><b>CSA License:</b> </span>
+                                        </div>
+                                        <div layout="row" flex>
+                                            <span class="txt-inherit"> {{entry.license.exist}}</span>
+                                        </div>
+                                    </div>
+                                    <div layout="row" flex>
+                                        <div layout="row" flex-sm="50" flex-gt-sm="35"  >
+                                          <span><b>CSA License No:</b> </span>
+                                        </div>
+                                        <div layout="row" flex>
+                                            <span class="txt-inherit"> {{entry.license.number}}</span>
+                                        </div>
+                                    </div>
+                                    <div layout="row" flex>
+                                        <div layout="row" flex-sm="50" flex-gt-sm="35"  >
+                                          <span><b>Age Category:</b> </span>
+                                        </div>
+                                        <div layout="row" flex>
+                                            <span class="txt-inherit">{{entry.age_cat}}</span>
+                                        </div>
+                                    </div>
+                                    <div layout="row" flex>
+                                        <div layout="row" flex-sm="50" flex-gt-sm="35"  >
+                                          <span><b>Race Distance:</b></span>
+                                        </div>
+                                        <div layout="row" flex>
+                                            <span class="txt-inherit">{{entry.race}}</span>
+                                        </div>
+                                    </div>
+                                    <div layout="row" flex>
+                                        <div layout="row" flex-sm="50" flex-gt-sm="35"  >
+                                          <span><b>Total Fees</b></span>
+                                        </div>
+                                        <div layout="row" flex>
+                                            <span class="txt-inherit"> {{entry.fee}}</span>
+                                        </div>
+                                    </div>
+                               		
                                 <br>
                                 <md-divider></md-divider>
                                 
