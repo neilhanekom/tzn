@@ -49,36 +49,39 @@
 						
 					</div>
 					<div data-ng-hide="collapseProfile">
-					<md-content>
+
+					<md-content class="shadow">
 					    <md-list >
 					    	<md-item >
+					    	
 					        <md-item-content data-ng-click=closeProfile();>
 					          <div class="md-tile-content item">
-					           <ng-md-icon icon="cancel" size="30" ng-attr-style="fill: {{fill}}"></ng-md-icon>
+					           <ng-md-icon icon="cancel" size="20" ng-attr-style="fill: {{dgrey}}"></ng-md-icon>
 					          </div>
 					        </md-item-content>
 					      </md-item>
-					      <md-item >
+					     
+					      <md-item data-ui-sref="settings.profile">
 					        <md-item-content >
 					          <div class="md-tile-content item">
-					           <span class="txt-dgrey txt-inherit">Edit Profile</span>
+					           <span class="txt-dgrey txt-normal">Edit Profile</span>
 					          </div>
 					        </md-item-content>
 					      </md-item>
-					      <md-item data-ui-sref="events.list">
+					      <md-item data-ui-sref="settings.picture">
 					        <md-item-content>
 					          
 					          <div class="md-tile-content item">
-					           <p class="txt-dgrey txt-inherit">Change Profile Picture</p>
+					           <span class="txt-dgrey txt-normal">Change Profile Picture</span>
 					          </div>
 					        </md-item-content>
 					      </md-item>
 					      <md-item >
-					      <md-item data-ui-sref="events.list">
+					      <md-item data-ui-sref="settings.password">
 					        <md-item-content>
 					          
 					          <div class="md-tile-content item">
-					           <p class="txt-dgrey txt-inherit">Change Password</p>
+					           <span class="txt-dgrey txt-normal">Change Password</span>
 					          </div>
 					        </md-item-content>
 					      </md-item>
@@ -86,10 +89,11 @@
 					        <md-item-content>
 					          
 					          <div class="md-tile-content item">
-					           <p class="txt-inherit"><a href="/api/auth/signout" target="_self" >Signout</a></p>
+					           <span class="txt-dgrey txt-normal"><a href="/api/auth/signout" target="_self" >Signout</a></span>
 					          </div>
 					        </md-item-content>
 					      </md-item>
+
 					    </md-list>
 					  </md-content>
 					 </div> 

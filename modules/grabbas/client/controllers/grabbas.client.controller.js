@@ -11,7 +11,7 @@ angular.module('grabbas').controller('GrabbasController', ['$scope', '$statePara
         $scope.icon = icons[$scope.cnt];
         $scope.fill = colors[0];
         $scope.black = colors[1];
-        $scope.size = 48;
+        $scope.red = '#E53935';
 
 		$scope.shop = {
 			name: 'Grabba Cycles',

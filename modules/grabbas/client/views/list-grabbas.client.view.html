@@ -1,84 +1,87 @@
 <div flex layout="row" class="bg-gen"  data-ng-controller="GrabbasController" data-ng-init="find()"> 
 
-    <div flex="15"  hide-sm hide-md hide-lg></div>
-       <div flex layout="column"  class="bg-gen">
+    <div flex="15" class="bg-lgrey" hide-sm hide-md hide-lg ></div>
+       <div flex layout="column"  class="bg-lgrey">
+       <div layout="column" >
+            <md-whiteframe class="md-whiteframe-z1" >
+            <md-content>
+            <div layout="row" layout-padding>
+                <img ng-src="{{shop.imageUrl}}" class="shop-image" class="mar-r-20">
+                <!-- <h2 class="mar-l-20 txt-inherit txt-24">{{shop.name}}</h2> -->
+            </div>
+            <md-divider></md-divider>
+            <div layout="column">
+                 <h2 class="mar-l-20 txt-inherit txt-24">{{shop.name}}</h2>
+                 <ul class="setting-list mar-l-20" layout-margin>
+                
+                <li>{{shop.address.line1}}</li>
+                <li>{{shop.address.line2}}</li>
+                <li>{{shop.address.code}}</li>
+            </ul>
+            </div>
+           <div layout="row" >
 
-                    <div class="bg-white" layout="row" data-ng-if="authentication.user && grabbas[0] "  layout-align="end center">
-                        <div flex layout="column" layout-align="center end">
-                            <md-content>
-                            <md-button data-ui-sref="grabbas.create" class="md-warn md-raised left" layout="row" layout-align="center center">
-                                        <ng-md-icon icon="add" size="20" ng-attr-style="fill: {{fill}}"></ng-md-icon><span class="mar-l-5"> Add Promotion</span>
-                            </md-button>
-                            <md-divider></md-divider>
-                            </md-content>
-                        </div>  
-                        
-                    </div>
-                    <div layout="row"   layout-align="center center" layout-padding>
-                        <div flex layout="column" layout-align="center center" data-ng-if="grabbas[0] == undefined && authentication.user">
-                            <h2>There are currently no Promotion that you created. Create one first</h2>
-                            <md-button data-ng-show="authentication.user" data-ui-sref="grabbas.create" class="md-warn md-raised left" layout="row" layout-align="center center" layout-margin>
-                                        <ng-md-icon icon="add" size="20" ng-attr-style="fill: {{fill}}"></ng-md-icon><span class="mar-l-5"> Create </span>
-                            </md-button>
-                        </div>  
-                        
-                    </div>
-                    <div layout="row" flex="100" >
-                        <div layout="column">
-                             <md-content flex>
-                                <md-card >
-                                    <img data-ng-src="{{shop.imageUrl}}" alt="{{shop.name}}" class="mar-t-20 mar-b-20">
-                                    <md-divider></md-divider>
-                                <md-card-content >
-                                    <h2 class="md-title">{{shop.name}}</h2>
-                                    <ul class="setting-list">
-                                        <li><span><b>Shop Address</b></span></li>
-                                        <li><span>{{shop.address.line1}}</span></li>
-                                        <li><span>{{shop.address.line2}}</span></li>
-                                        <li><span>{{shop.address.code}}</span></li>
-                                        
-                                    </ul>
-                                    <ul class="setting-list">
-                                        <li><span><b>Contact</b></span></li>
-                                        <li><span>{{shop.contact.person}}</span></li>
-                                        <li><span>{{shop.contact.number}}</span></li>
-                                        <li><span>{{shop.contact.email}}</span></li>
-                                        
-                                    </ul>
+               
+            <ul class="setting-list mar-l-20" >
+               
+                <li>{{shop.contact.person}}</li>
+                <li>{{shop.contact.number}}</li>
+                <li>{{shop.contact.email}}</li>
+            </ul>
+            <br>
+           </div>
 
-                                    
-                                </md-card-content>
-                                </md-card>
-                            </md-content>
+           <div layout="row" >
 
-                        </div>
-                       
-                    </div>
+           <span class="mar-b-20 mar-l-20">Links</span>
+            
+           </div>
+            
+            
+        </md-content>
+        </md-whiteframe>
+       </div>
 
-
-                   <div  layout="row"  layout-wrap  >
-                            <div layout="column" flex-gt-md="30" flex-md="50" flex-sm="100" data-ng-repeat="grabba in grabbas">
-                                <md-content flex>
-                                <md-card >
-                                    <img data-ng-src="{{grabba.imageUrl}}" alt="{{grabba.title}}" >
-                                <md-card-content >
-                                    <h2 class="md-title">{{grabba.title}}</h2>
-                                    <p class="md-body-1">{{grabba.sub}}</p>
-                                    <p class="md-body-1">{{'R' + grabba.price}}</p>
-                                    <div layout="column"  layout-align="start start" >
-                                    <md-button data-ng-href="/#!/grabbas/{{grabba._id}}" class="md-warn md-raised left" layout="row" layout-align="center center">
-                                        <ng-md-icon icon="store_mall_directory" size="20" ng-attr-style="fill: {{fill}}"></ng-md-icon><span class="mar-l-5"> View Promotion</span>
-                                    </md-button>
-                                    
-                                </div>
-                                </md-card-content>
-                                </md-card>
-                            </md-content>
-
+       <div flex layout="row" layout-wrap >
+           <div flex-gt-md="30" flex-md="45" flex-sm="100" layout="column" ng-repeat="grabba in grabbas" layout-margin>
+               <md-card>
+               <md-content>
+                        <div layout="row" layout-padding>
+                            <div flex>
+                                <h3>{{grabba.title}}</h3>
                             </div>
-                            
-                   </div>
+                            <div flex layout="row" layout-align="end center">
+                                 <ng-md-icon icon="whatshot" size="30" ng-attr-style="fill: {{red}}"></ng-md-icon>
+                            </div>
+                        </div>
+                </md-content>
+                <md-content>
+                        <div  class="card-image" ng-style="{'background-image' : 'url({{grabba.imageUrl}})', 'background-size' : '100%', 'background-repeat' : 'no-repeat'}">
+                         
+                        </div>
+                </md-content>
+
+                <md-content>
+                        <div  layout="column" layout-padding>
+
+                          <h3>{{grabba.sub}}</h3>
+                          <p>{{'R' + grabba.price}}</p>
+                        </div>
+                </md-content>
+                <div layout="row" class="bg-lgrey" layout-padding layout-align="start center">
+                    <md-button class="md-accent" data-ng-href="/#!/grabbas/{{grabba._id}}">
+                        View
+                    </md-button>
+                    
+                </div>
+                 
+                </md-card>
+           </div>
+
+       </div>
+        
+                  
                    
-                </div>    
-        <div flex="15"  hide-sm hide-md hide-lg></div>
+        </div>    
+        <div flex="15" class="bg-lgrey" hide-sm hide-md hide-lg></div>
 </div>
