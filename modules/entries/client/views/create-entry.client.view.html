@@ -256,14 +256,14 @@
                                 </div>
                                 
                                 <div layout="row" layout-sm="column">
-                                    <md-input-container flex="25">
+                                    <md-input-container flex-sm="100" flex-gt-md="35" flex-md="50">
                                         <p><b>Do you have CSA a License:</b> <span class="radioValue">{{ entry.license.exist }}</span> </p>
                                         <md-radio-group ng-model="entry.license.exist" layout="row">
                                           <md-radio-button value="yes">Yes</md-radio-button>
                                           <md-radio-button value="no"> No </md-radio-button>
                                           
                                         </md-radio-group>
-                                    </md-input-container flex="75">
+                                    </md-input-container flex-sm="100" flex-gt-md="65" flex-md="50">
                                     <md-input-container flex>
                                         <label>CSA Licence Number</label>
                                         <input type="text" name="csa_number" ng-model="entry.license.number" placeholder="Enter if you have CSA License Number" >
