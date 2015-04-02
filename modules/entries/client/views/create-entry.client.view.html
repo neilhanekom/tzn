@@ -88,21 +88,25 @@
                                     <h4>Date of Birth</h4>
                                 </div>
                                  <div layout="row" layout-sm="column">
-                                    <p class="red">NB! if a date picker option is not rendered Please enter date as: <b>yyyy/mm/dd</b></p>
+                                    <div layout="row" flex>
+                                        <p class="red">NB! if a date picker option is not rendered Please enter date as: <b>yyyy/mm/dd</b></p>
+                                    </div>
+                                    
                                 </div>   
                                
                                  <div layout="row" layout-sm="column">
-                                    <div flex="30">
-                                        <md-input-container flex>
+                                    <div flex>
+                                        <md-input-container >
                                       <label>Enter you Date of Birth <b>(YYYY/MM/DD)</b></label>
                                       <input type="date" ng-model="entry.birthDate">
                                     </md-input-container>
                                     </div>
                                     
                                 </div>
-
-                                <div layout="row" layout-sm="column">
-                                <h4>Contact Information</h4>
+                                <div layout="row" hide-gt-sm>
+                                    <div class="mar-5">
+                                        <h4>Contact</h4>
+                                    </div>
                                 </div>
                                 
                                 <div layout="row" flex layout-sm="column">
@@ -125,20 +129,26 @@
                                     </md-input-container>
                                 </div>
                                 <div layout="row" flex layout-sm="column">
-                                    <md-input-container flex>
-                                        <label>Emergency Contact Person</label>
-                                        <input type="text" name="emergency_person" ng-model="entry.emergency.person" placeholder="Emegency  Name">
+                                    <div layout="row" flex>
+                                        <md-input-container flex>
+                                        <label>Emergency Contact Name</label>
+                                        <input type="text" name="emergency_person" ng-model="entry.emergency.person" placeholder="Emegency Contact Name">
                                         
                                     </md-input-container>
+                                    </div>
+                                    <div layout="row" flex>
+                                        <md-input-container flex>
+                                        <label>Emegency Contact </label>
+                                        <input type="text"  name="emergency_contact" ng-model="entry.emergency.contact" placeholder="Emegency Contact Number">
+                                        
+                                    </md-input-container>
+                                    </div>
                                     
-                                    <md-input-container flex>
-                                        <label>Emegency Contact Number</label>
-                                        <input type="text"  name="emergency_contact" ng-model="entry.emergency.contact" placeholder="Emegency Number">
-                                        
-                                    </md-input-container>
-                                    <md-input-container flex>
-                                        <label>Emegency Contact relationship</label>
-                                        <input type="text" name="emergency_relationship" ng-model="entry.emergency.relationship" placeholder=" relationship">
+                                </div>
+                                <div layout="row" layout-sm="column">
+                                    <md-input-container >
+                                        <label>Emergency Contact Relationship</label>
+                                        <input type="text" name="emergency_relationship" ng-model="entry.emergency.relationship" placeholder="relationship">
                                         
                                     </md-input-container>
                                 </div>
@@ -222,7 +232,10 @@
                                         <input type="text" name="postal_town" ng-model="entry.postal.town" placeholder="Town/City">
                                         
                                     </md-input-container>
-                                    <md-input-container flex>
+                                    
+                                </div>
+                                <div layout="row" layout-sm="column">
+                                    <md-input-container >
                                         <label>Postal Code</label>
                                         <input type="text" name="postal_code" ng-model="entry.postal.code" placeholder="Postal Code">
                                         

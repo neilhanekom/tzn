@@ -7,8 +7,12 @@
 		<div flex>	
 
 
+
 			<div layout="column" flex data-ng-repeat="ad in curAd" layout-fill class="ad-area" >
-		    	<div  class="ad-image" flex layout="column" layout-fill  layout-align="start start" ng-style="{'background-image' : 'url({{ad.imageUrl}})'}">
+				<div class="ad-image" flex layout="column" layout-fill  layout-align="start start" data-ng-if="ad == undefined">
+					<h1>Testing this</h1>
+				</div>
+		    	<div  class="ad-image" flex layout="column" layout-fill  layout-align="start start" ng-style="{'background-image' : 'url({{ad.imageUrl}})'}" data-ng-if="ad">
 		    					
 								<div flex  class="pad-r-10 "  layout-fill layout="column" layout-align="start start" >
 									
