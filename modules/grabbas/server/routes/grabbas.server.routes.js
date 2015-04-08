@@ -9,10 +9,13 @@ module.exports = function(app) {
 		.get(grabbas.list).all(grabbasPolicy.isAllowed)
 		.post(grabbas.create);
 
-	app.route('/api/grabbas/:grabbaId').all(grabbasPolicy.isAllowed)
+	app.route('/api/grabbas/:grabbaId')
 		.get(grabbas.read)
 		.put(grabbas.update)
 		.delete(grabbas.delete);
+
+	app.route('/api/grabbas/updatefile/:grabbaId').all(grabbasPolicy.isAllowed)
+		.put(grabbas.updateFile);
 
 	// Finish by binding the Grabba middleware
 	app.param('grabbaId', grabbas.grabbaByID);

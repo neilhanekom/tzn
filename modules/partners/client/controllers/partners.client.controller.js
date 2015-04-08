@@ -94,6 +94,14 @@ angular.module('partners').controller('PartnersController', ['$scope', '$statePa
 			$scope.partner = Partners.get({ 
 				partnerId: $stateParams.partnerId
 			});
+
+			$timeout(function() {
+					if ($scope.partner.contacts[0]) {
+						angular.forEach($scope.partner.contacts, function(obj) {
+						  $scope.contacts.push(obj);
+						});
+					}
+			}, 650);
 		};
 
 		// ==============================  File Upload ============================
@@ -125,6 +133,20 @@ angular.module('partners').controller('PartnersController', ['$scope', '$statePa
 			$scope.errorMsg = null;
 			$scope.generateThumb(file);
 			uploadUsing$upload(file);
+		}
+
+		$scope.updatePic = function(files) {
+
+			$scope.formUpload = true;
+			if (files != null) {
+				generateThumbAndUpdate(files[0]);
+			}
+		};
+		
+		function generateThumbAndUpdate(file) {
+			$scope.errorMsg = null;
+			$scope.generateThumb(file);
+			updateUsing$upload(file);
 		}
 		
 		$scope.generateThumb = function(file) {
@@ -176,7 +198,42 @@ angular.module('partners').controller('PartnersController', ['$scope', '$statePa
 			file.upload.xhr(function(xhr) {
 				// xhr.upload.addEventListener('abort', function(){console.log('abort complete')}, false);
 			});
-		}
+		};
+
+		function updateUsing$upload(file) {
+			file.upload = $upload.upload({
+   				url: 'api/partners/updatefile/' + $scope.partner._id,
+				method: 'PUT',
+				fields: {
+					name: $scope.partner.name,
+					slogan: $scope.partner.slogan,
+					description: $scope.partner.description,
+					address: $scope.partner.address,
+					contacts: $scope.contacts
+				},
+				file: file,
+				fileFormDataName: 'partnerForm',
+			});
+
+			file.upload.then(function(response) {
+				$timeout(function() {
+					file.result = response.data;
+					$location.path('partners');
+				});
+			}, function(response) {
+				if (response.status > 0)
+					$scope.errorMsg = response.status + ': ' + response.data;
+			});
+
+			file.upload.progress(function(evt) {
+				// Math.min is to fix IE which reports 200% sometimes
+				file.progress = Math.min(100, parseInt(100.0 * evt.loaded / evt.total));
+			});
+
+			file.upload.xhr(function(xhr) {
+				// xhr.upload.addEventListener('abort', function(){console.log('abort complete')}, false);
+			});
+		};
 
 
 		// ============================== end of file upload =======================

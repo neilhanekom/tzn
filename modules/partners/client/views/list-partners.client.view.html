@@ -1,68 +1,79 @@
-<div flex layout="row" class="bg-gen"  data-ng-controller="PartnersController" data-ng-init="find()"> 
+<div flex layout="row"  class="bg-lgrey" data-ng-controller="PartnersController" data-ng-init="find()"> 
 
     <div flex="15"  hide-sm hide-md hide-lg></div>
-       <div flex layout="column" class="bg-gen">
-                    <div layout="column">
-                        <div class="bg-white" layout="row"  data-ng-show="authentication.user && partners[0] "  layout-align="end center">
-                        <div flex layout="row" layout-align="end end">
-                            <md-content>
-                            <md-button data-ui-sref="partners.create" class="md-warn md-raised left" layout="row" layout-align="center center">
-                                        <ng-md-icon icon="add" size="20" ng-attr-style="fill: {{fill}}"></ng-md-icon><span class="mar-l-5"> Add partner</span>
-                            </md-button>
-                            <md-divider></md-divider>
-                            </md-content>
-                        </div>  
-                        
-                    </div>
-                    <div layout="row" flex data-ng-hide="partners[0]" layout-align="center center">
-                        <div flex layout="column" layout-align="center center">
-                            <h2>There are currently no partners that you created. Create one first</h2>
-                            <md-button data-ng-show="authentication.user" data-ui-sref="partners.create" class="md-warn md-raised left" layout="row" layout-align="center center">
-                                        <ng-md-icon icon="add" size="20" ng-attr-style="fill: {{fill}}"></ng-md-icon><span class="mar-l-5"> Create </span>
-                            </md-button>
-                        </div>  
-                        
-                    </div>
+    <!-- =================== Middle Section =================== -->
+    
+    <div flex layout="column"  >
+       <div layout="column" >
+            <md-whiteframe class="md-whiteframe-z1" layout-margin>
+            <md-content>
+            <div layout="row" layout-padding>
+                <div layout="row" flex layout-align="start center">
+                    <h2>Partners</h2>
+                </div>
+                <div layout="row" flex layout-align="end center">
+                    <md-button data-ui-sref="partners.create" class="md-fab md-warn" aria-label="Eat cake" layout="row" layout-align="center center">
+                        <ng-md-icon icon="add" size="35" ng-attr-style="fill: {{fill}}"></ng-md-icon>
+                    </md-button>
+                </div>
+                
+                <!-- <h2 class="mar-l-20 txt-inherit txt-24">{{shop.name}}</h2> -->
+            </div>
+            <md-divider></md-divider>
+            
+            
+            
+        </md-content>
+        </md-whiteframe>
+       </div>
 
-                    </div>
-                    
-                   
-
-                            <div layout="column" flex data-ng-repeat="partner in partners">
-                                 <md-content flex>
-                                <md-card >
-                                    <img data-ng-src="{{partner.imageUrl}}" alt="{{partner.name}}" >
-                                <md-card-content >
-                                    <ul class="setting-list">
-                                <li><span><b>Address</b></span></li>
-                                <li><span>{{partner.address.line1}}</span></li>
-                                <li><span>{{partner.address.line2}}</span></li>
-                                <li><span>{{partner.address.town}}</span></li>
-                                <li><span>{{partner.address.city}}</span></li>
-                                <li><span>{{partner.address.code}}</span></li>
-                                
-                            </ul>
-                        <ul class="setting-list">
-                                <li><span><b>Contact US</b></span></li>
-                                <li data-ng-repeat="contact in partner.contacts" layout="row" layout-align="start center"><span><b>{{contact.name}}</b> &nbsp {{contact.number}} &nbsp {{contact.email}}</span></li>
-                                
-                         </ul> 
-
-                                    <div layout="column"  layout-align="start start" >
-                                    <md-button data-ng-href="/#!/partners/{{partner._id}}" class="md-accent left" layout="row" layout-align="center center" data-ng-show="authentication.user">
-                                        <ng-md-icon icon="local_library" size="20" ng-attr-style="fill: {{blue}}"></ng-md-icon><span class="mar-l-5"> View Partner</span>
-                                    </md-button>
-                                    
-                                </div>
-                                </md-card-content>
-                                </md-card>
-                            </md-content>
+       <div flex layout="row" layout-wrap >
+           <div flex-gt-md="30" flex-md="45" flex-sm="100" layout="column" ng-repeat="partner in partners" layout-margin>
+               <md-card>
+               <md-content>
+                        <div layout="row" layout-padding >
+                            <div flex>
+                                <h3>{{partner.name}}</h3>
                             </div>
-                   
+                            <div flex layout="row" layout-align="end center">
+                                 <!-- <ng-md-icon icon="whatshot" size="30" ng-attr-style="fill: {{red}}"></ng-md-icon> -->
+                            </div>
+                        </div>
+                </md-content>
+                <md-content>
+                        <div  class="card-image" ng-style="{'background-image' : 'url({{partner.imageUrl}})', 'background-size' : '100%', 'background-repeat' : 'no-repeat'}">
+                         
+                        </div>
+                </md-content>
 
+                <md-content>
+                        <div  layout="column" layout-padding>
+
+                          <h4>{{partner.slogan}}</h4>
+                          <p>{{partner.address.line1}} 
+                          <br>
+                            {{partner.address.line2}}</p>
+                         
+                        </div>
+                </md-content>
+                <div layout="row" class="bg-lgrey" layout-padding layout-align="start center">
+                    <md-button class="md-accent" data-ng-href="/#!/partners/{{partner._id}}">
+                        View
+                    </md-button>
                     
-                    
+                </div>
+                 
+                </md-card>
+           </div>
+
+       </div>
+        
+                  
                    
-                </div>    
-        <div flex="15"  hide-sm hide-md hide-lg></div>
+        </div>    
+
+    <!-- ======================= Middle Section ==================== -->
+        
+    <div flex="15"  hide-sm hide-md hide-lg></div>
 </div>
+

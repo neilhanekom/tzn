@@ -35,16 +35,16 @@ exports.create = function(req, res) {
 		fs.writeFile('./modules/articles/client/img/uploads/' + req.files.articleForm.name, req.files.articleForm.buffer, function (uploadError) {
 			if (uploadError) {
 				return res.status(400).send({
-					message: 'Error occurred while uploading Image for Event'
+					message: 'Error occurred while uploading Image for article'
 				});
 			} else {
-				// var imagePath = 'modules/events/img/uploads/' + req.files.eventsForm.name;
+				// var imagePath = 'modules/articles/img/uploads/' + req.files.articlesForm.name;
 
 				var article = new Article(req.body);
 				// Adding and Correcting some Stringified Fields
 				article.user = req.user;
 				article.imageUrl = 'modules/articles/img/uploads/' + req.files.articleForm.name;
-				// event.eventDate = eventDate;
+				// article.articleDate = articleDate;
 				
 				article.save(function(err) {
 					if (err) {
@@ -76,22 +76,76 @@ exports.read = function(req, res) {
 /**
  * Update a article
  */
+exports.updateFile = function(req, res) {
+	var article = req.article;
+	var user = req.user;
+	var message = null;
+	var oldFile = article.imageUrl;
+	console.log(article);
+
+	if (user) {
+		fs.writeFile('./modules/articles/client/img/uploads/' + req.files.articleForm.name, req.files.articleForm.buffer, function (uploadError) {
+			if (uploadError) {
+				return res.status(400).send({
+					message: 'Error occurred while uploading Image for article'
+				});
+			} else {
+				// var imagePath = 'modules/articles/img/uploads/' + req.files.articlesForm.name;
+
+				article = _.extend(article , req.body);
+				// Adding and Correcting some Stringified Fields
+				article.user = req.user;
+				article.imageUrl = 'modules/articles/img/uploads/' + req.files.articleForm.name;
+				// article.articleDate = articleDate;
+
+				
+				
+				article.save(function(err) {
+					if (err) {
+						return res.status(400).send({
+							message: errorHandler.getErrorMessage(err)
+						});
+					} else {
+						res.jsonp(article);
+						var filename = oldFile.split('/').pop();
+						var checkedFile = fs.readFileSync('./modules/articles/client/img/uploads/' + filename);
+						if (checkedFile) { 
+							fs.unlink( './modules/articles/client/img/uploads/' + filename, function (err) {
+						  if (err) throw err;
+							}); 
+						} else {
+							return;
+						}
+					}
+				});
+
+				
+			}
+		});
+	} else {
+		res.status(400).send({
+			message: 'User is not signed in'
+		});
+	}
+};
+
+
 exports.update = function(req, res) {
 	var article = req.article;
 
-	article.title = req.body.title;
-	article.content = req.body.content;
+		article = _.extend(article , req.body);
 
-	article.save(function(err) {
-		if (err) {
-			return res.status(400).send({
-				message: errorHandler.getErrorMessage(err)
-			});
-		} else {
-			res.json(article);
-		}
-	});
+		article.save(function(err) {
+			if (err) {
+				return res.status(400).send({
+					message: errorHandler.getErrorMessage(err)
+				});
+			} else {
+				res.jsonp(article);
+			}
+		});
 };
+
 
 /**
  * Delete an article

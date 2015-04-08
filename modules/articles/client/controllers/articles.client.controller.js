@@ -70,6 +70,16 @@ angular.module('articles').controller('ArticlesController', ['$scope', '$statePa
 			}
 		});
 		
+		$scope.updatePic = function(files) {
+
+			$scope.formUpload = true;
+			if (files != null) {
+				generateThumbAndUpdate(files[0]);
+			}
+		};
+
+
+
 		$scope.uploadPic = function(files) {
 
 			$scope.formUpload = true;
@@ -82,7 +92,13 @@ angular.module('articles').controller('ArticlesController', ['$scope', '$statePa
 			$scope.errorMsg = null;
 			$scope.generateThumb(file);
 			uploadUsing$upload(file);
-		}
+		};
+
+		function generateThumbAndUpdate(file) {
+			$scope.errorMsg = null;
+			$scope.generateThumb(file);
+			updateUsing$upload(file);
+		};
 		
 		$scope.generateThumb = function(file) {
 			if (file != null) {
@@ -104,6 +120,40 @@ angular.module('articles').controller('ArticlesController', ['$scope', '$statePa
 			file.upload = $upload.upload({
    				url: 'api/articles',
 				method: 'POST',
+				fields: {
+					title: $scope.article.title,
+					sub: $scope.article.sub,
+					body: $scope.article.body
+					
+				},
+				file: file,
+				fileFormDataName: 'articleForm',
+			});
+
+			file.upload.then(function(response) {
+				$timeout(function() {
+					file.result = response.data;
+					$location.path('articles');
+				});
+			}, function(response) {
+				if (response.status > 0)
+					$scope.errorMsg = response.status + ': ' + response.data;
+			});
+
+			file.upload.progress(function(evt) {
+				// Math.min is to fix IE which reports 200% sometimes
+				file.progress = Math.min(100, parseInt(100.0 * evt.loaded / evt.total));
+			});
+
+			file.upload.xhr(function(xhr) {
+				// xhr.upload.addarticleListener('abort', function(){console.log('abort complete')}, false);
+			});
+		}
+
+		function updateUsing$upload(file) {
+			file.upload = $upload.upload({
+   				url: 'api/articles/updatefile/' + $scope.article._id,
+				method: 'PUT',
 				fields: {
 					title: $scope.article.title,
 					sub: $scope.article.sub,

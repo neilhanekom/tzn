@@ -16,7 +16,7 @@ var _ = require('lodash'),
  */
 exports.create = function(req, res) {
 	var user = req.user;
-	var message = null;
+	// var message = null;
 	console.log(req.body);
 	// Unstringify and compile new Object
 	var location = JSON.parse(req.body.location);
@@ -30,10 +30,6 @@ exports.create = function(req, res) {
 		location: location,
 		races: races
 	};
-
-	// var location = JSON.parse(req.body.location);
-	// var eventDate = JSON.parse(req.body.eventDate);
-	// var races = JSON.parse(req.body.races);
 
 	
 	if (user) {
@@ -85,20 +81,86 @@ exports.read = function(req, res) {
 /**
  * Update a Event
  */
+
+
 exports.update = function(req, res) {
-	var event = req.event ;
 
-	event = _.extend(event , req.body);
+		var event = req.event ;
 
-	event.save(function(err) {
-		if (err) {
-			return res.status(400).send({
-				message: errorHandler.getErrorMessage(err)
-			});
-		} else {
-			res.jsonp(event);
-		}
-	});
+		event = _.extend(event , req.body);
+
+		event.save(function(err) {
+			if (err) {
+				return res.status(400).send({
+					message: errorHandler.getErrorMessage(err)
+				});
+			} else {
+				res.jsonp(event);
+			}
+		});
+
+};
+
+exports.updateFile = function(req, res) {
+
+		        var event = req.event;
+        var user = req.user;
+        var message = null;
+        var oldFile = event.imageUrl;
+
+        var location = JSON.parse(req.body.location);
+        var eventDate = JSON.parse(req.body.eventDate);
+        var races = JSON.parse(req.body.races);
+
+        var newObj = {
+         name: req.body.name,
+         description: req.body.description,
+         eventDate: eventDate,
+         location: location,
+         races: races
+        };
+
+        console.log(newObj);
+        
+            fs.writeFile('./modules/events/client/img/uploads/' + req.files.eventsForm.name, req.files.eventsForm.buffer, function (uploadError) {
+             if (uploadError) {
+                 return res.status(400).send({
+                     message: 'Error occurred while uploading Image for Event'
+                 });
+             } else {
+                 // var imagePath = 'modules/events/img/uploads/' + req.files.eventsForm.name;
+
+                 event = _.extend(event , newObj);
+                 // Adding and Correcting some Stringified Fields
+                 event.user = req.user;
+                 event.imageUrl = 'modules/events/img/uploads/' + req.files.eventsForm.name;
+                 // event.eventDate = eventDate;
+
+                    
+                    
+                 event.save(function(err) {
+                     if (err) {
+                         return res.status(400).send({
+                             message: errorHandler.getErrorMessage(err)
+                         });
+                     } else {
+                         res.jsonp(event);
+                         var filename = oldFile.split('/').pop();
+                         var checkedFile = fs.readFileSync('./modules/events/client/img/uploads/' + filename);
+                         if (checkedFile) { 
+                             fs.unlink( './modules/events/client/img/uploads/' + filename, function (err) {
+                           if (err) throw err;
+                             }); 
+                         } else {
+                             return;
+                         }
+                     }
+                 });
+
+                    
+             }
+            });
+
 };
 
 /**

@@ -26,8 +26,7 @@ exports.create = function(req, res) {
 	// 		res.jsonp(contact);
 	// 	}
 	// });
-	console.log(req.body);
-	console.log(req.files.contactForm);
+	
 	var user = req.user;
 	var message = null;
 
@@ -93,6 +92,59 @@ exports.update = function(req, res) {
 			res.jsonp(contact);
 		}
 	});
+};
+
+exports.updateFile = function(req, res) {
+	var contact = req.contact ;
+	var user = req.user;
+	var message = null;
+	var oldFile = contact.imageUrl;
+
+
+	if (user) {
+		fs.writeFile('./modules/contacts/client/img/uploads/' + req.files.contactForm.name, req.files.contactForm.buffer, function (uploadError) {
+			if (uploadError) {
+				return res.status(400).send({
+					message: 'Error occurred while uploading Image for Event'
+				});
+			} else {
+				// var imagePath = 'modules/events/img/uploads/' + req.files.eventsForm.name;
+
+				contact = _.extend(contact , req.body);
+				// Adding and Correcting some Stringified Fields
+				contact.user = req.user;
+				contact.imageUrl = 'modules/contacts/img/uploads/' + req.files.contactForm.name;
+				// event.eventDate = eventDate;
+
+				console.log(contact);
+				
+				contact.save(function(err) {
+					if (err) {
+						return res.status(400).send({
+							message: errorHandler.getErrorMessage(err)
+						});
+					} else {
+						res.jsonp(contact);
+						var filename = oldFile.split('/').pop();
+                         var checkedFile = fs.readFileSync('./modules/contacts/client/img/uploads/' + filename);
+                         if (checkedFile) { 
+                             fs.unlink( './modules/contacts/client/img/uploads/' + filename, function (err) {
+                           if (err) throw err;
+                             }); 
+                         } else {
+                             return;
+                         }
+					}
+				});
+
+				
+			}
+		});
+	} else {
+		res.status(400).send({
+			message: 'User is not signed in'
+		});
+	}
 };
 
 /**

@@ -12,14 +12,18 @@
 					          {{event.description}}
 					        </p>
 					        <ul class="setting-list">
-					        	<li><span><b>Date: </b>{{event.eventDate}}</span></li>
+					        	<li><span><b>Date: </b>{{event.eventDate | Customdate}}</span></li>
 					        	<li><span><b>Venue: </b>{{event.location.venue}}</span></li>
 					        	<li><span><b>Town: </b>{{event.location.town}}</span></li>
 					        	<li><span><b>Province: </b>{{event.location.province}}</span></li>
 					        	<li><span><b>Races: </b><span data-ng-repeat="dist in event.races">{{dist.distance + '/'}}</span></span></li>
 					        </ul>
-					        <md-button data-ui-sref="entries.create" class="md-accent md-raised md-hue-2" data-ng-hide="authentication.user">Enter This Race</md-button>
-					        <md-button data-ng-click="remove();" class="md-warn md-raised md-hue-2" data-ng-show="authentication.user">Delete</md-button>
+					        <div layout="row">
+					        	<md-button data-ui-sref="entries.create" class="md-accent md-raised md-hue-2" data-ng-hide="authentication.user">Enter This Race</md-button>
+					        	<md-button data-ng-href="/#!/events/{{event._id}}/edit" class=" md-raised md-accent " data-ng-show="authentication.user">Edit</md-button >
+					        	<md-button data-ng-click="remove();" class="md-warn md-raised md-hue-2 mar-l-15" data-ng-show="authentication.user">Delete</md-button>
+					        </div>
+					        
 					      </md-card-content>
 					    </md-card>
 				    </md-content>

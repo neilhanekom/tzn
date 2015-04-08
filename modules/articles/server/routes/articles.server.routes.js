@@ -18,6 +18,10 @@ module.exports = function(app) {
 		.put(articles.update)
 		.delete(articles.delete);
 
+	app.route('/api/articles/updatefile/:articleId').all(articlesPolicy.isAllowed)
+		.put(articles.updateFile);
+		
+
 	// Finish by binding the article middleware
 	app.param('articleId', articles.articleByID);
 };

@@ -5,7 +5,7 @@ var ApplicationConfiguration = (function() {
 	// Init module configuration options
 	var applicationModuleName = 'tzaneencycling';
 
-	var applicationModuleVendorDependencies = ['ngResource', 'ui.router', 'ui.bootstrap', 'ui.utils', 'angularFileUpload', 'ngMaterial', 'ngMdIcons', 'ngMessages', 'angularFileUpload', 'angularMoment' ];
+	var applicationModuleVendorDependencies = ['ngResource', 'ui.router', 'ui.bootstrap', 'ui.utils', 'angularFileUpload', 'ngMaterial', 'ngMdIcons', 'ngMessages', 'angularFileUpload', 'angularMoment', 'ng.deviceDetector' ];
 
 	// Add a new vertical module
 	var registerModule = function(moduleName, dependencies) {

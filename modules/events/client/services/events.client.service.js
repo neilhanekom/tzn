@@ -7,6 +7,16 @@ angular.module('events').factory('Events', ['$resource',
 		}, {
 			update: {
 				method: 'PUT'
+			},
+			get: {
+				method: 'GET',
+				transformResponse: function(data){
+                //MESS WITH THE DATA
+                data = angular.fromJson(data);
+                
+                data.eventDate = new Date(data.eventDate);
+                return data;
+            	}
 			}
 		});
 	}

@@ -14,6 +14,10 @@ module.exports = function(app) {
 		.put(partners.update)
 		.delete(partners.delete);
 
+	app.route('/api/partners/updatefile/:partnerId').all(partnersPolicy.isAllowed)
+		.put(partners.updateFile);
+		
+
 	// Finish by binding the Partner middleware
 	app.param('partnerId', partners.partnerByID);
 };

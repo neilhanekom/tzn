@@ -25,7 +25,8 @@ module.exports = {
 				'public/lib/angular-touch/angular-touch.js',
 				'public/lib/angular-messages/angular-messages.min.js',
 				'public/lib/angular-moment/angular-moment.min.js',
-				'public/lib/moment/moment.js'
+				'public/lib/moment/moment.js',
+				'public/lib/ng-device-detector/ng-device-detector.js'
 				
 				
 			],

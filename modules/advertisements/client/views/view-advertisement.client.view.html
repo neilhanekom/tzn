@@ -12,8 +12,12 @@
 					          {{advertisement.description}}
 					        </p>
 					        
-					        <md-button data-ui-sref="entries.create" class="md-accent md-raised md-hue-2" data-ng-hide="authentication.user">Enter This Race</md-button>
-					        <md-button data-ng-click="remove();" class="md-warn md-raised md-hue-2" data-ng-show="authentication.user">Delete</md-button>
+					        <div layout="row">
+					        	
+					        	<md-button data-ng-href="/#!/advertisements/{{advertisement._id}}/edit" class=" md-raised md-accent " data-ng-show="authentication.user">Edit</md-button >
+					        	<md-button data-ng-click="remove();" class="md-warn md-raised md-hue-2 mar-l-15" data-ng-show="authentication.user">Delete</md-button>
+					        </div>
+					        
 					      </md-card-content>
 					    </md-card>
 				    </md-content>

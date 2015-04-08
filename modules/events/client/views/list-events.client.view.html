@@ -1,8 +1,8 @@
-<div flex layout="row" class="bg-gen"  data-ng-controller="EventsController" data-ng-init="find()"> 
+<div flex layout="row" class="bg-lgrey"  data-ng-controller="EventsController" data-ng-init="find()"> 
 
     <div flex="15"  hide-sm hide-md hide-lg></div>
        <div flex layout="column" layout-wrap >
-                    <div class="bg-white" layout="row"  data-ng-show="authentication.user && events[0] "  layout-align="end center">
+                    <div  layout="row"  data-ng-show="authentication.user && events[0] "  layout-align="end center">
                         <div flex layout="column" layout-align="center end">
                             <md-content>
                             <md-button data-ui-sref="events.create" class="md-warn md-raised left" layout="row" layout-align="center center">
@@ -42,9 +42,7 @@
                                         </md-content> 
                                 </div> 
                             <div layout="row" >
-                            <p>
-                              {{event.description}}
-                            </p>
+                            
                             </div>
                             <div layout="row">
                                     <ul class="setting-list">

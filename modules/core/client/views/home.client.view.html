@@ -1,7 +1,7 @@
 
 <div layout="row" flex layout-wrap >
 
-	<div layout="row" flex="100" data-ng-controller="HomeController" data-ng-init="startArticles(); hoganCompile()">
+	<div layout="row" flex="100" data-ng-controller="HomeController" data-ng-init="startArticles(); hoganCompile(); pushPartners();">
 		
 	<div flex layout="row" layout-wrap layout-align="start">
 		<div flex>	
@@ -54,26 +54,22 @@
 	
 	</div>
 	<div layout="row" flex="100">
-		
-		
 		<div class="bg-lgrey" flex layout="column" layout-wrap layout-align="center center" layout-padding>
-				<div flex layout="row">
-					<h3>Site Partner Logo comes here</h3>
+				<div flex layout="row" data-ng-repeat="partner in partners">
+					<img data-ng-src="{{img}}">
+					<h1>{{img}}</h1>
 				</div>
 				
-		</div>
-		
-		
-		
+		</div>	
 	</div>
 
 	<div layout="row" flex="100">
 		<div flex="10" hide-lg hide-sm hide-md></div>
 		
-		<div flex layout="row" layout-wrap layout-align="center start" layout-padding>
+		<div flex layout="row" layout-wrap layout-align="center start" layout-margin>
 		<md-content layout-padding>
 				<h1>Welcome to Tzaneen Cycling Club</h1>
-				<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+				<p ng-style="{'text-align' : 'justify'}">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
 				Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions.
 				</p>
 		</md-content>		
@@ -84,13 +80,14 @@
 		<div flex="10" hide-lg hide-sm hide-md></div>
 	</div>
 
+
 	<div layout="row" flex="100">
 		<div flex="10" hide-lg hide-sm hide-md></div>
 		
 		<div flex layout="row" layout-wrap layout-align="center start" layout-padding>
 		<md-content layout-padding>
 				<h1>More about what we do</h1>
-				<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+				<p ng-style="{'text-align' : 'justify'}">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
 				Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions.
 				</p>
 		</md-content>		
@@ -106,9 +103,10 @@
 		<div flex layout="row" layout-wrap layout-align="center start" layout-padding>
 		<md-content layout-padding>
 				<h1>Anything else we would like to mention</h1>
-				<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+				<p ng-style="{'text-align' : 'justify'}">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
 				Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions.
 				</p>
+				<br>
 		</md-content>		
 		</div>
 		<br>
@@ -117,4 +115,63 @@
 		<div flex="10" hide-lg hide-sm hide-md></div>
 	</div>
 
+	<div layout="row" flex="100" ng-style="{'background-color' : '#212121'}">
+		<div flex="10" hide-lg hide-sm hide-md></div>
+		<div layout="column" flex>
+			<div flex  layout="row" layout-wrap layout-align="start start" layout-padding>
+				<div >
+					<img data-ng-src="modules/core/img/brand/tzn.png" class="footer-logo">
+				</div>
+				<div class="border-r-w" layout="column" layout-padding>
+					<h2 class="txt-white mar-0">Tzaneen Cycling</h2>
+					<p class="txt-white">info@tzaneencycling.co.za</p>
+				</div>
+				<div flex layout="row"  hide-sm layout-align="start center">
+					
+					<md-button class="md-fab mar-l-15" aria-label="Eat cake" ng-href="#" layout="row" layout-align="center center">
+			           <img data-ng-src="modules/core/img/icons/f-w.png" class="icon-button">
+			        </md-button>
+			        <md-button class="md-fab md-primary mar-l-15" aria-label="Use Android" layout="row" layout-align="center center">
+			          <img data-ng-src="modules/core/img/icons/tw-w.png"  class="icon-button">
+			        </md-button>
+			        
+				</div>
+				<div flex layout="row" hide-gt-sm  layout-align="start center">
+					
+					<md-button class="md-fab md-mini mar-l-15" aria-label="Eat cake" ng-href="#" layout="row" layout-align="center center">
+			           <img data-ng-src="modules/core/img/icons/f-w.png" class="icon-button">
+			        </md-button>
+			        <md-button class="md-fab md-primary md-mini mar-l-15" aria-label="Use Android" layout="row" layout-align="center center">
+			          <img data-ng-src="modules/core/img/icons/tw-w.png"  class="icon-button">
+			        </md-button>
+			        
+				</div>
+				<div flex layout="column" hide-sm layout-align="center end">
+					<small class="md-caption txt-white">Site Developed by:</small>
+					<img data-ng-src="modules/core/img/brand/nhd-foot.png" class="nhd-footer">
+			        
+				</div>
+
+				
+			</div>
+
+			<div flex  layout="row" hide-gt-sm layout-wrap layout-align="start start" layout-padding>
+				<div flex layout="column"  layout-align="center start" layout-padding>
+					<small class="md-caption txt-white">Site Developed by:</small>
+					<img data-ng-src="modules/core/img/brand/nhd-foot.png" class="nhd-footer">
+			        
+				</div>
+
+				
+			</div>
+
+			
+			
+		</div>
 	
+		
+		<div flex="10" hide-lg hide-sm hide-md></div>
+	</div>
+
+
+</div>	

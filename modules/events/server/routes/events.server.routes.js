@@ -9,10 +9,14 @@ module.exports = function(app) {
 		.get(events.list).all(eventsPolicy.isAllowed)
 		.post(events.create);
 
-	app.route('/api/events/:eventId').all(eventsPolicy.isAllowed)
+	app.route('/api/events/:eventId')
 		.get(events.read)
 		.put(events.update)
 		.delete(events.delete);
+	
+	app.route('/api/events/updatefile/:eventId')
+		.put(events.updateFile);
+		
 
 	// Finish by binding the Event middleware
 	app.param('eventId', events.eventByID);

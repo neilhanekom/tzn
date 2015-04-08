@@ -1,4 +1,4 @@
-<div flex layout="row" layout-fill data-ng-controller="EntriesController" > 
+<div flex layout="row" layout-fill data-ng-controller="EntriesController"; data-ng-init="checkFF()"; > 
 
 
     <div flex="15" class="bg-lgrey" hide-sm hide-md hide-lg></div>
@@ -22,13 +22,13 @@
                             <div layout="column" layout-sm="column" layout-fill>
                             
                             <h2>Entry Form</h2>
-                            <md-divider></md-divider>
+                            <md-divclasser></md-divclasser>
                                  <div layout="column" layout-fill data-ng-hide="collapseForm">
                                 <div layout="row" layout-sm="column">
                                     <h4>Select Event</h4>
                                 </div>
                                 <div layout="column" layout-align="center start" style="height: 100px;">
-                                    <md-select ng-model="event" md-on-open="loadEvents()" style="min-width: 200px;">
+                                    <md-select ng-model="event" md-on-open="loadEvents()" style="min-wclassth: 200px;">
                                       <md-select-label>{{ event ? event.name : 'Select Event' }}</md-select-label>
                                       <md-option ng-value="event" ng-repeat="event in events"><span><ng-md-icon icon="directions_bike" size="14" ng-attr-style="fill: {{fill}}"></ng-md-icon> </span>{{event.name + ' '}} &nbsp<span><ng-md-icon icon="today" size="14" ng-attr-style="fill: {{fill}}"></ng-md-icon> </span>{{eventDate | Customdate }}</md-option>
                                     </md-select>
@@ -74,20 +74,49 @@
                                         </div>
                                     </md-input-container>
                                     <md-input-container flex>
-                                        <label>ID/Passport Number</label>
-                                        <input type="text" required name="rsaId" ng-model="entry.rsaId" placeholder="Enter your Password Number">
-                                        <div ng-messages="entryForm.rsaId.$error" class="error">
+                                        <label>class/Passport Number</label>
+                                        <input type="text" required name="rsaclass" ng-model="entry.rsaclass" placeholder="Enter your Password Number">
+                                        <div ng-messages="entryForm.rsaclass.$error" class="error">
                                           <div ng-message="required">This is required.</div>
                                         </div>
 
                                     </md-input-container>
                                     
                                 </div>
-                                
+
                                 <div layout="row" layout-sm="column">
                                     <h4>Date of Birth</h4>
                                 </div>
-                                 <div layout="row" layout-sm="column">
+                                <div layout="row" layout-sm="column">
+                                    <div layout="column" layout-align="center start" style="height: 100px;" data-ng-show="{{firefox}}">
+                                        <md-select ng-model="year" md-on-open="loadYears()" style="min-wclassth: 200px;">
+                                          <md-select-label>{{ year ? year : 'Year' }}</md-select-label>
+                                          <md-option ng-value="year" ng-repeat="year in years"></span>{{year}}</md-option>
+                                        </md-select>
+                                        <!-- <p class="md-caption">{{ year ? year : 'No Birth year Selected' }}</p> -->
+                                    </div> 
+                                    <div layout="column" layout-align="center start" style="height: 100px;" data-ng-show="{{firefox}}">
+                                        <md-select ng-model="month" md-on-open="loadMonths()" style="min-wclassth: 200px;">
+                                          <md-select-label>{{ month ? month.value : 'Month' }}</md-select-label>
+                                          <md-option ng-value="month" ng-repeat="month in months"></span>{{month.value}}</md-option>
+                                        </md-select>
+                                        <!-- <p class="md-caption">{{ year ? year : 'No Birth year Selected' }}</p> -->
+                                    </div> 
+                                    <div layout="column" layout-align="center start" style="height: 100px;" data-ng-show="{{firefox}}">
+                                        <md-select ng-model="day" md-on-open="loadDays()" style="min-wclassth: 200px;">
+                                          <md-select-label>{{ day ? day : 'Day' }}</md-select-label>
+                                          <md-option ng-value="day" ng-repeat="day in days" data-ng-click="compileDate()"></span>{{day}}</md-option>
+                                        </md-select>
+                                        <!-- <p class="md-caption">{{ year ? year : 'No Birth year Selected' }}</p> -->
+                                    </div> 
+
+                                </div>
+                                
+                                
+                                <div layout="row" layout-sm="column" data-ng-hide="{{firefox}}">
+                                    <h4>Date of Birth</h4>
+                                </div>
+                                 <div layout="row" layout-sm="column" data-ng-hide="{{firefox}}">
                                     <div layout="row" flex>
                                         <p class="red">NB! if a date picker option is not rendered Please enter date as: <b>yyyy/mm/dd</b></p>
                                     </div>
@@ -98,7 +127,7 @@
                                     <div flex>
                                         <md-input-container >
                                       <label>Enter you Date of Birth <b>(YYYY/MM/DD)</b></label>
-                                      <input type="date" ng-model="entry.birthDate">
+                                      <input type="date" ng-model="entry.birthDate" ng-click="logDate()">
                                     </md-input-container>
                                     </div>
                                     
@@ -158,16 +187,16 @@
                                 
                                 <div layout="row" flex layout-sm="column">
                                     <md-input-container flex>
-                                        <label>Medical Aid Name</label>
-                                        <input type="text" name="medical_company" ng-model="entry.medical.company" placeholder="Medical Aid Name">
+                                        <label>Medical Aclass Name</label>
+                                        <input type="text" name="medical_company" ng-model="entry.medical.company" placeholder="Medical Aclass Name">
                                         <div ng-messages="entryForm.medical_company.$error" class="error">
                                           <div ng-message="required">This is required.</div>
                                         
                                         </div>
                                     </md-input-container>
                                     <md-input-container flex>
-                                        <label>Medical Aid Number</label>
-                                        <input type="text" name="medical_number" ng-model="entry.medical.number" placeholder="Medical Aid Number">
+                                        <label>Medical Aclass Number</label>
+                                        <input type="text" name="medical_number" ng-model="entry.medical.number" placeholder="Medical Aclass Number">
                                         <div ng-messages="entryForm.medical_number.$error" class="error">
                                           <div ng-message="required">This is required.</div>
                                         
@@ -178,12 +207,12 @@
                                 </div>
                                 <div layout="row" flex layout-sm="column">
                                     <md-input-container flex>
-                                        <label>Medical Aid Main Member</label>
+                                        <label>Medical Aclass Main Member</label>
                                         <input type="text" name="medical_main" ng-model="entry.medical.main" placeholder="Main Member">
                                         
                                     </md-input-container>
                                     <md-input-container flex>
-                                        <label>Medical Aid Plan</label>
+                                        <label>Medical Aclass Plan</label>
                                         <input type="text" name="medical_plan" ng-model="entry.medical.plan" placeholder="Plan/Product">
                                         
                                     </md-input-container>
@@ -365,10 +394,10 @@
 
                                    <div layout="row" flex>
                                         <div layout="row" flex-sm="50" flex-gt-sm="35"  >
-                                           <span><b>ID:</b> </span>
+                                           <span><b>class:</b> </span>
                                         </div>
                                         <div layout="row" flex>
-                                            <span class="txt-inherit">{{entry.rsaId}}</span>
+                                            <span class="txt-inherit">{{entry.rsaclass}}</span>
                                         </div>
                                     </div>
                                     <div layout="row" flex>
@@ -421,7 +450,7 @@
                                     </div>
                                     <div layout="row" flex>
                                         <div layout="row" flex-sm="50" flex-gt-sm="35"  >
-                                          <span><b>Medical Aid Company:</b></span>
+                                          <span><b>Medical Aclass Company:</b></span>
                                         </div>
                                         <div layout="row" flex>
                                             <span class="txt-inherit">{{entry.medical.company}}</span>
@@ -429,7 +458,7 @@
                                     </div>
                                     <div layout="row" flex>
                                         <div layout="row" flex-sm="50" flex-gt-sm="35"  >
-                                          <span><b>Medical Aid Number:</b></span>
+                                          <span><b>Medical Aclass Number:</b></span>
                                         </div>
                                         <div layout="row" flex>
                                             <span class="txt-inherit">{{entry.medical.number}}</span>
@@ -437,7 +466,7 @@
                                     </div>
                                     <div layout="row" flex>
                                         <div layout="row" flex-sm="50" flex-gt-sm="35"  >
-                                          <span><b>Medical Aid Plan:</b></span>
+                                          <span><b>Medical Aclass Plan:</b></span>
                                         </div>
                                         <div layout="row" flex>
                                             <span class="txt-inherit">{{entry.medical.plan}}</span>
@@ -445,7 +474,7 @@
                                     </div>
                                     <div layout="row" flex>
                                         <div layout="row" flex-sm="50" flex-gt-sm="35"  >
-                                          <span><b>Medical Aid Main/M:</b> </span>
+                                          <span><b>Medical Aclass Main/M:</b> </span>
                                         </div>
                                         <div layout="row" flex>
                                             <span class="txt-inherit">{{entry.medical.main}}</span>
@@ -551,7 +580,7 @@
                                     
                                
                                 <br>
-                                 <md-divider></md-divider>
+                                 <md-divclasser></md-divclasser>
                                     <div>
                                             <div layout="row">
                                                 <h2>Total Fee</h2>
@@ -573,7 +602,7 @@
                                                 <div flex>
                                                     <span>{{'R' + licenseFee}}</span> 
                                                 </div>
-                                               <md-divider></md-divider>
+                                               <md-divclasser></md-divclasser>
                                             </div>
                                             <div layout="row">
                                                 <div flex-gt-md="10" flex-md="20" flex-sm="40">
@@ -582,11 +611,11 @@
                                                 <div flex>
                                                     <span>{{'R' + entry.fee}}</span> 
                                                 </div>
-                                                <md-divider></md-divider>
+                                                <md-divclasser></md-divclasser>
                                             </div>
                                             <div layout="column" flex>
                                                 <br>
-                                                <md-divider></md-divider>
+                                                <md-divclasser></md-divclasser>
                                                 <h3>INDEMNITY & WAIVER:</h3>
                                                 <p> I undertake to participate in the above event entirely at my own risk. I agree that I shall have no claim whatsoever against the organisers,officials,marshals,helpers,sponsors,any local authority or any landowner or the employees or servants of any of the above parties for any loss,damage or injury whatsoever which I may suffer as a result of my participation in this event including my arrival thereat and departure there from and any ceremonies or functions thereof. In the event of my signing this form as a guardian of a minor, I hereby consent to such minor being bound by the waiver including to the extent to which he/she is not capeable of waiving his/her rights as stipulated above. The wearing of helmets in compulsary.</p>
                                           </div>  

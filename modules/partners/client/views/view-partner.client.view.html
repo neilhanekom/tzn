@@ -28,7 +28,11 @@
 					        	<li data-ng-repeat="contact in partner.contacts" layout="row" layout-align="start center"><span><b>{{contact.name}}</b> &nbsp {{contact.number}} &nbsp {{contact.email}}</span></li>
 					        	
 					     </ul> 
-					     <md-button data-ng-click="remove();" class="md-warn md-raised md-hue-2" data-ng-show="authentication.user">Delete</md-button>  
+					     <div layout="row">
+					        	
+					        	<md-button data-ng-href="/#!/partners/{{partner._id}}/edit" class=" md-raised md-accent " data-ng-show="authentication.user">Edit</md-button >
+					        	<md-button data-ng-click="remove();" class="md-warn md-raised md-hue-2 mar-l-15" data-ng-show="authentication.user">Delete</md-button>
+					      </div>
 				      </md-card-content>
 				    </md-card>
 				  </md-content>

@@ -14,6 +14,11 @@ angular.module('advertisements').controller('AdvertisementsController', ['$timeo
 		    console.log($scope.selSponsors);
 		};
 
+		$scope.removeSponsor = function(sponsor) {
+			var index = $scope.selSponsors.indexOf(sponsor);
+		    $scope.selSponsors.splice(index, 1);
+		};
+
 		$scope.specifications = [];
 
 		$scope.pushSpec = function() {
@@ -37,6 +42,8 @@ angular.module('advertisements').controller('AdvertisementsController', ['$timeo
 		      $scope.sponsors = Sponsors.query();
 		    }, 650);
 		  };
+
+		  
 
 		// Remove existing Advertisement
 		$scope.remove = function( advertisement ) {
@@ -76,6 +83,22 @@ angular.module('advertisements').controller('AdvertisementsController', ['$timeo
 			$scope.advertisement = Advertisements.get({ 
 				advertisementId: $stateParams.advertisementId
 			});
+
+			$timeout(function() {
+					if ($scope.advertisement.specifications[0]) {
+						angular.forEach($scope.advertisement.specifications, function(obj) {
+						  $scope.specifications.push(obj);
+						});
+					}
+			}, 650);
+
+			$timeout(function() {
+					if ($scope.advertisement.sponsors[0]) {
+						angular.forEach($scope.advertisement.sponsors, function(obj) {
+						  $scope.selSponsors.push(obj);
+						});
+					}
+			}, 650);
 			
 		};
 
@@ -108,6 +131,20 @@ angular.module('advertisements').controller('AdvertisementsController', ['$timeo
 			$scope.errorMsg = null;
 			$scope.generateThumb(file);
 			uploadUsing$upload(file);
+		}
+
+		$scope.updatePic = function(files) {
+
+			$scope.formUpload = true;
+			if (files != null) {
+				generateThumbAndUpdate(files[0]);
+			}
+		};
+		
+		function generateThumbAndUpdate(file) {
+			$scope.errorMsg = null;
+			$scope.generateThumb(file);
+			updateUsing$upload(file);
 		}
 		
 		$scope.generateThumb = function(file) {
@@ -159,7 +196,42 @@ angular.module('advertisements').controller('AdvertisementsController', ['$timeo
 			file.upload.xhr(function(xhr) {
 				// xhr.upload.addadvertisementListener('abort', function(){console.log('abort complete')}, false);
 			});
-		}
+		};
+
+		function updateUsing$upload(file) {
+			file.upload = $upload.upload({
+   				url: 'api/advertisements/updatefile/' + $scope.advertisement._id,
+				method: 'PUT',
+				fields: {
+					type: $scope.advertisement.type,
+					title: $scope.advertisement.title,
+					description: $scope.advertisement.description,
+					specifications: $scope.specifications,
+					sponsors: $scope.selSponsors
+				},
+				file: file,
+				fileFormDataName: 'advertisementForm',
+			});
+
+			file.upload.then(function(response) {
+				$timeout(function() {
+					file.result = response.data;
+					$location.path('advertisements');
+				});
+			}, function(response) {
+				if (response.status > 0)
+					$scope.errorMsg = response.status + ': ' + response.data;
+			});
+
+			file.upload.progress(function(evt) {
+				// Math.min is to fix IE which reports 200% sometimes
+				file.progress = Math.min(100, parseInt(100.0 * evt.loaded / evt.total));
+			});
+
+			file.upload.xhr(function(xhr) {
+				// xhr.upload.addadvertisementListener('abort', function(){console.log('abort complete')}, false);
+			});
+		};
 
 
 		// ============================== end of file upload =======================

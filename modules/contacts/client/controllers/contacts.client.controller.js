@@ -75,6 +75,20 @@ angular.module('contacts').controller('ContactsController', ['$scope', '$statePa
 			$scope.generateThumb(file);
 			uploadUsing$upload(file);
 		}
+
+		$scope.updatePic = function(files) {
+
+			$scope.formUpload = true;
+			if (files != null) {
+				generateThumbAndUpdate(files[0]);
+			}
+		};
+		
+		function generateThumbAndUpdate(file) {
+			$scope.errorMsg = null;
+			$scope.generateThumb(file);
+			updateUsing$upload(file);
+		}
 		
 		$scope.generateThumb = function(file) {
 			if (file != null) {
@@ -92,6 +106,8 @@ angular.module('contacts').controller('ContactsController', ['$scope', '$statePa
 			}
 		};
 		
+		
+
 		function uploadUsing$upload(file) {
 			file.upload = $upload.upload({
    				url: 'api/contacts',
@@ -126,7 +142,43 @@ angular.module('contacts').controller('ContactsController', ['$scope', '$statePa
 			file.upload.xhr(function(xhr) {
 				// xhr.upload.addcontactListener('abort', function(){console.log('abort complete')}, false);
 			});
-		}
+		};
+
+		function updateUsing$upload(file) {
+			file.upload = $upload.upload({
+   				url: 'api/contacts/updatefile/' + $scope.contact._id,
+				method: 'PUT',
+				fields: {
+					firstName: $scope.contact.firstName,
+					lastName: $scope.contact.lastName,
+					position: $scope.contact.position,
+					mobileNumber: $scope.contact.mobileNumber,
+					telephone: $scope.contact.telephone,
+					email: $scope.contact.email
+				},
+				file: file,
+				fileFormDataName: 'contactForm',
+			});
+
+			file.upload.then(function(response) {
+				$timeout(function() {
+					file.result = response.data;
+					$location.path('contacts');
+				});
+			}, function(response) {
+				if (response.status > 0)
+					$scope.errorMsg = response.status + ': ' + response.data;
+			});
+
+			file.upload.progress(function(evt) {
+				// Math.min is to fix IE which reports 200% sometimes
+				file.progress = Math.min(100, parseInt(100.0 * evt.loaded / evt.total));
+			});
+
+			file.upload.xhr(function(xhr) {
+				// xhr.upload.addcontactListener('abort', function(){console.log('abort complete')}, false);
+			});
+		};
 
 
 		// ============================== end of file upload =======================

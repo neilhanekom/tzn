@@ -87,6 +87,8 @@ exports.read = function(req, res) {
 exports.update = function(req, res) {
 	var grabba = req.grabba ;
 
+	
+
 	grabba = _.extend(grabba , req.body);
 
 	grabba.save(function(err) {
@@ -100,6 +102,73 @@ exports.update = function(req, res) {
 	});
 };
 
+exports.updateFile = function(req, res) {
+	var grabba = req.grabba ;
+	var user = req.user;
+	var message = null;
+	var oldFile = grabba.imageUrl;
+
+	// Unstringify and compile new Object
+	var address = JSON.parse(req.body.address);
+	var price = JSON.parse(req.body.price);
+	var endDate = JSON.parse(req.body.endDate);
+
+
+	var newObj = {
+		title: req.body.title,
+		sub: req.body.sub,
+		description: req.body.description,
+		address: address,
+		endDate: endDate,
+		price: price
+	};
+
+
+	if (user) {
+		fs.writeFile('./modules/grabbas/client/img/uploads/' + req.files.grabbaForm.name, req.files.grabbaForm.buffer, function (uploadError) {
+			if (uploadError) {
+				return res.status(400).send({
+					message: 'Error occurred while uploading Image for Event'
+				});
+			} else {
+				// var imagePath = 'modules/events/img/uploads/' + req.files.eventsForm.name;
+
+				grabba = _.extend(grabba , newObj);
+				// Adding and Correcting some Stringified Fields
+				grabba.user = req.user;
+				grabba.imageUrl = 'modules/grabbas/img/uploads/' + req.files.grabbaForm.name;
+				// event.eventDate = eventDate;
+
+				console.log(grabba);
+				
+				grabba.save(function(err) {
+					if (err) {
+						return res.status(400).send({
+							message: errorHandler.getErrorMessage(err)
+						});
+					} else {
+						res.jsonp(grabba);
+						var filename = oldFile.split('/').pop();
+                         var checkedFile = fs.readFileSync('./modules/grabbas/client/img/uploads/' + filename);
+                         if (checkedFile) { 
+                             fs.unlink( './modules/grabbas/client/img/uploads/' + filename, function (err) {
+                           if (err) throw err;
+                             }); 
+                         } else {
+                             return;
+                         }
+					}
+				});
+
+				
+			}
+		});
+	} else {
+		res.status(400).send({
+			message: 'User is not signed in'
+		});
+	}
+};
 /**
  * Delete an Grabba
  */

@@ -53,6 +53,8 @@ angular.module('grabbas').controller('GrabbasController', ['$scope', '$statePara
 			}, function(errorResponse) {
 				$scope.error = errorResponse.data.message;
 			});
+
+			
 		};
 
 		// Find a list of Grabbas
@@ -97,6 +99,20 @@ angular.module('grabbas').controller('GrabbasController', ['$scope', '$statePara
 			$scope.generateThumb(file);
 			uploadUsing$upload(file);
 		}
+
+		$scope.updatePic = function(files) {
+
+			$scope.formUpload = true;
+			if (files != null) {
+				generateThumbAndUpdate(files[0]);
+			}
+		};
+		
+		function generateThumbAndUpdate(file) {
+			$scope.errorMsg = null;
+			$scope.generateThumb(file);
+			updateUsing$upload(file);
+		}
 		
 		$scope.generateThumb = function(file) {
 			if (file != null) {
@@ -118,6 +134,42 @@ angular.module('grabbas').controller('GrabbasController', ['$scope', '$statePara
 			file.upload = $upload.upload({
    				url: 'api/grabbas',
 				method: 'POST',
+				fields: {
+					title: $scope.grabba.title,
+					sub: $scope.grabba.sub,
+					description: $scope.grabba.description,
+					address: $scope.grabba.address,
+					price: $scope.grabba.price,
+					endDate: $scope.grabba.endDate
+				},
+				file: file,
+				fileFormDataName: 'grabbaForm',
+			});
+
+			file.upload.then(function(response) {
+				$timeout(function() {
+					file.result = response.data;
+					$location.path('grabbas');
+				});
+			}, function(response) {
+				if (response.status > 0)
+					$scope.errorMsg = response.status + ': ' + response.data;
+			});
+
+			file.upload.progress(function(evt) {
+				// Math.min is to fix IE which reports 200% sometimes
+				file.progress = Math.min(100, parseInt(100.0 * evt.loaded / evt.total));
+			});
+
+			file.upload.xhr(function(xhr) {
+				// xhr.upload.addgrabbaListener('abort', function(){console.log('abort complete')}, false);
+			});
+		}
+
+		function updateUsing$upload(file) {
+			file.upload = $upload.upload({
+   				url: 'api/grabbas/updatefile/' + $scope.grabba._id,
+				method: 'PUT',
 				fields: {
 					title: $scope.grabba.title,
 					sub: $scope.grabba.sub,

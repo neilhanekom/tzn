@@ -1,14 +1,24 @@
 'use strict';
 
-angular.module('core').controller('HomeController', ['$scope', 'Authentication', '$interval', '$mdSidenav', 'Advertisements', 'Partners',
-	function($scope, Authentication, $interval, $mdSidenav, Advertisements, Partners) {
+angular.module('core').controller('HomeController', ['$scope', 'Authentication', '$interval', '$timeout', '$mdSidenav', 'Advertisements', 'Partners',
+	function($scope, Authentication, $interval, $timeout, $mdSidenav, Advertisements, Partners) {
 		// This provides Authentication context.
 		$scope.authentication = Authentication;
 		$scope.partners = Partners.query();
-		console.log($scope.partners);
-		$scope.advertisements = Advertisements.query();
-		console.log($scope.advertisements);
+		// console.log($scope.partners);
+		
+		$scope.partnerImages = ['Test this'];
 
+		$scope.pushPartners = function() {
+			$scope.partners = Partners.query();
+			$timeout(function() {
+	      		angular.forEach($scope.partners, function(partner) {
+				$scope.partnerImages.push(partner.imageUrl);
+				});
+				console.log($scope.partnerImages);
+	   		}, 1000);
+			
+		};
 
 
 		$scope.signup = function() {

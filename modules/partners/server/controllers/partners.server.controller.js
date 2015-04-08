@@ -35,16 +35,16 @@ exports.create = function(req, res) {
 		fs.writeFile('./modules/partners/client/img/uploads/' + req.files.partnerForm.name, req.files.partnerForm.buffer, function (uploadError) {
 			if (uploadError) {
 				return res.status(400).send({
-					message: 'Error occurred while uploading Image for Event'
+					message: 'Error occurred while uploading Image for partner'
 				});
 			} else {
-				// var imagePath = 'modules/events/img/uploads/' + req.files.eventsForm.name;
+				// var imagePath = 'modules/partners/img/uploads/' + req.files.partnersForm.name;
 
 				var partner = new Partner(newObj);
 				// Adding and Correcting some Stringified Fields
 				partner.user = req.user;
 				partner.imageUrl = 'modules/partners/img/uploads/' + req.files.partnerForm.name;
-				// event.eventDate = eventDate;
+				// partner.partnerDate = partnerDate;
 
 				console.log(partner);
 				
@@ -92,6 +92,71 @@ exports.update = function(req, res) {
 			res.jsonp(partner);
 		}
 	});
+};
+
+exports.updateFile = function(req, res) {
+	var partner = req.partner ;
+	var user = req.user;
+	var message = null;
+	var oldFile = partner.imageUrl;
+	
+
+	// Unstringify and compile new Object
+	var address = JSON.parse(req.body.address);
+	var contacts = JSON.parse(req.body.contacts);
+
+	var newObj = {
+		name: req.body.name,
+		slogan: req.body.slogan,
+		description: req.body.description,
+		address: address,
+		contacts: contacts
+	};
+	
+	if (user) {
+		fs.writeFile('./modules/partners/client/img/uploads/' + req.files.partnerForm.name, req.files.partnerForm.buffer, function (uploadError) {
+			if (uploadError) {
+				return res.status(400).send({
+					message: 'Error occurred while uploading Image for partner'
+				});
+			} else {
+				// var imagePath = 'modules/partners/img/uploads/' + req.files.partnersForm.name;
+
+				partner = _.extend(partner , newObj);
+				// Adding and Correcting some Stringified Fields
+				partner.user = req.user;
+				partner.imageUrl = 'modules/partners/img/uploads/' + req.files.partnerForm.name;
+				// partner.partnerDate = partnerDate;
+
+				console.log(partner);
+				
+				partner.save(function(err) {
+					if (err) {
+						return res.status(400).send({
+							message: errorHandler.getErrorMessage(err)
+						});
+					} else {
+						res.jsonp(partner);
+						var filename = oldFile.split('/').pop();
+                         var checkedFile = fs.readFileSync('./modules/partners/client/img/uploads/' + filename);
+                         if (checkedFile) { 
+                             fs.unlink( './modules/partners/client/img/uploads/' + filename, function (err) {
+                           if (err) throw err;
+                             }); 
+                         } else {
+                             return;
+                         }
+					}
+				});
+
+				
+			}
+		});
+	} else {
+		res.status(400).send({
+			message: 'User is not signed in'
+		});
+	}
 };
 
 /**

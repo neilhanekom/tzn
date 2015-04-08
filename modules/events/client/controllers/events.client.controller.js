@@ -22,6 +22,8 @@ angular.module('events').controller('EventsController', ['$scope', '$stateParams
 		    
 		 ];
 
+
+
 		 $scope.pushRace = function() {
 		 	var distance = $scope.distance;
 		 	var time = $scope.time;
@@ -102,6 +104,17 @@ angular.module('events').controller('EventsController', ['$scope', '$stateParams
 			$scope.event = Events.get({ 
 				eventId: $stateParams.eventId
 			});
+			
+
+			$timeout(function() {
+					if ($scope.event.races[0]) {
+						angular.forEach($scope.event.races, function(obj) {
+						  $scope.races.push(obj);
+						});
+					}
+			}, 650);
+
+			
 		};
 
 		// ==============================  File Upload ============================
@@ -121,6 +134,16 @@ angular.module('events').controller('EventsController', ['$scope', '$stateParams
 			}
 		});
 		
+		$scope.updatePic = function(files) {
+
+			$scope.formUpload = true;
+			if (files != null) {
+				generateThumbAndUpdate(files[0]);
+			}
+		};
+
+
+
 		$scope.uploadPic = function(files) {
 
 			$scope.formUpload = true;
@@ -133,7 +156,13 @@ angular.module('events').controller('EventsController', ['$scope', '$stateParams
 			$scope.errorMsg = null;
 			$scope.generateThumb(file);
 			uploadUsing$upload(file);
-		}
+		};
+
+		function generateThumbAndUpdate(file) {
+			$scope.errorMsg = null;
+			$scope.generateThumb(file);
+			updateUsing$upload(file);
+		};
 		
 		$scope.generateThumb = function(file) {
 			if (file != null) {
@@ -185,6 +214,42 @@ angular.module('events').controller('EventsController', ['$scope', '$stateParams
 				// xhr.upload.addEventListener('abort', function(){console.log('abort complete')}, false);
 			});
 		}
+
+		function updateUsing$upload(file) {
+			file.upload = $upload.upload({
+   				url: 'api/events/updatefile/' + $scope.event._id,
+				method: 'PUT',
+				fields: {
+					name: $scope.event.name,
+					description: $scope.event.description,
+					eventDate: $scope.event.eventDate,
+					location: $scope.event.location,
+					races: $scope.races
+				},
+				file: file,
+				fileFormDataName: 'eventsForm',
+			});
+
+			file.upload.then(function(response) {
+				$timeout(function() {
+					file.result = response.data;
+					$location.path('events');
+				});
+			}, function(response) {
+				if (response.status > 0)
+					$scope.errorMsg = response.status + ': ' + response.data;
+			});
+
+			file.upload.progress(function(evt) {
+				// Math.min is to fix IE which reports 200% sometimes
+				file.progress = Math.min(100, parseInt(100.0 * evt.loaded / evt.total));
+			});
+
+			file.upload.xhr(function(xhr) {
+				// xhr.upload.addEventListener('abort', function(){console.log('abort complete')}, false);
+			});
+		}
+
 
 
 		// ============================== end of file upload =======================

@@ -123,6 +123,11 @@ a:hover .header-profile-image {
 	height: 250px;
 }
 
+.card-image-full {
+	height: 500px;
+}
+
+
 .ad-image {
 	min-height: 600px;
 
@@ -159,6 +164,10 @@ a:hover .header-profile-image {
 /*margins and paddings*/
 .pad-0 {
 	padding: 0;
+}
+
+.mar-0 {
+	margin: 0;
 }
 
 .pad-r-10 {
@@ -230,10 +239,13 @@ a:hover .header-profile-image {
 	margin-left: 5px;
 }
 
+.mar-l-15 {
+	margin-left: 15px;
+}
+
 .mar-l-20 {
 	margin-left: 20px;
 }
-
 .mar-r-20 {
 	margin-right: 20px;
 }
@@ -387,9 +399,42 @@ a:hover .header-profile-image {
 }
 
 
+
+
 .account-select {
 	font-weight: normal;
 	font-size: 16px;
+}
+
+.list-img-holder {
+		border-radius: 100px;
+	  border: 1px solid #ddd;
+	  width: 180px;
+	  height: 180px;
+	  margin: 16px; 
+	  background-repeat: no-repeat;
+	  background-position: center;
+	  background-size: 100%;
+}
+
+.footer-logo {
+	width: 85px;
+	margin: 5px;
+	/*border-right: 1px solid white;*/
+}
+
+.nhd-footer {
+	width: 90px;
+	
+	/*border-right: 1px solid white;*/
+}
+
+.border-r-w {
+	border-right: 1px solid #616161;
+}
+
+.icon-button {
+	height: 70%;
 }
 
 @media (max-width: 600px) {
@@ -514,6 +559,8 @@ a:hover .header-profile-image {
 	padding: 5px;	
 }
 
+
+
 .ad-image {
 	min-height: 750px;
 
@@ -575,3 +622,22 @@ a:hover .header-profile-image {
   background: #ff8a80; }
 .gridListdemoBasicUsage md-grid-tile {
   transition: all 400ms ease-out 50ms; }
+
+ .os-windows.os-windows::after {content:" os-windows ";}
+.os-mac.os-mac::after {content:" os-mac ";}
+.os-ios.os-ios::after {content:" os-ios ";}
+.os-android.os-android::after {content:" os-android ";}
+.os-linux.os-linux::after {content:" os-linux ";}
+.os-unix.os-unix::after {content:" os-unix ";}
+.os-firefoxos.os-firefoxos::after {content:" os-firefoxos ";}
+.browser-chrome.browser-chrome::after {content:" browser-chrome ";}
+.browser-firefox.browser-firefox::after {content:" browser-firefox ";}
+.browser-safari.browser-safari::after {content:" browser-safari ";}
+.browser-opera.browser-opera::after {content:" browser-opera ";}
+.browser-ie.browser-ie::after {content:" browser-ie ";}
+.device-android.device-android::after {content:" device-android ";}
+.device-ipad.device-ipad::after {content:" device-ipad ";}
+.device-iphone.device-iphone::after {content:" device-iphone ";}
+.device-ipod.device-ipod::after {content:" device-ipod ";}
+.device-blackberry.device-blackberry::after {content:" device-blackberry ";}
+.device-firefoxos.device-firefoxos::after {content:" device-firefoxos ";}

@@ -14,6 +14,9 @@ module.exports = function(app) {
 		.put(advertisements.update)
 		.delete(advertisements.delete);
 
+	app.route('/api/advertisements/updatefile/:advertisementId').all(advertisementsPolicy.isAllowed)
+		.put(advertisements.updateFile);
+
 	// Finish by binding the Advertisement middleware
 	app.param('advertisementId', advertisements.advertisementByID);
 };

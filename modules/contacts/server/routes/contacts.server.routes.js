@@ -14,6 +14,9 @@ module.exports = function(app) {
 		.put(contacts.update)
 		.delete(contacts.delete);
 
+	app.route('/api/contacts/updatefile/:contactId').all(contactsPolicy.isAllowed)
+		.put(contacts.updateFile);
+
 	// Finish by binding the Contact middleware
 	app.param('contactId', contacts.contactByID);
 };

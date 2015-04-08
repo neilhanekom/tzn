@@ -29,7 +29,11 @@
 					        	<li><span>{{shop.address.line1}}</span></li>
 					        	<li><span>{{shop.address.line2}}</span></li>
 					        </ul>   
-					     <md-button data-ng-click="remove();" class="md-warn md-raised md-hue-2" data-ng-show="authentication.user">Delete</md-button>    
+					     <div layout="row">
+					        	
+					        	<md-button data-ng-href="/#!/grabbas/{{grabba._id}}/edit" class=" md-raised md-accent " data-ng-show="authentication.user">Edit</md-button >
+					        	<md-button data-ng-click="remove();" class="md-warn md-raised md-hue-2 mar-l-15" data-ng-show="authentication.user">Delete</md-button>
+					      </div>
 				      </md-card-content>
 				    </md-card>
 				  </md-content>
