@@ -88,21 +88,21 @@
                                     <h4>Date of Birth</h4>
                                 </div>
                                 <div layout="row" layout-sm="column">
-                                    <div layout="column" layout-align="center start" style="height: 100px;" data-ng-show="{{firefox}}">
+                                    <div layout="column" layout-align="center start" style="height: 100px;" >
                                         <md-select ng-model="year" md-on-open="loadYears()" style="min-wclassth: 200px;">
                                           <md-select-label>{{ year ? year : 'Year' }}</md-select-label>
                                           <md-option ng-value="year" ng-repeat="year in years"></span>{{year}}</md-option>
                                         </md-select>
                                         <!-- <p class="md-caption">{{ year ? year : 'No Birth year Selected' }}</p> -->
                                     </div> 
-                                    <div layout="column" layout-align="center start" style="height: 100px;" data-ng-show="{{firefox}}">
+                                    <div layout="column" layout-align="center start" style="height: 100px;" >
                                         <md-select ng-model="month" md-on-open="loadMonths()" style="min-wclassth: 200px;">
                                           <md-select-label>{{ month ? month.value : 'Month' }}</md-select-label>
                                           <md-option ng-value="month" ng-repeat="month in months"></span>{{month.value}}</md-option>
                                         </md-select>
                                         <!-- <p class="md-caption">{{ year ? year : 'No Birth year Selected' }}</p> -->
                                     </div> 
-                                    <div layout="column" layout-align="center start" style="height: 100px;" data-ng-show="{{firefox}}">
+                                    <div layout="column" layout-align="center start" style="height: 100px;" >
                                         <md-select ng-model="day" md-on-open="loadDays()" style="min-wclassth: 200px;">
                                           <md-select-label>{{ day ? day : 'Day' }}</md-select-label>
                                           <md-option ng-value="day" ng-repeat="day in days" data-ng-click="compileDate()"></span>{{day}}</md-option>
@@ -113,7 +113,7 @@
                                 </div>
                                 
                                 
-                                <div layout="row" layout-sm="column" data-ng-hide="{{firefox}}">
+                                <!-- <div layout="row" layout-sm="column" data-ng-hide="{{firefox}}">
                                     <h4>Date of Birth</h4>
                                 </div>
                                  <div layout="row" layout-sm="column" data-ng-hide="{{firefox}}">
@@ -124,14 +124,14 @@
                                 </div>   
                                
                                  <div layout="row" layout-sm="column">
-                                    <div flex>
-                                        <md-input-container >
+                                    <div >
+                                        <md-input-container data-ng-hide="{{firefox}}">
                                       <label>Enter you Date of Birth <b>(YYYY/MM/DD)</b></label>
                                       <input type="date" ng-model="entry.birthDate" ng-click="logDate()">
                                     </md-input-container>
                                     </div>
                                     
-                                </div>
+                                </div> -->
                                 <div layout="row" hide-gt-sm>
                                     <div class="mar-5">
                                         <h4>Contact</h4>
@@ -187,16 +187,16 @@
                                 
                                 <div layout="row" flex layout-sm="column">
                                     <md-input-container flex>
-                                        <label>Medical Aclass Name</label>
-                                        <input type="text" name="medical_company" ng-model="entry.medical.company" placeholder="Medical Aclass Name">
+                                        <label>Medical Aid Name</label>
+                                        <input type="text" name="medical_company" ng-model="entry.medical.company" placeholder="Medical Aid Name">
                                         <div ng-messages="entryForm.medical_company.$error" class="error">
                                           <div ng-message="required">This is required.</div>
                                         
                                         </div>
                                     </md-input-container>
                                     <md-input-container flex>
-                                        <label>Medical Aclass Number</label>
-                                        <input type="text" name="medical_number" ng-model="entry.medical.number" placeholder="Medical Aclass Number">
+                                        <label>Medical Aid Number</label>
+                                        <input type="text" name="medical_number" ng-model="entry.medical.number" placeholder="Medical Aid Number">
                                         <div ng-messages="entryForm.medical_number.$error" class="error">
                                           <div ng-message="required">This is required.</div>
                                         
@@ -207,12 +207,12 @@
                                 </div>
                                 <div layout="row" flex layout-sm="column">
                                     <md-input-container flex>
-                                        <label>Medical Aclass Main Member</label>
+                                        <label>Medical Aid Main Member</label>
                                         <input type="text" name="medical_main" ng-model="entry.medical.main" placeholder="Main Member">
                                         
                                     </md-input-container>
                                     <md-input-container flex>
-                                        <label>Medical Aclass Plan</label>
+                                        <label>Medical Aid Plan</label>
                                         <input type="text" name="medical_plan" ng-model="entry.medical.plan" placeholder="Plan/Product">
                                         
                                     </md-input-container>
@@ -323,17 +323,17 @@
                                 <div layout="row" layout-sm="column">
 
                                     <md-radio-group ng-model="entry.age_cat">
-                                      <md-radio-button value="O/8">  O/8 (Born on 1 Jan 2007 and later)</md-radio-button>
-                                      <md-radio-button value="O/10"> O/10 (Born between 1 Jan 2005 and 31 Dec 2006) </md-radio-button>
-                                      <md-radio-button value="O/12"> O/12 (Born between 1 Jan 2003 and 31 Dec 2004) </md-radio-button>
-                                      <md-radio-button value="O/14"> O/14 (Born between 1 Jan 2001 and 31 Dec 2002) </md-radio-button>
-                                      <md-radio-button value="Sub-Junior"> Sub-Junior (Born between 1 Jan 2001 and 31 Dec 2002) </md-radio-button>
-                                      <md-radio-button value="Junior"> Junior (Born between 1 Jan 2001 and 31 Dec 2002) </md-radio-button>
-                                      <md-radio-button value="Senior"> Senior (Ages 19 to 29 ) </md-radio-button>
-                                      <md-radio-button value="Sub-Veteran"> Sub-Veteran (Ages 30 to 39 ) </md-radio-button>
-                                      <md-radio-button value="Veteran"> Veteran (Ages 40 to 49 ) </md-radio-button>
-                                      <md-radio-button value="Master"> Masters (Ages 50 to 59 ) </md-radio-button>
-                                      <md-radio-button value="Grand-Master"> Grand-Masters (Age 60+) </md-radio-button>
+                                      <md-radio-button value="O/8">  O/8 (Born between 1Jan15-31Dec07)</md-radio-button>
+                                      <md-radio-button value="O/10"> O/10 (Born between 1Jan05-31Dec06) </md-radio-button>
+                                      <md-radio-button value="O/12"> O/12 (Born between 1Jan03-31Dec04) </md-radio-button>
+                                      <md-radio-button value="O/14"> O/14 (Born between 1Jan01-31Dec02) </md-radio-button>
+                                      <md-radio-button value="Sub-Junior"> Sub-Junior (Born between 1Jan99-31Dec00) </md-radio-button>
+                                      <md-radio-button value="Junior"> Junior (Born between 1Jan97-31Dec98) </md-radio-button>
+                                      <md-radio-button value="Senior"> Senior (Born between 1Jan86-31Dec96) </md-radio-button>
+                                      <md-radio-button value="Sub-Veteran"> Sub-Veteran (Born between 1Jan76-31Dec85 ) </md-radio-button>
+                                      <md-radio-button value="Veteran"> Veteran (Born between 1Jan66-31Dec75 ) </md-radio-button>
+                                      <md-radio-button value="Master"> Masters (Born between 1Jan56-31Dec65) </md-radio-button>
+                                      <md-radio-button value="Grand-Master"> Grand-Masters (Born before Before 31Dec55) </md-radio-button>
                                       <md-radio-button value="Tandem"> Tandem </md-radio-button>
                                     </md-radio-group>
                                    
@@ -405,7 +405,7 @@
                                            <span><b>Birthdate:</b> </span>
                                         </div>
                                         <div layout="row" flex>
-                                            <span class="txt-inherit">{{entry.birthDate | Customdate }}</span>
+                                            <span class="txt-inherit">{{ birthDate | Customdate }}</span>
                                         </div>
                                     </div>
                                     <div layout="row" flex>
@@ -450,7 +450,7 @@
                                     </div>
                                     <div layout="row" flex>
                                         <div layout="row" flex-sm="50" flex-gt-sm="35"  >
-                                          <span><b>Medical Aclass Company:</b></span>
+                                          <span><b>Medical Aid Company:</b></span>
                                         </div>
                                         <div layout="row" flex>
                                             <span class="txt-inherit">{{entry.medical.company}}</span>
@@ -458,7 +458,7 @@
                                     </div>
                                     <div layout="row" flex>
                                         <div layout="row" flex-sm="50" flex-gt-sm="35"  >
-                                          <span><b>Medical Aclass Number:</b></span>
+                                          <span><b>Medical Aid Number:</b></span>
                                         </div>
                                         <div layout="row" flex>
                                             <span class="txt-inherit">{{entry.medical.number}}</span>
@@ -466,7 +466,7 @@
                                     </div>
                                     <div layout="row" flex>
                                         <div layout="row" flex-sm="50" flex-gt-sm="35"  >
-                                          <span><b>Medical Aclass Plan:</b></span>
+                                          <span><b>Medical Aid Plan:</b></span>
                                         </div>
                                         <div layout="row" flex>
                                             <span class="txt-inherit">{{entry.medical.plan}}</span>
@@ -474,7 +474,7 @@
                                     </div>
                                     <div layout="row" flex>
                                         <div layout="row" flex-sm="50" flex-gt-sm="35"  >
-                                          <span><b>Medical Aclass Main/M:</b> </span>
+                                          <span><b>Medical Aid Main/M:</b> </span>
                                         </div>
                                         <div layout="row" flex>
                                             <span class="txt-inherit">{{entry.medical.main}}</span>

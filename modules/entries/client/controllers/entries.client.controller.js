@@ -59,17 +59,24 @@ angular.module('entries').controller('EntriesController', ['$scope', '$statePara
 	    }, 650);
 		};
 
+		
 		$scope.compileDate = function() {
+
+
 			$timeout(function() {
 		     if ($scope.day && $scope.month && $scope.year) {
-				var dt = $scope.year + $scope.month.key + $scope.day;
-				$scope.parsedDate = $filter('stringToDate')(dt);
-				console.log($scope.parsedDate);
+				var dt = $scope.year + '-' + $scope.month.key + '-' + $scope.day + 'T08:00:00.000Z';
+				
+				
+				var x = new Date(dt);
+				$scope.birthDate = x;
+				console.log($scope.birthDate);
 			}
 
 		    }, 650);
 			
 		};
+
 
 
 		$scope.success = '#4CAF50';
@@ -149,20 +156,39 @@ angular.module('entries').controller('EntriesController', ['$scope', '$statePara
 			
 		};
 
-		$scope.raceFee = 200;
+
+		$scope.raceFee;
 		$scope.licenseFee = 35;
 
 		$scope.calculateTotal = function() {
-			if ($scope.entry.license.exist === 'no') {
+			var dist = $scope.entry.race;
+			var licApplicable;
+			if (dist === '15km') {
+				$scope.raceFee = 80;
+			} else if (dist === '40km') {
+				$scope.raceFee = 150;
+			} else if (dist === '70km') {
+				$scope.raceFee = 200;
+			}
+			if (dist === '15km') {
+				licApplicable = false;
+			} else {
+				licApplicable = true;
+			}
+
+			if ($scope.entry.license.exist === 'no' && licApplicable) {
 				$scope.license = $scope.licenseFee;
 			} else {
 				$scope.licenseFee = 0;
 			}
+
+
 			$scope.entry.fee = $scope.raceFee + $scope.licenseFee;
 		};
 
 		//Create new Entry
 		$scope.create = function() {
+			
 			// Create new Entry object
 			var entry = new Entries ({
 				title: this.entry.title,
@@ -170,7 +196,7 @@ angular.module('entries').controller('EntriesController', ['$scope', '$statePara
 				firstName: this.entry.firstName,
 				lastName: this.entry.lastName,
 				rsaId: this.entry.rsaId,
-				birthDate: this.entry.birthDate,
+				birthDate: $scope.birthDate,
 				mobileNumber: this.entry.mobileNumber,
 				email: this.entry.email,
 				emergency: this.entry.emergency,
