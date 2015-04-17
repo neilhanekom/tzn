@@ -398,8 +398,11 @@ a:hover .header-profile-image {
 	height: 400px;
 }
 
-
-
+.rel-down {
+	position: relative;
+	right: 20px;
+	top: 65px;
+}
 
 .account-select {
 	font-weight: normal;

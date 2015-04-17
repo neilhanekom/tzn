@@ -9,9 +9,12 @@
                 <div layout="row" flex layout-align="start center">
                     <img ng-src="{{shop.imageUrl}}" class="shop-image" class="mar-r-20">
                 </div>
-                <div layout="row" flex layout-align="end center">
+                <div layout="row" flex layout-align="end center" class="rel-down">
                     <md-button data-ui-sref="grabbas.create" class="md-fab md-warn" aria-label="Eat cake" layout="row" layout-align="center center">
-                        <ng-md-icon icon="add" size="35" ng-attr-style="fill: {{fill}}"></ng-md-icon>
+                      <div class="pad-t-5">
+                        <ng-md-icon icon="add" size="30" ng-attr-style="fill: {{fill}}"></ng-md-icon>
+                      </div>
+                        
                     </md-button>
                 </div>
                 
@@ -50,7 +53,7 @@
         </md-whiteframe>
        </div>
 
-       <div flex layout="row" layout-wrap >
+       <div flex layout="row" layout-wrap layout-align="center start">
            <div flex-gt-md="30" flex-md="45" flex-sm="100" layout="column" ng-repeat="grabba in grabbas" layout-margin>
                <md-card>
                <md-content>

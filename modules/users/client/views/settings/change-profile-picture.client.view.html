@@ -1,4 +1,4 @@
-<section class="row" data-ng-controller="ChangeProfilePictureController">
+<!-- <section class="row" data-ng-controller="ChangeProfilePictureController">
 	<div class="col-xs-offset-1 col-xs-10 col-md-offset-3 col-md-4">
 		<form class="signin form-horizontal">
 			<fieldset>
@@ -23,4 +23,73 @@
 			</fieldset>
 		</form>
 	</div>
-</section>
+</section> -->
+
+
+<div flex layout="row" layout-fill data-ng-controller="ChangeProfilePictureController"> 
+
+	<div layout="row" flex layout-align="center center">
+            
+                <md-card flex="30">
+                 <md-content>
+                    <div layout="column">
+                        
+                    </div>
+                    
+                    
+
+                    
+                  <md-card-content>
+                    <div layout="row" flex layout-align="end center" >
+
+                            
+         
+                             
+                    </div>
+                    <div layout="column" flex>
+                        		
+                                <div layout="column" layout-sm="column" layout-margin>
+                                <div  ng-show="picFile[0].dataUrl != null">
+                                    <img  ng-src="{{picFile[0].dataUrl}}" >
+                                </div>
+                                 <div  ng-hide="picFile[0].dataUrl != null">
+                                    <img  ng-src="{{user.profileImageURL}}" >
+                                </div>
+                                </div>    
+                                <div layout="row" layout-sm="column" layout-margin>
+                                 <input type="file" ng-file-select ng-model="picFile" name="file" accept="image/*" 
+                                       ng-file-change="generateThumb(picFile[0], $files)" >
+                                </div>
+                                
+                                <div layout="row" layout-sm="column" layout-margin>
+                                    <!-- <div style="width:{{picFile[0].progress}}%" ng-bind="picFile[0].progress + '%'"></div> -->
+                                    <md-progress-linear class="md-warn" md-mode="buffer" value="{{picFile[0].progress}}" md-buffer-value="0">
+                                    </md-progress-linear>
+                                </div>
+                                
+                                
+                                <div data-ng-show="error" class="text-danger">
+                                    <strong data-ng-bind="error"></strong>
+                                </div>
+                        <div layout="row" flex layout-align="start center">
+                        	<div layout="row" layout-padding>
+                        		<md-button class="md-raised md-accent" data-ng-click="uploadPic(picFile)">Upload</md-button>
+                        	</div>
+                            <div layout="row" layout-padding>
+                        		<md-button class="md-raised md-warn" >Cancel</md-button>
+                        	</div>
+                            
+                        </div>
+
+                    </div>
+                    
+                   
+                    
+                  </md-card-content>
+                  </md-content>
+                  
+                </md-card>
+            
+        </div>
+    
+</div>
