@@ -9,7 +9,7 @@ module.exports = function(app) {
 		.get(sponsors.list).all(sponsorsPolicy.isAllowed)
 		.post(sponsors.create);
 
-	app.route('/api/sponsors/:sponsorId').all(sponsorsPolicy.isAllowed)
+	app.route('/api/sponsors/:sponsorId')
 		.get(sponsors.read)
 		.put(sponsors.update)
 		.delete(sponsors.delete);
