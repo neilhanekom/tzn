@@ -9,12 +9,12 @@ module.exports = function(app) {
 		.get(advertisements.list).all(advertisementsPolicy.isAllowed)
 		.post(advertisements.create);
 
-	app.route('/api/advertisements/:advertisementId').all(advertisementsPolicy.isAllowed)
+	app.route('/api/advertisements/:advertisementId')
 		.get(advertisements.read)
 		.put(advertisements.update)
 		.delete(advertisements.delete);
 
-	app.route('/api/advertisements/updatefile/:advertisementId').all(advertisementsPolicy.isAllowed)
+	app.route('/api/advertisements/updatefile/:advertisementId')
 		.put(advertisements.updateFile);
 
 	// Finish by binding the Advertisement middleware
