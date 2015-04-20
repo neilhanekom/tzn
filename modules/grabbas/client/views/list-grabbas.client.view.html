@@ -10,7 +10,7 @@
                     <img ng-src="{{shop.imageUrl}}" class="shop-image" class="mar-r-20">
                 </div>
                 <div layout="row" flex layout-align="end center" class="rel-down">
-                    <md-button data-ui-sref="grabbas.create" class="md-fab md-warn" aria-label="Eat cake" layout="row" layout-align="center center">
+                    <md-button data-ui-sref="grabbas.create" class="md-fab md-warn" aria-label="create New Promotion" layout="row" layout-align="center center" ng-show="authentication.user">
                       <div class="pad-t-5" layout="row" layout-align="center center">
                         <ng-md-icon icon="add" size="30" ng-attr-style="fill: {{fill}}"></ng-md-icon>
                       </div>
