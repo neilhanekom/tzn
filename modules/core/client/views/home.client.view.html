@@ -35,7 +35,7 @@
 									</div>
 									<div  flex-md="45"  flex layout="column"  layout-align="end end"  layout-padding>
 										
-                                    	<div layout="row" layout-sm="column" layout-align="center center" class="sponsor-section">
+                                    	<div layout="row" flex layout-sm="column" layout-align="center center" class="sponsor-section">
                                     		<div data-ng-repeat="sponsor in ad.sponsors" layout-margin>
                                     			<img data-ng-src="{{sponsor.imageUrl}}" class="thumb-sponsor" alt="{{sponsor.name}}">
                                     		</div>
@@ -54,58 +54,228 @@
 	
 	</div>
 	<div layout="row" flex="100">
-		<div class="bg-lgrey" flex layout="column" layout-wrap layout-align="center center" layout-padding>
-				<div flex layout="row" data-ng-repeat="partner in partners">
-					<img data-ng-src="{{img}}">
-					<h1>{{img}}</h1>
-				</div>
+		<!-- <div class="bg-lgrey" flex layout="column" layout-wrap layout-align="center center" layout-padding>
 				
-		</div>	
-	</div>
+				
+		</div>	 -->
 
-	<div layout="row" flex="100">
-		<div flex="10" hide-lg hide-sm hide-md></div>
+				<div flex="10" hide-lg hide-sm hide-md></div>
 		
-		<div flex layout="row" layout-wrap layout-align="center start" layout-margin>
-		<md-content layout-padding>
-				<h1>Welcome to Tzaneen Cycling Club</h1>
-				<p ng-style="{'text-align' : 'justify'}">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-				Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions.
+		<div flex layout="row" layout-wrap layout-align="start start" layout-margin>
+		<md-content layout-padding flex>
+				<h1 class="hd1">Welcome to Tzaneen Cycling Club</h1>
+				<!-- <md-divider></md-divider> -->
+				<br>
+				<p class="hd3">Tzaneen cycling is a road & mtb cycling club for the Tzaneen community & surrounding areas.
+					
 				</p>
-		</md-content>		
+				<p class="hd2 lght">Club Benefits</p>
+				<ul class="normal-ul">
+					<li>
+						<div layout="row">
+							<div layout="row"><ng-md-icon icon="directions_bike" size="20" ng-attr-style="fill: {{white}}" ></ng-md-icon> </div>
+							<div><span class="hd3 mar-l-5">Receiving weekly emails of grouprides</span></div>							
+						</div>
+					</li>
+					<li>
+						<div layout="row">
+							<div layout="row"><ng-md-icon icon="mood" size="20" ng-attr-style="fill: {{white}}" ></ng-md-icon> </div>
+							<div><span class="hd3 mar-l-5">Social get-togethers & braais, Year-end function</span></div>							
+						</div>
+					</li>
+					<li>
+						<div layout="row">
+							<div layout="row"><ng-md-icon icon="accessibility" size="20" ng-attr-style="fill: {{white}}" ></ng-md-icon> </div>
+							<div><span class="hd3 mar-l-5">Riding / racing in Tzaneen Cycling club-kit</span></div>							
+						</div>
+					</li>
+				</ul>
+				
+						
+				
+				<div layout="column">
+				<span class="hd3 light">Joining fee of <b>R800</b> (2015) Includes club riding shirt & socks.
+				</span>
+					<span class="hd3 light">
+				Already a member? - Annual clubfee of <b>R300</b> pp.
+					
+				</span>
+
+
+				</div>
+				<p></p>
+				<pclass="hd3 normal">
+				Email <b>dorothyrood@gmail.com</b> for more info on how to become a member.
+				</p>
+				
+				
+				
+		</md-content>
 		</div>
-		<br>
-		<md-divider></md-divider>
+		
+		
 		
 		<div flex="10" hide-lg hide-sm hide-md></div>
 	</div>
 
 
-	<div layout="row" flex="100">
+
+
+	<div layout="row" flex="100" >
 		<div flex="10" hide-lg hide-sm hide-md></div>
 		
-		<div flex layout="row" layout-wrap layout-align="center start" layout-padding>
-		<md-content layout-padding>
-				<h1>More about what we do</h1>
-				<p ng-style="{'text-align' : 'justify'}">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-				Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions.
-				</p>
-		</md-content>		
+		<div flex layout="column" layout-padding >
+		<div layout="row" flex>
+			<div layout-padding flex>
+				<!-- <h1 class="hd1 light">More on what we do</h1> -->
+				
+				
+				<!-- <p ng-style="{'text-align' : 'justify'}">With future events like:
+ 
+				MIAMI MAGOEBASKLOOF MTB CHALLENGE (30 May 2015)
+				SIMPSON MOTORS XCO (20 JUN 2015)
+				TZANEEN ENDURO CHALLENGE (21 JUNE 2015)
+				</p> -->
+
+
+
 		</div>
-		<br>
-		<md-divider></md-divider>
+		</div>
+		<div layout="row" layout-sm="column" flex class="bg-lgrey">
+			<!-- <div layout="row" flex="30" ng-style="{'background-image': 'url(modules/advertisements/img/uploads/fab520ef8e588bae421f81a9bad5fec1.jpg)'}" class="round" layout-margin>
+				
+			</div> -->
+			<div layout="row" flex >
+				<span class="hd1 thin">More on what we do</span>
+			</div>
+		</div>
+
+		<div layout="row" layout-sm="column" flex class="bg-lgrey ">
+			
+			<div layout="column" flex layout-padding class="border-r" ng-repeat="do in dos">
+				<p class="hd3 bold">{{do.title}}</p>
+				<span class="hd3 thin">{{do.description}}</span>
+				<p></p>
+				<span class="hd3 thin">Proudly Sponsored by:</span>
+				<div layout="row" flex>
+					<div ng-style="{'background-image': 'url()'}"></div>
+				</div>
+
+			</div>
+			<div layout="column" flex layout-padding >
+				<p class="hd3 bold">MIAMI MAGOEBASKLOOF MTB CHALLENGE</p>
+				<span class="hd3 thin">Proudly Sponsored by:</span>
+				<div layout="row" flex>
+					<div ng-style="{'background-image': 'url(modules/core/img/brand/miami-th.png)'}" class="sponsor-thumb">
+						<!-- <img ng-src="modules/core/img/brand/miami-th.png"> -->
+					</div>
+					<div ng-style="{'background-image': 'url(modules/core/img/brand/zz2-th.png)'}" class="sponsor-thumb">
+						<!-- <img ng-src="modules/core/img/brand/miami-th.png"> -->
+					</div>
+					<div ng-style="{'background-image': 'url(modules/core/img/brand/usn-th.png)'}" class="sponsor-thumb">
+						<!-- <img ng-src="modules/core/img/brand/miami-th.png"> -->
+					</div>
+					<div ng-style="{'background-image': 'url(modules/core/img/brand/spar-th.png)'}" class="sponsor-thumb">
+						<!-- <img ng-src="modules/core/img/brand/miami-th.png"> -->
+					</div>
+					<div ng-style="{'background-image': 'url(modules/core/img/brand/grabba-th.png)'}" class="sponsor-thumb">
+						<!-- <img ng-src="modules/core/img/brand/miami-th.png"> -->
+					</div>
+				</div>
+				<span class="hd3 thin">Our Annual signature Event in where we host funfilled and challenging races for Families and the more serious competitors</span>
+				<p></p>
+				
+				<!-- <div layout="row" flex>
+					<md-button layout="row" class="md-raised md-warn" layout-align="center center">
+						<div layout="row" class="pad-t-5" layout-align="center center">
+							<ng-md-icon icon="star" size="20" ng-attr-style="fill: '#FFFFFF'" ></ng-md-icon>
+
+						</div>
+						<span class="hd4 light">Become a Sponsor</span>
+					</md-button>
+				</div> -->
+				
+			</div>
+			<div layout="column" flex layout-padding>
+				<p class="hd3 bold">SIMPSON MOTORS XCO</p>
+				<span class="hd3 thin">Proudly Sponsored by:</span>
+				<div layout="row" flex>
+					<div ng-style="{'background-image': 'url(modules/core/img/brand/gm-th.png)'}" class="sponsor-thumb">
+						<!-- <img ng-src="modules/core/img/brand/miami-th.png"> -->
+					</div>
+					
+				</div>
+				<span class="hd3 thin">Our Annual signature Event in where we host funfilled and challenging races for Families and the more serious competitors</span>
+				<p></p>
+				
+			</div>
+			<div layout="column" flex layout-padding>
+				<p class="hd3 bold">TZANEEN ENDURO CHALLENGE </p>
+				<span class="hd3 thin">Proudly Sponsored by:</span>
+				<div layout="row" flex>
+					<div ng-style="{'background-image': 'url(modules/core/img/brand/tzn-th.png)'}" class="sponsor-thumb">
+						<!-- <img ng-src="modules/core/img/brand/miami-th.png"> -->
+					</div>
+					
+				</div>
+				<span class="hd3 thin">Our Annual signature Event in where we host funfilled and challenging races for Families and the more serious competitors</span>
+				<p></p>
+				
+			</div>
+		</div>
+
+		
+		</div>
+		
+
+		
 		
 		<div flex="10" hide-lg hide-sm hide-md></div>
 	</div>
+
 	<div layout="row" flex="100">
 		<div flex="10" hide-lg hide-sm hide-md></div>
 		
-		<div flex layout="row" layout-wrap layout-align="center start" layout-padding>
+		<div flex layout="row" layout-wrap layout-align="start start" layout-padding>
 		<md-content layout-padding>
-				<h1>Anything else we would like to mention</h1>
-				<p ng-style="{'text-align' : 'justify'}">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-				Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions.
-				</p>
+				<h1 class="hd1 thin">Community</h1>
+				<ul class="normal-ul" layout-margin flex>
+					<li>
+						<div layout="row" layout-sm="column">
+						<div layout="row" layout-align="center center" layout-margin-sm>
+							<ng-md-icon icon="star" size="25" ng-attr-style="fill: {{white}}" ></ng-md-icon>
+						</div>
+						<span class="hd3 thin mar-l-10" flex>In 2014 we have contributed to a R96 000 SANRAL project to safer roads for cyclists by placing Cycling signboards on the roads in and around Tzaneen.</span>
+						</div>
+						
+					</li>
+					<li>
+						<div layout="row" layout-sm="column">
+							<div layout="row" layout-align="center center">
+							<ng-md-icon icon="star" size="25" ng-attr-style="fill: {{white}}" ></ng-md-icon>
+						</div>
+						<span class="hd3 thin mar-l-10"> We have also built a XCO track and have presented the first ever XCO provincial race in Tzaneen. </span>
+						</div>
+					</li>
+					<li>
+						<div layout="row" layout-sm="column">
+							<div layout="row" layout-align="center center">
+							<ng-md-icon icon="star" size="25" ng-attr-style="fill: {{white}}" ></ng-md-icon>
+						</div>
+						<span class="hd3 thin mar-l-10">In 2015 we have plans to take Enduro riding to the next level with Downhillers from all over to come and ride our challenging Enduro track.</span>
+						</div>
+					</li>
+					<li>
+						<div layout="row" layout-sm="column">
+							<div layout="row" layout-align="center center">
+							<ng-md-icon icon="star" size="25" ng-attr-style="fill: {{white}}" ></ng-md-icon>
+						</div>
+						<span class="hd3 thin mar-l-10">Our club has also been involved with some fundraisings of charity organizations like Gods Haven, Noah's Ark and Tzaneen Care Group (Cancer).</span>
+						</div>
+					</li>
+					
+
+				</ul>
 				<br>
 		</md-content>		
 		</div>

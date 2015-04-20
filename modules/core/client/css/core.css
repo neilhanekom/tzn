@@ -1,3 +1,74 @@
+/*Fonts*/
+/* Thin */
+@font-face {
+	font-family: "Roboto";
+	font-style: normal;
+	font-weight: 100;
+	src: local('Roboto Thin'), local('Roboto-Thin'), url("Roboto-Thin.ttf") format('truetype');
+}
+@font-face {
+	font-family: "Roboto";
+	font-style: italic;
+	font-weight: 100;
+	src: local('Roboto Thin Italic'), local('Robot-ThinItalic'), url("Robot-ThinItalic.ttf") format('truetype');
+}
+
+/* Light */
+@font-face {
+	font-family: "Roboto";
+	font-style: normal;
+	font-weight: 300;
+	src: local('Roboto Light'), local('Roboto-Light'), url("Roboto-Light.ttf") format('truetype');
+}
+@font-face {
+	font-family: "Roboto";
+	font-style: italic;
+	font-weight: 300;
+	src: local('Roboto Light Italic'), local('Robot-LightItalic'), url("Robot-LightItalic.ttf") format('truetype');
+}
+ 
+/* Normal */
+@font-face {
+	font-family: "Roboto";
+	font-style: normal;
+	font-weight: 400;
+	src: local('Roboto Regular'), local('Robot-Regular'), url("Robot-Regular.ttf") format('truetype');
+}
+@font-face {
+	font-family: "Roboto";
+	font-style: italic;
+	font-weight: 400;
+	src: local('Roboto Italic'), local('Robot-Italic'), url("Robot-Italic.ttf") format('truetype');
+}
+ 
+/* Bold */
+@font-face {
+	font-family: "Roboto";
+	font-style: normal;
+	font-weight: 700;
+	src: local('Roboto Bold'), local('Robot-Bold'), url("Robot-Bold.ttf") format('truetype');
+}
+@font-face {
+	font-family: "Roboto";
+	font-style: italic;
+	font-weight: 700;
+	src: local('Roboto Bold Italic'), local('Robot-BoldItalic'), url("Robot-BoldItalic.ttf") format('truetype');
+}
+
+/* Black */
+@font-face {
+	font-family: "Roboto";
+	font-style: normal;
+	font-weight: 900;
+	src: local('Roboto Black'), local('Robot-Black'), url("Robot-Black.ttf") format('truetype');
+}
+@font-face {
+	font-family: "Roboto";
+	font-style: italic;
+	font-weight: 900;
+	src: local('Roboto Black Italic'), local('Robot-BlackItalic'), url("Robot-BlackItalic.ttf") format('truetype');
+}
+
 .content {
 	margin-top: 50px;
 }
@@ -36,6 +107,68 @@ a:hover .header-profile-image {
 	-webkit-box-shadow: 0px 3px 5px 0px rgba(50, 50, 50, 0.48);
 	-moz-box-shadow:    0px 3px 5px 0px rgba(50, 50, 50, 0.48);
 	box-shadow:         0px 3px 5px 0px rgba(50, 50, 50, 0.48);
+}
+
+.light {
+	font-family: Roboto;
+	font-weight: 300;
+}
+
+.thin {
+	font-family: Roboto;
+	font-weight: 100;
+}
+
+.normal {
+	font-family: Roboto;
+	font-weight: 400;
+}
+
+.bold {
+	font-family: Roboto;
+	font-weight: 700;
+}
+
+.black {
+	font-family: Roboto;
+	font-weight: 900;
+}
+
+.title {
+	font-size: 2.3em;
+}
+
+
+.hd1 {
+
+  font-size: 2.1em;
+
+ }
+
+.hd2 {
+  font-size: 1.5em;
+ }
+
+.hd3 {
+  font-size: 1.17em;
+ }
+
+.hd4 {
+  font-size: 1em;
+ }
+
+.hd5 {
+  font-size: 0.83em;
+}
+
+.hd6 {
+  font-size: 0.75em;
+ }
+
+
+ .normal-ul {
+	list-style-type: none;
+	padding: 0;
 }
 
 /*Hover Classes*/
@@ -239,6 +372,10 @@ a:hover .header-profile-image {
 	margin-left: 5px;
 }
 
+.mar-l-10 {
+	margin-left: 10px;
+}
+
 .mar-l-15 {
 	margin-left: 15px;
 }
@@ -440,6 +577,75 @@ a:hover .header-profile-image {
 	height: 70%;
 }
 
+
+.border-r {
+	border-right: 1px solid #616161;
+	
+}
+
+.info-pic {
+	min-height: 200px;
+
+	background-position: center;
+  
+  /* Image doesn't repeat */
+  background-repeat: no-repeat;
+  
+  /* Makes the image fixed in the viewport so that it doesn't move when 
+     the content height is greater than the image height */
+  background-attachment: local;
+  
+  /* This is what makes the background image rescale based on its container's size */
+  background-size: cover;
+  
+  /* Pick a solid background color that will be displayed while the background image is loading */
+  background-color:#EEEEEE;
+
+  border: 2px solid white;
+
+   -webkit-box-shadow: 3px 3px 21px 0px rgba(50, 50, 50, 0.42);
+		-moz-box-shadow:    3px 3px 21px 0px rgba(50, 50, 50, 0.42);
+		box-shadow:         3px 3px 21px 0px rgba(50, 50, 50, 0.42);
+}
+
+.round {
+		border-radius: 50%;
+	  border: 3px solid white;
+	  width: 180px;
+	  height: 180px;
+	  margin: 16px; 
+	  background-color: #EEEEEE;
+	  background-repeat: no-repeat;
+	  background-position: center;
+	  background-size: cover;
+	  -webkit-box-shadow: 3px 3px 21px 0px rgba(50, 50, 50, 0.42);
+		-moz-box-shadow:    3px 3px 21px 0px rgba(50, 50, 50, 0.42);
+		box-shadow:         3px 3px 21px 0px rgba(50, 50, 50, 0.42);
+    
+}
+
+.sponsor-thumb {
+	height: 50px;
+	width: 50px;
+
+	margin: 0 5px 0 0px;
+
+	background-position: center;
+  
+  /* Image doesn't repeat */
+  background-repeat: no-repeat;
+  
+  /* Makes the image fixed in the viewport so that it doesn't move when 
+     the content height is greater than the image height */
+  background-attachment: local;
+  
+  /* This is what makes the background image rescale based on its container's size */
+  background-size: cover;
+  
+  /* Pick a solid background color that will be displayed while the background image is loading */
+  background-color: #EEEEEE;
+}
+
 @media (max-width: 600px) {
   .thumb-sponsor {
 	width: 70px;
@@ -449,6 +655,8 @@ a:hover .header-profile-image {
 .sponsor-section {
 	padding: 5px;	
 }
+
+
 
 .list-card-pic {
 	height: 250px;

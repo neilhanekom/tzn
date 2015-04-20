@@ -4,10 +4,33 @@ angular.module('core').controller('HomeController', ['$scope', 'Authentication',
 	function($scope, Authentication, $interval, $timeout, $mdSidenav, Advertisements, Partners) {
 		// This provides Authentication context.
 		$scope.authentication = Authentication;
-		$scope.partners = Partners.query();
-
+		
 		$scope.white = '#FFFFFF';
-		// console.log($scope.partners);
+		$scope.lgrey = '#EEEEEE';
+		
+		$scope.say = 'Yes Ues';
+		
+		$scope.dos = [
+			{
+				title: 'MIAMI MAGOEBASKLOOF MTB CHALLENGE',
+				description: 'Our Annual signature Event in where we host funfilled and challenging races for Families and the more serious competitors',
+				sponsors: [ 'modules/core/img/brand/miami-th.png', 'modules/core/img/brand/zz2-th.png', 'modules/core/img/brand/usn-th.png', 'modules/core/img/brand/spar-th.png', ],
+				images: []
+			},
+			{
+				title: 'SIMPSON MOTORS XCO',
+				description: 'Our Annual signature Event in where we host funfilled and challenging races for Families and the more serious competitors',
+				sponsors: [ 'modules/core/img/brand/simpson-th.png'],
+				images: []
+			},
+			{
+				title: 'TZANEEN ENDURO CHALLENGE',
+				description: 'Our Annual signature Event in where we host funfilled and challenging races for Families and the more serious competitors',
+				sponsors: [ 'modules/core/img/brand/tzn-th.png'],
+				images: []
+			}
+
+		];
 		
 		$scope.partnerImages = ['Test this'];
 
