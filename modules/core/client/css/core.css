@@ -729,7 +729,38 @@ a:hover .header-profile-image {
 
 }
 
-@media (min-width: 900px) and (max-width: 1000px) {
+@media (min-width: 900px) and (max-width: 1200px) {
+  .thumb-sponsor {
+	width: 70%;
+  	
+}
+
+.sponsor-section {
+	padding: 5px;	
+}
+
+.ad-image {
+	min-height: 400px;
+
+	background-position: center;
+  
+  /* Image doesn't repeat */
+  background-repeat: no-repeat;
+  
+  /* Makes the image fixed in the viewport so that it doesn't move when 
+     the content height is greater than the image height */
+  background-attachment: local;
+  
+  /* This is what makes the background image rescale based on its container's size */
+  background-size: cover;
+  
+  /* Pick a solid background color that will be displayed while the background image is loading */
+  background-color:#EEEEEE;
+}
+
+}
+
+@media (min-width: 1000px) and (max-width: 1000px) {
   .thumb-sponsor {
 	width: 70%;
   	

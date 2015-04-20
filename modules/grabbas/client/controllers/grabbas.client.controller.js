@@ -17,14 +17,14 @@ angular.module('grabbas').controller('GrabbasController', ['$scope', '$statePara
 			name: 'Grabba Cycles',
 			imageUrl: 'modules/grabbas/img/grabba.png',
 			address: {
-				line1: 'Shop 4b Shop Complex',
-				line2: '34 Main Street, Tzaneen',
+				line1: '11 Peace street next to Tzaneen Gym',
+				line2: 'Tzaneen',
 				code: '0850'
 			},
 			contact: {
 				person: 'Brendon',
-				number: '0983456734',
-				email: 'grabbacycles@gmail.com'
+				number: '0824498778',
+				email: 'grabbasports@gmail.com'
 			}
 		};
 
