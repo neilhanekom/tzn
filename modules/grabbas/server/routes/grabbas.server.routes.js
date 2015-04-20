@@ -5,8 +5,8 @@ module.exports = function(app) {
 	var grabbasPolicy = require('../policies/grabbas.server.policy');
 
 	// Grabbas Routes
-	app.route('/api/grabbas').all()
-		.get(grabbas.list).all(grabbasPolicy.isAllowed)
+	app.route('/api/grabbas')
+		.get(grabbas.list)
 		.post(grabbas.create);
 
 	app.route('/api/grabbas/:grabbaId')
