@@ -5,6 +5,8 @@ angular.module('core').controller('HomeController', ['$scope', 'Authentication',
 		// This provides Authentication context.
 		$scope.authentication = Authentication;
 		$scope.partners = Partners.query();
+
+		$scope.white = '#FFFFFF';
 		// console.log($scope.partners);
 		
 		$scope.partnerImages = ['Test this'];

@@ -5,6 +5,9 @@ angular.module('core').controller('HeaderController', ['$scope', '$state', 'Auth
 
 		$scope.topbar = Menus.getMenu('topbar');
 
+		$scope.wihte = '#FFFFFF';
+		$scope.fill = '#FFFFFF';
+
 		// left bar toggleCollapsibleMenu
 		$scope.toggleLeft = function() {
             $mdSidenav('left').toggle();
