@@ -14,7 +14,7 @@ module.exports = function(app) {
 		.put(grabbas.update)
 		.delete(grabbas.delete);
 
-	app.route('/api/grabbas/updatefile/:grabbaId').all(grabbasPolicy.isAllowed)
+	app.route('/api/grabbas/updatefile/:grabbaId')
 		.put(grabbas.updateFile);
 
 	// Finish by binding the Grabba middleware

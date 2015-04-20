@@ -85,6 +85,7 @@ exports.read = function(req, res) {
  * Update a Grabba
  */
 exports.update = function(req, res) {
+	var user = req.user;
 	var grabba = req.grabba ;
 
 	
