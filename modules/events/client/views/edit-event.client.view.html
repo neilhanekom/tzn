@@ -96,10 +96,12 @@
                                     
                                 </div> 
 
+
+
                                 <div layout="row" layout-sm="column">
-                                <h4>Enter Races for event</h4>
+                                <h4>Races for the Event</h4>
                                 </div>
-                                <md-button class="md-accent md-raised mar-10 md-hue-2" layout="row" flex-sm="" data-ng-repeat="race in races" >
+                               <!--  <md-button class="md-accent md-raised mar-10 md-hue-2" layout="row"  data-ng-repeat="race in races" >
                                     <div flex layout="row" layout-align="start center">
                                         <span>{{race.distance}}</span>
                                     </div>
@@ -109,8 +111,57 @@
                                     <div flex ng-click="removeRace(race)" layout="row" layout-align="end center">
                                         <ng-md-icon icon="close" size="30" ng-attr-style="fill: {{white}}"></ng-md-icon>
                                     </div>
-                                </md-button>
+                                </md-button> -->
+
+                                <div layout="row" class="bg-lgrey" data-ng-repeat="race in races">
+                                    <div flex layout="row" layout-padding>
+                                        <span class="hd3 "><b>Distance: </b>{{race.distance}}</span>
+                                    </div>
+                                    <div flex layout="row" layout-padding>
+                                        <span class="hd3 "><b>Start: </b>{{race.time}}</span>
+                                    </div>
+                                    <div flex ng-click="removeRace(race)" layout="row" layout-align="end center">
+                                    <md-button>
+                                        <div layout="row" class="pad-t-5">
+                                            <ng-md-icon icon="map" size="25" ng-attr-style="fill: {black}}"></ng-md-icon>
+                                        </div>
+                                    </md-button>
+                                    <md-button>
+                                        <div layout="row" class="pad-t-5">
+                                            <ng-md-icon icon="terrain" size="25" ng-attr-style="fill: {black}}"></ng-md-icon>
+                                        </div>
+                                    </md-button>
+                                    <md-button ng-click="removeRace(race)">
+                                        <div layout="row" class="pad-t-5">
+                                            <ng-md-icon icon="close" size="25" ng-attr-style="fill: {black}}"></ng-md-icon>
+                                        </div>
+                                    </md-button>
+                                        
+                                    </div>
                                 </div>
+
+                                 <div flex layout="row" class="bg-llgrey"> 
+                                        <div layout="row" layout-sm="column" layout-margin>
+                                     <img ng-show="picFile[0].dataUrl != null" ng-src="{{picFile[0].dataUrl}}" ng-style="{'max-width' : '100%', 'height' : 'auto'}">
+                                    </div>
+                                    
+                                    <div layout="row" layout-sm="column" layout-margin>
+                                     <input type="file" ng-file-select ng-model="picFile" name="file" accept="image/*" 
+                                           ng-file-change="generateThumb(picFile[0], $files)" >
+                                    </div>
+                                    
+                                    <div layout="row" layout-sm="column" layout-margin>
+                                        <!-- <div style="width:{{picFile[0].progress}}%" ng-bind="picFile[0].progress + '%'"></div> -->
+                                        <md-progress-linear class="md-warn" md-mode="buffer" value="{{picFile[0].progress}}" md-buffer-value="0">
+                                        </md-progress-linear>
+                                    </div>
+                                    
+                                    <div layout="row" flex layout-align="start center" layout-margin>
+                                            <md-button data-ng-click="updatePic(picFile)" class="md-raised md-warn" data-ng-show="picFile[0]">Change</md-button>
+                                            
+                                    </div>
+                                    </div>
+                               
 
                                 <div layout="row" layout-sm="column">
                                     
@@ -127,40 +178,43 @@
                                     
                                 </div> 
                                 <!-- repeat races -->
+
+
                                 <div layout="column" layout-sm="column">
                                  
 
-                                <div layout="row" layout-sm="column" layout-margin>
-                                 <md-button class="md-warn md-raised md-hue-2" data-ng-click="pushRace()">Add Race</md-button>
-                                </div>
+                                    <div layout="row" layout-sm="column" layout-margin>
+                                     <md-button class="md-warn md-raised md-hue-2" data-ng-click="pushRace()">Add Race</md-button>
+                                    </div>
 
-                                 <div layout="row" layout-sm="column" layout-margin>
-                                 <img ng-show="picFile[0].dataUrl != null" ng-src="{{picFile[0].dataUrl}}" ng-style="{'max-width' : '100%', 'height' : 'auto'}">
+                                     <div layout="row" layout-sm="column" layout-margin>
+                                     <img ng-show="picFile[0].dataUrl != null" ng-src="{{picFile[0].dataUrl}}" ng-style="{'max-width' : '100%', 'height' : 'auto'}">
+                                    </div>
+                                    
+                                    <div layout="row" layout-sm="column" layout-margin>
+                                     <input type="file" ng-file-select ng-model="picFile" name="file" accept="image/*" 
+                                           ng-file-change="generateThumb(picFile[0], $files)" >
+                                    </div>
+                                    
+                                    <div layout="row" layout-sm="column" layout-margin>
+                                        <!-- <div style="width:{{picFile[0].progress}}%" ng-bind="picFile[0].progress + '%'"></div> -->
+                                        <md-progress-linear class="md-warn" md-mode="buffer" value="{{picFile[0].progress}}" md-buffer-value="0">
+                                        </md-progress-linear>
+                                    </div>
+                                    
+                                    <div layout="row" flex layout-align="start center" layout-margin>
+                                            <md-button data-ng-click="updatePic(picFile)" class="md-raised md-warn" data-ng-show="picFile[0]">Change</md-button>
+                                            
+                                    </div>
+                                    <div layout="row" flex layout-align="start center" layout-margin>
+                                            
+                                            <md-button data-ng-click="update()" class="md-raised md-warn" data-ng-hide="picFile[0]">Save</md-button>
+                                    </div>
+                                    <div data-ng-show="error" class="text-danger">
+                                        <strong data-ng-bind="error"></strong>
+                                    </div>
                                 </div>
-                                
-                                <div layout="row" layout-sm="column" layout-margin>
-                                 <input type="file" ng-file-select ng-model="picFile" name="file" accept="image/*" 
-                                       ng-file-change="generateThumb(picFile[0], $files)" >
                                 </div>
-                                
-                                <div layout="row" layout-sm="column" layout-margin>
-                                    <!-- <div style="width:{{picFile[0].progress}}%" ng-bind="picFile[0].progress + '%'"></div> -->
-                                    <md-progress-linear class="md-warn" md-mode="buffer" value="{{picFile[0].progress}}" md-buffer-value="0">
-                                    </md-progress-linear>
-                                </div>
-                                
-                                <div layout="row" flex layout-align="start center" layout-margin>
-                                        <md-button data-ng-click="updatePic(picFile)" class="md-raised md-warn" data-ng-show="picFile[0]">Change</md-button>
-                                        
-                                </div>
-                                <div layout="row" flex layout-align="start center" layout-margin>
-                                        
-                                        <md-button data-ng-click="update()" class="md-raised md-warn" data-ng-hide="picFile[0]">Save</md-button>
-                                </div>
-                                <div data-ng-show="error" class="text-danger">
-                                    <strong data-ng-bind="error"></strong>
-                                </div>
-                            </div>
                         </form>
                     </md-content>
                 </md-whiteframe>    

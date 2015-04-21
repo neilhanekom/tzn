@@ -43,6 +43,12 @@ var EventSchema = new Schema({
 			},
 			time: {
 				type: String
+			},
+			profileUrl: {
+				type: String
+			},
+			routeUrl: {
+				type: String
 			}
 		}
 	],

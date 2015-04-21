@@ -407,6 +407,10 @@ a:hover .header-profile-image {
 .red {
 	color: red;
 }
+
+.bg-llgrey {
+	background-color: #FAFAFA;
+}
 .bg-white {
 	background-color: white;
 }
