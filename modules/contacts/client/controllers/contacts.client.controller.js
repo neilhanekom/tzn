@@ -5,6 +5,7 @@ angular.module('contacts').controller('ContactsController', ['$scope', '$statePa
 	function($scope, $stateParams, $timeout, $window, $location, Authentication, Contacts, $http, $compile, $upload ) {
 		$scope.authentication = Authentication;
 
+		$scope.white = '#FFFFFF';
 
 		// Remove existing Contact
 		$scope.remove = function( contact ) {

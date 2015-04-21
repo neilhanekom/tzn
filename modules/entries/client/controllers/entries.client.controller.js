@@ -5,6 +5,31 @@ angular.module('entries').controller('EntriesController', ['$scope', '$statePara
 	function($scope, $stateParams, $location, $timeout, $filter, Authentication, Entries, Events, deviceDetector  ) {
 		$scope.authentication = Authentication;
 
+		$scope.white = '#FFFFFF';
+
+		$scope.collapseEntryConfirm = true;		
+
+		$scope.confirmFinal = function() {
+			$scope.collapseEntryConfirm = false;		
+		};
+		
+		$scope.home = function() {
+			$location.path('/');
+		};
+
+		$scope.veiwEntry = function() {
+			$location.path('entries/' + response._id);
+		};
+
+
+		//Form Collapse
+
+		$scope.confirm = function() {
+			$scope.collapseForm = true;
+			$scope.collapseConfirm = false;
+			
+		};
+
 		$scope.deviceDetector = deviceDetector;
 
 		$scope.checkFF = function() {
@@ -150,6 +175,8 @@ angular.module('entries').controller('EntriesController', ['$scope', '$statePara
 			$scope.collapseConfirm = true;
 		};
 
+		
+
 		$scope.confirm = function() {
 			$scope.collapseForm = true;
 			$scope.collapseConfirm = false;
@@ -188,6 +215,8 @@ angular.module('entries').controller('EntriesController', ['$scope', '$statePara
 
 		//Create new Entry
 		$scope.create = function() {
+
+
 			
 			// Create new Entry object
 			var entry = new Entries ({
@@ -212,10 +241,10 @@ angular.module('entries').controller('EntriesController', ['$scope', '$statePara
 
 			// Redirect after save
 			entry.$save(function(response) {
-				$location.path('entries/' + response._id);
-
-				// Clear form fields
-				// $scope.name = '';
+				// $location.path('entries/' + response._id);
+				$scope.confirmFinal();
+				$scope.response = response;
+				
 			}, function(errorResponse) {
 				$scope.error = errorResponse.data.message;
 			});

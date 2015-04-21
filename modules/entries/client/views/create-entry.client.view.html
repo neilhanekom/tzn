@@ -1,5 +1,138 @@
 <div flex layout="row" layout-fill data-ng-controller="EntriesController"; data-ng-init="checkFF()"; > 
 
+    <div class="abs bg-alpha-80" ng-hide="collapseEntryConfirm">
+        <div layout="column" layout-fill layout-align="start center" >
+            <div layout="row" layout-align="end end" class="abs-r-0">
+                <md-button ng-click="home()">
+                    <div class="pad-t-5">
+                        <ng-md-icon icon="close" size="30" ng-attr-style="fill: {{white}}"></ng-md-icon>
+                    </div>
+                </md-button>
+
+            </div>
+            <div layout="column" flex >
+                <h1 class="hd1 light txt-white">
+                    Thank you for entering!
+                </h1>
+                <div layout="column" layout-padding>
+                    <md-content layout-padding>
+                        <span class="hd2 light">This confirms that you have succesfully made a new Entry!</span>
+
+                        <ul class="normal-ul">
+                            <li>
+                                <br>
+                                <span class="hd4 light">You should receive an Email shortly confirming your entry.</span>
+                                <br>
+                                <span class="hd4 light">Email Address: </span><span class="hd4 bold blue">{{response.email}}</span>
+                            </li>
+                            <li>
+                                <br>
+                                <span class="hd4 bold">What is the Procedure now?</span>
+                            </li>
+                        </ul>
+
+                        <ul>
+                            <li>
+                                <span class="hd4 light">Your Entry is in an <b>unpaid</b> state. We have provided you with the banking details on your entry Email.</span>
+                            </li>
+                            <li>
+                                <span class="hd4 light">Please make a payment into our Bank Account with your <b>Name & Surname</b> as reference.</span>
+                            </li>
+                            <li>
+                                <span class="hd4 light">We will confirm your entry payment once the funds reflect on our bank account.</span>
+                            </li>
+                            <li>
+                                <span class="hd4 light">You will receive a confirmation Email.</span>
+                            </li>
+                            <li>
+                                <span class="hd4 light">Your Entry status changes to <b>Complete</b></span>
+                            </li>
+
+                        </ul>
+
+                        <ul class="normal-ul">
+                            <li>
+                                <p class="hd4 normal"><b>Your Entry Fee: </b>{{'R' + response.fee}}</p>
+                            </li>
+                        </ul>
+                         <span class="hd4 bold">Payment & Banking Details</span>
+                        <ul class="normal-ul bg-lgrey" >
+                            
+                            <li >
+                                <span class="hd4 light">Standard Bank</span>
+                            </li>
+                            <li>
+                                <span class="hd4 light"><b>Acc name: </b> Tzaneen Bicycle Club</span>
+                            </li>
+                            <li>
+                                <span class="hd4 light"><b>Acc No: </b> 330566652</span>
+                            </li>
+                            <li>
+                                <span class="hd4 light"><b>Type:</b> Cheque/Current</span>
+                            </li>
+                            <li>
+                                <span class="hd4 light"><b>Branch:</b> Tzaneen(05-27-49)</span>
+                            </li>
+
+                        </ul>
+                       
+                        <ul class="normal-ul">
+                            
+                            
+                            <li>
+                                <br>
+                                <span class="hd4 light">Just a few things on your Entry Information</span>
+                                <br>
+                            </li>
+                            <li>
+                                <br>
+                                <span class="hd4 light"><b>Name: </b>{{response.firstName + ' ' + response.lastName}}</span>
+                            </li>
+                            <li>
+                                <span class="hd4 light"> <b>ID: </b> {{response.rsaId}} </span>
+                            </li>
+                            <li>
+                                <span class="hd4 light"><b>Birthdate: </b>{{response.birthDate | Customdate }}</span>
+                            </li>
+                            <li>
+                                <span class="hd4 light"><b>Gender: </b>{{response.gender}}</span>
+                            </li>
+                            <li>
+                                <span class="hd4 light"><b>Race: </b>{{response.race}}</span>
+                            </li>
+                            <li>
+                                <span class="hd4 light"><b>Age Category: </b>{{response.age_cat}}</span>
+                            </li>
+                        </ul>
+                    </md-content>
+                    <div layout="row">
+                        <md-button layout="row" layout-align="center center" ng-click="home()">
+                            <span class="pad-t-5">
+                                <ng-md-icon icon="exit_to_app" size="25" ng-attr-style="fill: {{white}}"></ng-md-icon>
+                                
+                            </span>
+                            <span class="mar-l-5 blue"> Back to App</span>
+                        </md-button>
+                        <md-button layout="row" layout-align="center center" data-ng-href="/#!/entries/{{response._id}}">
+                            <span class="pad-t-5">
+                                <ng-md-icon icon="location_history" size="25" ng-attr-style="fill: {{white}}"></ng-md-icon>
+                                
+                            </span>
+                            <span class="mar-l-5 green"> View my Entry</span>
+                        </md-button>
+
+                    </div>
+                </div>
+
+            </div>
+            
+        </div>
+        
+
+    </div>
+
+
+
 
     <div flex="15" class="bg-lgrey" hide-sm hide-md hide-lg></div>
 
@@ -17,11 +150,25 @@
                     <!-- Start wtih Form in here. -->
 
                     <md-content class="md-padding">
+                        <div layout="row" flex layout-align="end center" data-ng-hide="collapseConfirm">
+                                    
+                                    <md-button class="md-raised md-accent" layout="row" layout-align="center center" ng-click="openForm()">
+                                        <span class="pad-t-5">
+                                            <ng-md-icon icon="chevron_left" size="25" ng-attr-style="fill: {{white}}"></ng-md-icon>
+                                        </span>
+                                        <span class="mar-l-5 txt-white mar-r-5" > Back</span>
+                                    </md-button>
+                                </div>
                         <form name="entryForm" data-ng-submit="create()" flex layout-fill class="std-text">
 
                             <div layout="column" layout-sm="column" layout-fill>
+                            <div layout="row" flex>
+                                <div layout="row" flex data-ng-hide="collapseForm">
+                                    <h2 class="hd2 ">Create New Entry!</h2>
+                                </div>
+                                
+                            </div>
                             
-                            <h2>Entry Form</h2>
                             <md-divclasser></md-divclasser>
                                  <div layout="column" layout-fill data-ng-hide="collapseForm">
                                 <div layout="row" layout-sm="column">
@@ -30,7 +177,7 @@
                                 <div layout="column" layout-align="center start" style="height: 100px;">
                                     <md-select ng-model="event" md-on-open="loadEvents()" style="min-wclassth: 200px;">
                                       <md-select-label>{{ event ? event.name : 'Select Event' }}</md-select-label>
-                                      <md-option ng-value="event" ng-repeat="event in events"><span><ng-md-icon icon="directions_bike" size="14" ng-attr-style="fill: {{fill}}"></ng-md-icon> </span>{{event.name + ' '}} &nbsp<span><ng-md-icon icon="today" size="14" ng-attr-style="fill: {{fill}}"></ng-md-icon> </span>{{eventDate | Customdate }}</md-option>
+                                      <md-option ng-value="event" ng-repeat="event in events"><span><ng-md-icon icon="directions_bike" size="14" ng-attr-style="fill: {{fill}}"></ng-md-icon> </span>{{event.name + ' '}} &nbsp<span><ng-md-icon icon="today" size="14" ng-attr-style="fill: {{fill}}"></ng-md-icon> </span>{{ event.eventDate | Customdate }}</md-option>
                                     </md-select>
                                     <p class="md-caption">{{ event ? event.name : 'No Event Selected' }}</p>
                                   </div>
@@ -74,8 +221,8 @@
                                         </div>
                                     </md-input-container>
                                     <md-input-container flex>
-                                        <label>class/Passport Number</label>
-                                        <input type="text" required name="rsaclass" ng-model="entry.rsaclass" placeholder="Enter your Password Number">
+                                        <label>ID Number</label>
+                                        <input type="text" required name="rsaclass" ng-model="entry.rsaId" placeholder="Enter your ID Number">
                                         <div ng-messages="entryForm.rsaclass.$error" class="error">
                                           <div ng-message="required">This is required.</div>
                                         </div>
@@ -357,8 +504,16 @@
                                 </div>
                                 <div flex layout="column" data-ng-hide="collapseConfirm">
                                     <div layout="row" flex>
-                                        <br>
+                                        <div layout="row" flex>
+                                            <p class="hd1 normal">Check your details</p>
+                                        </div>
+                                        
                                     </div>
+
+                                    <div layout="row">
+                                        <p class="hd3 thin">Please check your details if you want to change your details press the back button</p>
+                                    </div>
+                                    
                                     <div layout="row" flex>
                                         <div layout="row" flex-sm="50" flex-gt-sm="35">
                                            <span><b>Event Name:</b></span> 
@@ -624,8 +779,9 @@
                                           
                                 </div>
                        
-                        <div layout="row" data-ng-hide="collapseConfirm">
-                                   <md-button type="submit" class="md-raised md-primary">Register</md-button>
+                        <div layout="row" data-ng-hide="collapseConfirm" layout-padding>
+                                   <md-button type="submit" class="md-raised md-warn">Register</md-button>
+                                  
                          </div>       
                         <div data-ng-show="error" class="text-danger">
                             <strong data-ng-bind="error"></strong>
@@ -635,9 +791,11 @@
                         </form>
 
                         <div layout="row" flex layout-align="start center" data-ng-hide="collapseForm">
-                                <md-button data-ng-click="confirm(); calculateTotal()" class="md-raised md-warn">Proceed</md-button>
+                                <md-button data-ng-click="confirm(); calculateTotal();" class="md-raised md-warn">Proceed</md-button>
                         </div>
-                        
+                        <div layout="row" flex layout-align="start center" class="mar-t-5" data-ng-hide="collapseConfirm" layout-padding>
+                                <md-button ng-click="openForm()" class="md-raised md-accent">Back</md-button>
+                        </div>
                         
 
 
