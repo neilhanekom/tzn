@@ -71,8 +71,12 @@
                 <md-content>
                         <div  layout="column" layout-padding>
 
-                          <h3>{{grabba.sub}}</h3>
-                          <p>{{'R' + grabba.price}}</p>
+                          <span class="hd4 light">{{grabba.sub}}</span>
+                          <br>
+                          <span class="hd4 light"><b>Date:</b> {{grabba.created | Customdate}}</span>
+
+                          <span class="hd4 light"><b>Price:</b> {{'R' + grabba.price}}</span>
+                          <p></p>
                         </div>
                 </md-content>
                 <div layout="row" class="bg-lgrey" layout-padding layout-align="start center">
