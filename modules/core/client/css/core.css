@@ -646,6 +646,10 @@ a:hover .header-profile-image {
   background-color: #EEEEEE;
 }
 
+.center-hor {
+	margin: 0 auto;
+}
+
 @media (max-width: 600px) {
   .thumb-sponsor {
 	width: 70px;
@@ -731,7 +735,7 @@ a:hover .header-profile-image {
 
 @media (min-width: 900px) and (max-width: 1200px) {
   .thumb-sponsor {
-	width: 70%;
+	width: 100%;
   	
 }
 
@@ -760,9 +764,9 @@ a:hover .header-profile-image {
 
 }
 
-@media (min-width: 1000px) and (max-width: 1000px) {
+@media (min-width: 1000px) and (max-width: 1200px) {
   .thumb-sponsor {
-	width: 70%;
+	width: 100%;
   	
 }
 
@@ -771,7 +775,7 @@ a:hover .header-profile-image {
 }
 
 .ad-image {
-	min-height: 400px;
+	min-height: 750px;
 
 	background-position: center;
   
@@ -791,9 +795,9 @@ a:hover .header-profile-image {
 
 }
 
-@media (min-width: 1280px) and (max-width: 3000px) {
+@media (min-width: 1200px) and (max-width: 3000px) {
   .thumb-sponsor {
-	width: 70%;
+	width: 100%;
   	
 }
 

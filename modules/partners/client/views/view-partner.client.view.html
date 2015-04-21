@@ -9,8 +9,8 @@
 				      <img data-ng-src="{{partner.imageUrl}}" alt="{{partner.name}}">
 
 				      <md-card-content>
-				        <h2 class="md-title">{{partner.name}}</h2>
-				        <h3 class="md-subhead">{{partner.slogan}}</h3>
+				        <h2 class="hd2 normal">{{partner.name}}</h2>
+				        <h3 class="hd3 light">{{partner.slogan}}</h3>
 				        <p>
 				          {{partner.description}}
 				        </p>
@@ -23,11 +23,21 @@
 					        	<li><span>{{partner.address.code}}</span></li>
 					        	
 					        </ul>
-					    <ul class="setting-list">
-					    		<li><span><b>Contact US</b></span></li>
-					        	<li data-ng-repeat="contact in partner.contacts" layout="row" layout-align="start center"><span><b>{{partner.contact.name}}</b> &nbsp {{partner.contact.number}} &nbsp {{contact.email}}</span></li>
-					        	
-					     </ul> 
+					    <ul class="normal-ul">
+                          <li>
+                            <span class="hd4 bold" address>Contact</span>
+                          </li>
+                          
+                          <li ng-repeat="contact in partner.contacts">
+                            <span class="hd4 light" >
+                              {{contact.name + ':' + ' ' + contact.number}}
+                            </span>
+                            <br>
+                            <span class="hd4 normal" >
+                              {{contact.email}}
+                            </span>
+                          </li>
+                        </ul>
 					     <div layout="row">
 					        	
 					        	<md-button data-ng-href="/#!/partners/{{partner._id}}/edit" class=" md-raised md-accent " data-ng-show="authentication.user">Edit</md-button >

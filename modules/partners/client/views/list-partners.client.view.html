@@ -14,7 +14,8 @@
                 <div layout="row" flex layout-align="end center" ng-show="authentication.user">
                     <md-button data-ui-sref="partners.create" class="md-fab md-warn" aria-label="Create Partner" layout="row" layout-align="center center" >
                       <div class="pad-t-5" layout="row" layout-align="center center">
-                         <ng-md-icon icon="add" size="30" ng-attr-style="fill: {{white}}"></ng-md-icon>
+
+                         <ng-md-icon icon="add" size="30" ng-attr-style="fill: {{white}}" class="center-h"></ng-md-icon>
                       </div>
                        
                     </md-button>
@@ -50,15 +51,34 @@
                 </md-content>
 
                 <md-content>
-                        <div  layout="column" layout-padding>
-
-                          <h4>{{partner.slogan}}</h4>
-                          <p>{{partner.address.line1}} 
-                          <br>
-                            {{partner.address.line2}}</p>
-                         
-                        </div>
+                        
+                        <ul class="normal-ul">
+                          <li>
+                            <span class="hd4 bold" layout-padding>Contact Us</span>
+                          </li>
+                          <li>
+                            <span class="hd4 light" layout-padding>
+                              {{partner.address.line1}}
+                            </span>
+                          </li>
+                           <li>
+                            <span class="hd4 light" layout-padding>
+                              {{partner.address.line2}}
+                            </span>
+                          </li>
+                          <li ng-repeat="contact in partner.contacts">
+                            <span class="hd4 light" layout-padding>
+                              {{contact.name + ':' + ' ' + contact.number}}
+                            </span>
+                            <br>
+                            <span class="hd4 normal" layout-padding>
+                              {{contact.email}}
+                            </span>
+                          </li>
+                        </ul>
                 </md-content>
+
+                
                 <div layout="row" class="bg-lgrey" layout-padding layout-align="start center">
                     <md-button class="md-accent" data-ng-href="/#!/partners/{{partner._id}}">
                         View

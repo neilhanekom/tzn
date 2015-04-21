@@ -63,7 +63,9 @@ angular.module('advertisements').controller('AdvertisementsController', ['$timeo
 
 		// Update existing Advertisement
 		$scope.update = function() {
-			var advertisement = $scope.advertisement ;
+			var advertisement = $scope.advertisement;
+			advertisement.sponsors = $scope.selSponsors;
+			advertisement.specifications = $scope.specifications;
 
 			advertisement.$update(function() {
 				$location.path('advertisements/' + advertisement._id);
@@ -75,7 +77,7 @@ angular.module('advertisements').controller('AdvertisementsController', ['$timeo
 		// Find a list of Advertisements
 		$scope.find = function() {
 			$scope.advertisements = Advertisements.query();
-			console.log($scope.advertisements);
+			
 		};
 
 		// Find existing Advertisement

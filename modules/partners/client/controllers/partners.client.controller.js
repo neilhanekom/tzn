@@ -23,6 +23,8 @@ angular.module('partners').controller('PartnersController', ['$scope', '$statePa
 		    
 		 ];
 
+		 
+
 		 $scope.pushContact = function() {
 		 	var name = $scope.contact.name;
 		 	var number = $scope.contact.number;

@@ -1,12 +1,12 @@
 <div data-ng-controller="LeftController">
-	<md-sidenav  md-component-id="left" class="md-whiteframe-z2" >
+	<md-sidenav  md-component-id="left" class="md-whiteframe-z2" data-ng-click="toggleLeft()">
         <md-toolbar class="md-primary">
         <div flex layout="row" layout-align="start center">
         <!-- <img data-ng-src="modules/core/img/brand/tzn-black.png" data-ng-style="{'height' : '40px'}"> -->
         <span><h1 class="md-toolbar-tools txt-blk txt-white">Tzaneen Cycling</h1></span>
       </div>
       </md-toolbar>
-      <md-content layout="column" layout-fill>
+      <md-content layout="column" layout-fill >
       			<ul class="sidenav-ul">
       				<li data-ng-repeat="item in sidenav.items | orderBy: 'position'" data-ng-if="item.shouldRender(authentication.user);" flex="100" layout="row" layout-align="start start" data-ui-sref="{{item.state}}">
       					<md-button flex >
