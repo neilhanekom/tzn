@@ -78,7 +78,8 @@ angular.module('partners').controller('PartnersController', ['$scope', '$statePa
 		// Update existing Partner
 		$scope.update = function() {
 			var partner = $scope.partner ;
-
+			partner.contacts = $scope.contacts;
+			
 			partner.$update(function() {
 				$location.path('partners/' + partner._id);
 			}, function(errorResponse) {
