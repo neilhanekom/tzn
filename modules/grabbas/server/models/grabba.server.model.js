@@ -19,19 +19,8 @@ var GrabbaSchema = new Schema({
 	description: {
 		type: String
 	},
-	address: {
-		line1: {
-			type: String
-		},
-		line2: {
-			type: String
-		}
-	},
 	price: {
 		type: String
-	},
-	endDate: {
-		type: Date
 	},
 	imageUrl: {
 		type: String,
