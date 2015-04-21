@@ -138,9 +138,8 @@ angular.module('grabbas').controller('GrabbasController', ['$scope', '$statePara
 					title: $scope.grabba.title,
 					sub: $scope.grabba.sub,
 					description: $scope.grabba.description,
-					address: $scope.grabba.address,
-					price: $scope.grabba.price,
-					endDate: $scope.grabba.endDate
+					price: $scope.grabba.price
+					
 				},
 				file: file,
 				fileFormDataName: 'grabbaForm',
@@ -174,9 +173,7 @@ angular.module('grabbas').controller('GrabbasController', ['$scope', '$statePara
 					title: $scope.grabba.title,
 					sub: $scope.grabba.sub,
 					description: $scope.grabba.description,
-					address: $scope.grabba.address,
-					price: $scope.grabba.price,
-					endDate: $scope.grabba.endDate
+					price: $scope.grabba.price
 				},
 				file: file,
 				fileFormDataName: 'grabbaForm',

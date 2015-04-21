@@ -17,25 +17,15 @@ exports.create = function(req, res) {
 	var user = req.user;
 	var message = null;
 
-
-	
-	// Unstringify and compile new Object
-	var address = JSON.parse(req.body.address);
 	var price = JSON.parse(req.body.price);
-	var endDate = JSON.parse(req.body.endDate);
-
-	console.log(req.body);
-
+	
 	var newObj = {
 		title: req.body.title,
 		sub: req.body.sub,
 		description: req.body.description,
-		address: address,
-		endDate: endDate,
 		price: price
 	};
 
-	console.log(newObj);
 
 	if (user) {
 		fs.writeFile('./modules/grabbas/client/img/uploads/' + req.files.grabbaForm.name, req.files.grabbaForm.buffer, function (uploadError) {
@@ -109,18 +99,14 @@ exports.updateFile = function(req, res) {
 	var message = null;
 	var oldFile = grabba.imageUrl;
 
-	// Unstringify and compile new Object
-	var address = JSON.parse(req.body.address);
 	var price = JSON.parse(req.body.price);
-	var endDate = JSON.parse(req.body.endDate);
+	
 
 
 	var newObj = {
 		title: req.body.title,
 		sub: req.body.sub,
 		description: req.body.description,
-		address: address,
-		endDate: endDate,
 		price: price
 	};
 
