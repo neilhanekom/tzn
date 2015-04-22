@@ -328,6 +328,12 @@ a:hover .header-profile-image {
 	padding-left: 10px;
 }
 
+.pad-l-20 {
+	padding-left: 20px;
+}
+
+
+
 .pad-l-15 {
 	padding-left: 15px;
 }
@@ -379,6 +385,14 @@ a:hover .header-profile-image {
 }
 .mar-b-20 {
 	margin-bottom: 20px;
+}
+
+.mar-b-10 {
+	margin-bottom: 10px;
+}
+
+.mar-b-5 {
+	margin-bottom: 5px;
 }
 
 .mar-5 {
@@ -714,10 +728,23 @@ a:hover .header-profile-image {
 
 }
 
+.launch-img {
+	width: 200px
+}
+
+.browser-icon {
+	width: 80px;
+	margin: 16px;
+}
+
 @media (max-width: 600px) {
   .thumb-sponsor {
-	width: 70px;
+	width: 100%;
   	
+}
+
+.spon-holder {
+	margin: 1px;
 }
 
 .round {
@@ -782,10 +809,18 @@ a:hover .header-profile-image {
 
 }
 
-@media (min-width: 600px) and (max-width: 900px) {
+@media (min-width: 600px) and (max-width: 960px) {
   .thumb-sponsor {
-	width: 100%;
-  	
+	
+  	width: 95%;
+  	height: auto;
+  	margin: 0 auto;
+  	padding: 0;
+}
+
+.spon-holder {
+	margin: 5px;
+	padding: 0 5px 0 5px;
 }
 
 .sponsor-section {
@@ -813,14 +848,17 @@ a:hover .header-profile-image {
 
 }
 
-@media (min-width: 900px) and (max-width: 1200px) {
+@media (min-width: 960px) and (max-width: 1200px) {
   .thumb-sponsor {
-	width: 100%;
-  	
+	width: 80%;
+  	height: auto;
+  	margin: 0 auto;
+  	padding: 0;
 }
 
-.sponsor-section {
-	padding: 5px;	
+.spon-holder {
+	margin: 5px;
+	padding: 0 5px 0 5px;
 }
 
 .ad-image {
@@ -844,40 +882,11 @@ a:hover .header-profile-image {
 
 }
 
-@media (min-width: 1000px) and (max-width: 1200px) {
-  .thumb-sponsor {
-	width: 100%;
-  	
-}
 
-.sponsor-section {
-	padding: 5px;	
-}
-
-.ad-image {
-	min-height: 750px;
-
-	background-position: center;
-  
-  /* Image doesn't repeat */
-  background-repeat: no-repeat;
-  
-  /* Makes the image fixed in the viewport so that it doesn't move when 
-     the content height is greater than the image height */
-  background-attachment: local;
-  
-  /* This is what makes the background image rescale based on its container's size */
-  background-size: cover;
-  
-  /* Pick a solid background color that will be displayed while the background image is loading */
-  background-color:#EEEEEE;
-}
-
-}
 
 @media (min-width: 1200px) and (max-width: 3000px) {
   .thumb-sponsor {
-	width: 100%;
+	width: 130px;
   	
 }
 
@@ -885,7 +894,10 @@ a:hover .header-profile-image {
 	padding: 5px;	
 }
 
-
+.spon-holder {
+	margin: 5px;
+	padding: 0 5px 0 5px;
+}
 
 .ad-image {
 	min-height: 750px;

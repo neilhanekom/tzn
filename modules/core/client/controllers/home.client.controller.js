@@ -1,36 +1,19 @@
 'use strict';
 
-angular.module('core').controller('HomeController', ['$scope', 'Authentication', '$interval', '$timeout', '$mdSidenav', 'Advertisements', 'Partners',
-	function($scope, Authentication, $interval, $timeout, $mdSidenav, Advertisements, Partners) {
+angular.module('core').controller('HomeController', ['$scope', 'Authentication', '$interval', '$timeout', '$mdSidenav', 'Advertisements', 'Partners', 'deviceDetector',
+	function($scope, Authentication, $interval, $timeout, $mdSidenav, Advertisements, Partners, deviceDetector ) {
 		// This provides Authentication context.
 		$scope.authentication = Authentication;
 		
 		$scope.white = '#FFFFFF';
 		$scope.lgrey = '#EEEEEE';
 		
-		$scope.say = 'Yes Ues';
 		
-		$scope.dos = [
-			{
-				title: 'MIAMI MAGOEBASKLOOF MTB CHALLENGE',
-				description: 'Our Annual signature Event in where we host funfilled and challenging races for Families and the more serious competitors',
-				sponsors: [ 'modules/core/img/brand/miami-th.png', 'modules/core/img/brand/zz2-th.png', 'modules/core/img/brand/usn-th.png', 'modules/core/img/brand/spar-th.png', ],
-				images: []
-			},
-			{
-				title: 'SIMPSON MOTORS XCO',
-				description: 'Our Annual signature Event in where we host funfilled and challenging races for Families and the more serious competitors',
-				sponsors: [ 'modules/core/img/brand/simpson-th.png'],
-				images: []
-			},
-			{
-				title: 'TZANEEN ENDURO CHALLENGE',
-				description: 'Our Annual signature Event in where we host funfilled and challenging races for Families and the more serious competitors',
-				sponsors: [ 'modules/core/img/brand/tzn-th.png'],
-				images: []
-			}
 
-		];
+
+	
+		
+		
 		
 		$scope.partnerImages = ['Test this'];
 
@@ -77,9 +60,7 @@ angular.module('core').controller('HomeController', ['$scope', 'Authentication',
 
 		$scope.advertisements = Advertisements.query();
 		$scope.articles = [
-			// {'heading' : 'Magoebaskloof Classic', 'body' : 'Tzaneen Cycling presents the Magoebaskloof Classic Race', 'background' : 'modules/core/img/bg/cycle1.jpg'},
-			// {'heading' : 'This is the 2nd Heading', 'body' : 'This is the second body', 'background' : 'modules/core/img/bg/cycle2.jpg'},
-			// {'heading' : 'This is the 3rd Heading', 'body' : 'This is the third body', 'background' : 'modules/core/img/bg/cycle3.jpg'}
+			
 		];
 
 		$scope.startArticles = function() {

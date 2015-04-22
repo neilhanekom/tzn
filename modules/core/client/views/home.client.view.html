@@ -1,7 +1,73 @@
 
 <div layout="row" flex layout-wrap >
 
-	<div layout="row" flex="100" data-ng-controller="HomeController" data-ng-init="startArticles(); hoganCompile(); pushPartners();">
+	<div layout="row" flex="100" data-ng-controller="HomeController" data-ng-init="startArticles(); pushPartners();">
+
+	<!-- <div class="abs-100 bg-alpha-80" ng-hide="collapseNotify">
+        <div layout="column" layout-fill layout-align="center center">
+            <div layout="row" layout-align="end end" class="abs-r-0">
+                <md-button ng-click="closeNotify()">
+                    <div class="pad-t-5">
+                        <ng-md-icon icon="close" size="30" ng-attr-style="fill: {{white}}"></ng-md-icon>
+                    </div>
+                </md-button>
+
+            </div>
+            <div layout="column" flex layout-align="start center" layout-padding class="mar-t-100">
+            	<img ng-src="modules/core/img/brand/tzn.png" class="launch-img">
+                <h1 class="hd1 light txt-white txt-c">
+                    Welcome to Tzaneen Cycling
+                </h1>
+                
+                <ul class="normal-ul">
+                	<li>
+                		<span class="hd3 light txt-white txt-c">We see that you are using <b class="blue">Internet Explorer</b> as your browser. </span>
+                	</li>
+                	<li>
+                		<span class="hd3 light txt-white txt-c">We are doing our best to make sure that you have a great user experience while visiting us.</span>
+                	</li>
+                	<li>
+                		<span class="hd3 light txt-white txt-c">However we cannont guarentee that some pages in the site might render as we planned due in Internet Explorer.</span>
+                	</li>
+                	<li>
+                		<span class="hd3 light txt-white txt-c">We highly recommend to use the following browsers for our site.</span>
+                	</li>
+                </ul>
+                <div layout="row">
+                	<div layout="column">
+                		<img ng-src="modules/core/img/icons/firefox.png" class="browser-icon">
+                		<span class="hd4 light"></span>
+                	</div>
+                	<div layout="column">
+                		<img ng-src="modules/core/img/icons/firefox.png" class="browser-icon">
+                		<span class="hd4 light"></span>
+                	</div>
+                	<div layout="column">
+                		<img ng-src="modules/core/img/icons/firefox.png" class="browser-icon">
+                		<span class="hd4 light"></span>
+                	</div>
+                </div>
+                <div layout="column" layout-padding>
+                    
+                    <div layout="row" >
+                        <md-button class="md-raised md-primary" layout="row" layout-align="center center" ng-click="closeNotify()">
+                            <span class="pad-t-5">
+                                <ng-md-icon icon="thumb_up" size="25" ng-attr-style="fill: {{white}}"></ng-md-icon>
+                                
+                            </span>
+                            <span class="mar-l-5 txt-blk"> Okay, I got it!</span>
+                        </md-button>
+                        
+
+                    </div>
+                </div>
+
+            </div>
+            
+        </div>
+        
+
+    </div> -->
 		
 	<div flex layout="row" layout-wrap layout-align="start">
 		<div flex>	
@@ -20,29 +86,39 @@
 									
 								</div>
 								
-								<div class="bg-alpha" layout="row" layout-fill data-ng-if="ad">
-									<div flex flex-md="45" flex-lg="50" flex-gt-lg="" layout="column"  ng-style="{'padding-left': '20px'}">
-										<ul class="setting-list">
-	                                        <li><h1 class="txt-white">{{ad.title}}</h1></li>
-	                                        <li class="mar-b-5"><span class="txt-white">{{ad.description}} </span></li>
-	                                        <li data-ng-repeat="spec in ad.specifications"><span class="txt-white" ><b>{{spec.key + ':' + ' '}}</b> {{spec.value}}</span></li>
-	                                        <li>
+								<div class="bg-alpha pad-t-5" layout="column" layout-fill data-ng-if="ad">
+									<div layout="row" flex>
+										<div layout="row" class="pad-l-20">
+											<span class="hd1 txt-white">{{ad.title}}</span>
+										</div>
+										<div layout="row" flex layout-align="end center" class="pad-r-10" hide-sm hide-gt-lg>
+											<md-button class="md-warn md-raised" data-ui-sref="events.list"> View Event </md-button>
+										</div>
+									</div>
+									
+										<div layout="row" class="mar-l-20">
+											<ul class="normal-ul">
+	                                        <li data-ng-repeat="spec in ad.specifications"><span class="txt-white" ><b>{{spec.key + ':' + ' '}}</b> {{spec.value}}</span>
+	                                       
+	                                        </li>
+	                                        <li  hide-md hide-lg >
+	                                        	
 	                                        	<div layout="row" class="mar-t-5" ng-show="ad.type">
-		                                    		<md-button class="md-warn md-raised" data-ui-sref="events.list"> View </md-button>
+		                                    		<md-button class="md-warn md-raised" data-ui-sref="events.list"> View Event</md-button>
 		                                    	</div>
 	                                        </li>  
                                     	</ul>
-									</div>
-									<div  flex-md="55"  flex-lg="50" flex-gt-lg="" layout="column"  layout-align="end end"  layout-padding>
-										
-                                    	<div layout="row" flex layout-sm="column" layout-align="center center" class="sponsor-section">
-                                    		<div data-ng-repeat="sponsor in ad.sponsors" layout-margin>
-                                    			<img data-ng-src="{{sponsor.imageUrl}}" class="thumb-sponsor" alt="{{sponsor.name}}">
-                                    		</div>
-                                    		
-                                    	</div>
+										</div>
+									
+									<div layout="row"  layout-align="start start" class="mar-b-10 mar-l-10">
+											<!-- <div layout="row" flex layout-align="center center" class="sponsor-section"> -->
+                                    		<div  layout="row" layout-align="center center" data-ng-repeat="sponsor in ad.sponsors"   class="bg-alpha spon-holder" >
+                                    			<img data-ng-src="{{sponsor.imageUrl}}"  alt="{{sponsor.name}}" class="thumb-sponsor">
+                                    			
+                                    		</div>	
                                     	
 									</div>
+								
 								</div>
 
 								
