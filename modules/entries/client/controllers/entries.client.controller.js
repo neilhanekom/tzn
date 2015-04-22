@@ -21,6 +21,19 @@ angular.module('entries').controller('EntriesController', ['$scope', '$statePara
 			$location.path('entries/' + response._id);
 		};
 
+		$scope.collapseNotify = true;
+
+		$scope.notify = function() {
+			$timeout(function() {
+	      	$scope.collapseNotify = false;
+
+	    }, 650);
+		};
+
+		$scope.closeNotify = function() {
+			$scope.collapseNotify = true;
+		};
+
 
 		//Form Collapse
 
@@ -175,7 +188,7 @@ angular.module('entries').controller('EntriesController', ['$scope', '$statePara
 			$scope.collapseConfirm = true;
 		};
 
-		
+
 
 		$scope.confirm = function() {
 			$scope.collapseForm = true;

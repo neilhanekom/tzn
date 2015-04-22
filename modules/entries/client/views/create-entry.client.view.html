@@ -131,7 +131,47 @@
 
     </div>
 
+    <div class="abs-100 bg-alpha-80" ng-hide="collapseNotify">
+        <div layout="column" layout-fill layout-align="center center">
+            <div layout="row" layout-align="end end" class="abs-r-0">
+                <md-button ng-click="closeNotify()">
+                    <div class="pad-t-5">
+                        <ng-md-icon icon="close" size="30" ng-attr-style="fill: {{white}}"></ng-md-icon>
+                    </div>
+                </md-button>
 
+            </div>
+            <div layout="column" flex layout-align="start center" layout-padding class="mar-t-100">
+                <h1 class="hd1 light txt-white txt-c">
+                    You are about to submit a Entry!
+                </h1>
+                <p class="hd3 light txt-white txt-c">
+                    Please check your details, if you need to make changes to your entry, simple press <b class="blue">back</b> and edit your entry! 
+                </p>
+                <p class="hd3 light txt-white txt-c">
+                    If you are ready to proceed press the <b class="blue">register</b> button
+                </p>
+                <div layout="column" layout-padding>
+                    
+                    <div layout="row" >
+                        <md-button class="md-raised md-primary" layout="row" layout-align="center center" ng-click="closeNotify()">
+                            <span class="pad-t-5">
+                                <ng-md-icon icon="thumb_up" size="25" ng-attr-style="fill: {{white}}"></ng-md-icon>
+                                
+                            </span>
+                            <span class="mar-l-5 txt-blk"> Okay, I got it!</span>
+                        </md-button>
+                        
+
+                    </div>
+                </div>
+
+            </div>
+            
+        </div>
+        
+
+    </div>
 
 
     <div flex="15" class="bg-lgrey" hide-sm hide-md hide-lg></div>
@@ -549,10 +589,10 @@
 
                                    <div layout="row" flex>
                                         <div layout="row" flex-sm="50" flex-gt-sm="35"  >
-                                           <span><b>class:</b> </span>
+                                           <span><b>ID:</b> </span>
                                         </div>
                                         <div layout="row" flex>
-                                            <span class="txt-inherit">{{entry.rsaclass}}</span>
+                                            <span class="txt-inherit">{{entry.rsaId}}</span>
                                         </div>
                                     </div>
                                     <div layout="row" flex>
@@ -791,7 +831,7 @@
                         </form>
 
                         <div layout="row" flex layout-align="start center" data-ng-hide="collapseForm">
-                                <md-button data-ng-click="confirm(); calculateTotal();" class="md-raised md-warn">Proceed</md-button>
+                                <md-button data-ng-click="confirm(); calculateTotal(); notify();" class="md-raised md-warn">Proceed</md-button>
                         </div>
                         <div layout="row" flex layout-align="start center" class="mar-t-5" data-ng-hide="collapseConfirm" layout-padding>
                                 <md-button ng-click="openForm()" class="md-raised md-accent">Back</md-button>
