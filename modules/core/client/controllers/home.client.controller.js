@@ -8,14 +8,6 @@ angular.module('core').controller('HomeController', ['$scope', 'Authentication',
 		$scope.white = '#FFFFFF';
 		$scope.lgrey = '#EEEEEE';
 		
-		
-
-
-	
-		
-		
-		
-		$scope.partnerImages = ['Test this'];
 
 		$scope.pushPartners = function() {
 			$scope.partners = Partners.query();
