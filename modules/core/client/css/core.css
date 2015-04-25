@@ -750,8 +750,8 @@ a:hover .header-profile-image {
 .round {
 		border-radius: 50%;
 	  border: 3px solid white;
-	  width: 150px;
-	  height: 150px;
+	  width: 120px;
+	  height: 120px;
 	  margin: 16px; 
 	  background-color: #EEEEEE;
 	  background-repeat: no-repeat;

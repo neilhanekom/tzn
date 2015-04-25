@@ -1,7 +1,7 @@
 'use strict';
 
-var sgu   = 'neilhanekom';
-var sgp   = 'mailer1234';
+var sgu   = 'TzaneenCycling';
+var sgp   = 'Dorothy+1';
 
 
 /**
